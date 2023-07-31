@@ -1,6 +1,6 @@
-package dev.practice.java8;
+package dev.practice.java8.two;
 
-public class Foo2 {
+public class Foo {
 
     public static void main(String[] args) {
 
@@ -20,14 +20,14 @@ public class Foo2 {
          * 프로그래밍이 문이 아닌 식이나 선언으로 수행되는 선언형 프로그래밍 패러다임을 따르고 있다.
          */
 
-        RunSomething2 runSomething2 = (number) -> {
+        RunSomething runSomething = (number) -> {
             return number + 10;
         };
         // 입력 받은 값이 같으면 결과는 동일해야한다.
-        System.out.println(runSomething2.doIt(1));
-        System.out.println(runSomething2.doIt(1));
-        System.out.println(runSomething2.doIt(1));
-        System.out.println(runSomething2.doIt(1));
-        System.out.println(runSomething2.doIt(1));
+        System.out.println(runSomething.doIt(1));
+        System.out.println(runSomething.doIt(1));
+        System.out.println(runSomething.doIt(1));
+        System.out.println(runSomething.doIt(1));
+        System.out.println(runSomething.doIt(1));
     }
 }

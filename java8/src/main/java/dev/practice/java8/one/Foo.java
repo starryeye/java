@@ -1,4 +1,4 @@
-package dev.practice.java8;
+package dev.practice.java8.one;
 
 public class Foo {
 
