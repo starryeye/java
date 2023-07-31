@@ -11,10 +11,12 @@ public interface RunSomething {
     void doIt(); // interface 에서 메서드는 public abstract 키워드가 생략되어있다.
 
 
+    //접근자는 암시적으로 public 이며, private 도 가능하다.
     static void printHello() {  // public 생략되어있다.
         System.out.println("Hello");
     }
 
+    //접근자는 암시적으로 public 이며, public 만 가능하다. default 메서드는 접근자 default 와 다르다.
     default void printJava() {
         System.out.println("Java");
     }
