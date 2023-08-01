@@ -1,4 +1,4 @@
-package dev.practice.java8.three;
+package dev.practice.java8.ac;
 
 import java.util.function.*;
 
