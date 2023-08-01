@@ -53,7 +53,7 @@ public class App {
          * boolean equals(Object obj); 이것은 default 메서드가 아닌데 어떻게 가능하지..?
          * -> Object 에 있는 메서드로 대상이 아닌듯..
          */
-        
+
         // 함수형 인터페이스는 람다를 이용하여 구현가능하다. comparator 구현
         Arrays.sort(names, (o1, o2) -> 0);
 
@@ -68,6 +68,24 @@ public class App {
          * "Java" 가 "JPA" 를 파라미터로 받아서 compareToIgnoreCase 함수를 수행한다. (인트 반환)
          *
          * 따라서, "Spring", "Java" -> 임의의 객체의 인스턴스를 거쳐가며 compareToIgnoreCase 라는 인스턴스 메서드를 사용하게 되는 것이다.
+         */
+
+        /**
+         * 정리
+         *
+         * 스태틱 메서드 참조
+         * - 타입::스태틱 메서드
+         *
+         * 특정 객체의 인스턴스 메서드 참조
+         * - 객체 레퍼런스::인스턴스 메서드
+         *
+         * 임의 객체의 인스턴스 메소드 참조
+         * - 타입::인스턴스 메서드
+         *
+         * 생성자 참조
+         * - 타입::new
+         *
+         * 레퍼런스란.. 인스턴스의 변수명..
          */
     }
 }
