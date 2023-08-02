@@ -102,8 +102,10 @@ public class App {
          * 아래와 위의 차이점...
          * flatMap, map 둘다 동일한 함수 인터페이스의 구현체를 넣어주므로..
          * 둘다.. List<Lecture> 를 넣고 Stream<Lecture> 를 빼는데...
-         * map 은 리턴 값(Stream<Lecture>)을 그대로 기존 stream 에 집어 넣는 것이고..
-         * flatMap 은 리턴된 Stream<Lecture> 을 Stream 원소만 다시 추출해서 기존 stream 에 집어 넣는 듯..
+         * map 은 람다의 리턴 값(Stream<Lecture>)을 그대로 기존 stream 에 집어 넣는 것이고..
+         * - <R> Stream<R> map(Function<? super T, ? extends R> mapper)
+         * flatMap 은 람다의 리턴된 Stream<Lecture> 을 Stream 원소만 다시 추출해서 기존 stream 에 집어 넣는 듯..
+         * - <R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper)
          */
 //        lists.stream()
 //                .map(Collection::stream)
