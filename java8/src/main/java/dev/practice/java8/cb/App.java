@@ -142,7 +142,15 @@ public class App {
                 .map(Lecture::getTitle)
                 .filter(title -> title.contains("Spring")) //TODO 논리적으로 map 과 filter 의 순서를 바꿔서 생각해 볼 수 있다 성능 상으로 뭐가 더 우위일까..?
                 .toList();
-        springLectureNameList.forEach(System.out::println); //TODO stream().forEach() 와 그냥 forEach() 차이점..?
+        springLectureNameList.forEach(System.out::println);
+        //참고
+        // stream().forEach() 와 그냥 forEach() 차이점..?
+        // stream.forEach() 는 stream 에 넣고 스트림의 각 원소에 consumer 를 수행시킨다. forEach 는 Stream 의 종료 오퍼레이터이다.
+        // forEach() 는 Iterable 의 default 메서드이다. Iterable 의 각 원소를 순회한다.
+        //
+        // 결론..
+        // 단순히 forEach 만 사용한다면.. 그냥 forEach 를 쓰는게 stream 을 생성하지 않고 쓰므로 자원소모가 덜하다.
+        // 하지만, 병렬 처리를 수행해야한다면 parallelStream 을 사용하여 Consumer 로써의 forEach 를 사용하면 된다. 대신 병렬 처리이므로 동시성 문제를 잘 고려해야한다.
 
 
     }
