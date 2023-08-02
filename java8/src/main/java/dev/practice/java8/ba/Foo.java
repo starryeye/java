@@ -8,7 +8,7 @@ public interface Foo {
 
     /**
      * Foo 의 구현체가 printName, getName 을 구현하고 있는 상태에서
-     * 아래 printNameUpperCase 추상메서드를 추가하면.. DefaultFoo 클래스에 컴파일에러가 생긴다. (추상메서드는 구현을 강제하기 때문)
+     * 아래 printNameUpperCase 추상메서드를 추가하면.. FooImpl 클래스에 컴파일에러가 생긴다. (추상메서드는 구현을 강제하기 때문)
      * 그래서 default 메서드로 하위 호환성을 제공하면서 컴파일 에러가 생기지 않게 한다.
      * -> 추후 하위 클래스가 오버라이딩을 마치면 추상 메서드로 변경해준다.
      */

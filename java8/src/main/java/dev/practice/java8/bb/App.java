@@ -8,15 +8,16 @@ import java.util.Spliterator;
 public class App {
 
     /**
-     * Iterable 의 기본 메소드 ● forEach()
+     * Iterable 의 기본 메서드
+     * - forEach()
      * - spliterator()
      *
-     * Collection (Iterable 을 상속 받음) 의 기본 메소드
+     * Collection (Iterable 을 상속 받음) 의 기본 메서드
      * - stream() / parallelStream()
      * - removeIf(Predicate)
      * - spliterator()
      *
-     * Comparator 의 기본 메소드 및 스태틱 메소드
+     * Comparator 의 기본 메서드 및 스태틱 메서드
      * - reversed()
      * - thenComparing()
      * - static reverseOrder() / naturalOrder()
