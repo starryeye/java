@@ -69,7 +69,7 @@ public class App {
         // LocalDateTime 을 문자열로 변환
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter isoLocalDateTime = DateTimeFormatter.ISO_LOCAL_DATE_TIME; //DateTime 포맷.. 이것 말고도 많다. https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#predefined
-        DateTimeFormatter MMddyyyy = DateTimeFormatter.ofPattern("MM/dd/yyyy");// 개발자가 포맷을 직접 만들어 줄 수 도 있다.
+        DateTimeFormatter MMddyyyy = DateTimeFormatter.ofPattern("MM/dd/yyyy");// 개발자가 포맷을 직접 만들어 줄 수 도 있다.  https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
         System.out.println(localDateTime.format(MMddyyyy));
 
         // 문자열을 LocalDate 으로.. 변환
