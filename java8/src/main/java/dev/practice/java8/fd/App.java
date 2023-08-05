@@ -27,7 +27,6 @@ public class App {
          * 주석처리하지 않고 돌리면 원래 알던 것과 좀 다르게 동작하는 것 같다..
          *
          * TODO
-         * - get 이 없으면 비동기 작업 코드가 수행되지 않아야.. 하는데... 수행되거나..
          * - callback 코드가 비동기 스레드에서 수행되지 않고 main 에서 수행된다거나..
          *
          *
@@ -55,19 +54,19 @@ public class App {
         CompletableFuture<Void> hello3 = CompletableFuture.runAsync(() -> {
             System.out.println("Hello3 " + Thread.currentThread().getName());
         });
-        hello3.get(); // get 을 해줘야 위의 코드가 수행된다. Future 만 정의해서는 실행이 안된다.
+        hello3.get();
 
 
         // --
 
 
-        // 비동기 실행, 리턴이 없는 경우 supplyAsync(Supplier)
+        // 비동기 실행, 리턴이 있는 경우 supplyAsync(Supplier)
         // TODO, Callable vs Supplier
         CompletableFuture<String> hello4 = CompletableFuture.supplyAsync(() -> {
             System.out.println("Hello4 " + Thread.currentThread().getName());
             return "Hello4";
         });
-        System.out.println(hello4.get()); // get 을 해줘야 위의 코드가 수행된다. Future 만 정의해서는 실행이 안된다.
+        System.out.println(hello4.get());
 
 
         // --
@@ -82,7 +81,7 @@ public class App {
             System.out.println("callback5 " + Thread.currentThread().getName());
             return s.toUpperCase();
         });
-        System.out.println(hello5.get()); // get 을 해줘야 위의 코드가 수행된다. Future 만 정의해서는 실행이 안된다.
+        System.out.println(hello5.get());
 
 
         // --
@@ -97,7 +96,7 @@ public class App {
             System.out.println("callback6 " + Thread.currentThread().getName());
             System.out.println(s.toUpperCase());
         });
-        hello6.get(); // get 을 해줘야 위의 코드가 수행된다. Future 만 정의해서는 실행이 안된다.
+        hello6.get();
 
 
         // --
