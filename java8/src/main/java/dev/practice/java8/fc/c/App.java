@@ -1,7 +1,10 @@
-package dev.practice.java8.fb.f;
+package dev.practice.java8.fc.c;
 
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class App {
 
@@ -19,7 +22,8 @@ public class App {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        ExecutorService executorService = Executors.newSingleThreadExecutor(); // 싱글 스레드.. 동시성..
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        // 스레드 2개 이하로 할 경우.. 리스트 순서로 hello, java 가 어쨋든 먼저 수행되기 때문에 world 가 안나오고 hello 가 먼저 종료 될 수 있다.
 
         Callable<String> hello = () -> {
             Thread.sleep(5000L); //5초
@@ -36,15 +40,14 @@ public class App {
             return "World";
         };
 
-        // invokeAll 을 사용해서 한꺼번에 보낼 수 있다.
-        // invokeAll 은 hello, java, world 모두 끝날때 까지 기다린다......
-        List<Future<String>> futures = executorService.invokeAll(List.of(hello, java, world)); //invokeAll 은 여기가 blocking 인거 같음..
+        // invokeAny 을 사용해서 한꺼번에 보낼 수 있다.
+        // invokeAny 은 hello, java, world 중 가장 먼저 끝난 결과를 리턴시킨다.
+        // invokeAny 이 리턴은 Future 가 아니라 Callable 의 리턴 타입이다.
+        String ret = executorService.invokeAny(List.of(hello, java, world)); //invokeAny 은 여기가 blocking
 
-        System.out.println("??"); //먼저 안찍힘..
+        System.out.println(ret);
 
-        for (Future<String> future : futures) {
-            System.out.println(future.get());
-        }
+
 
         executorService.shutdown();
 
