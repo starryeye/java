@@ -17,6 +17,21 @@ public class App {
      * - 블로킹 코드(get())를 사용하지 않고서는 작업이 끝났을 때 콜백을 실행할 수 없다.
      * - 여러 Future 를 조합할 수 없다. 예) Event 정보 가져온 다음 Event 에 참석하는 회원 목록 가져오기
      * - 예외 처리용 API를 제공하지 않는다.
+     *
+     * CompletableFuture
+     * - Implements Future
+     * - Implements CompletionStage
+     *
+     * 비동기로 작업 실행하기
+     * - 리턴값이 없는 경우: runAsync()
+     * - 리턴값이 있는 경우: supplyAsync()
+     * - 원하는 Executor(쓰레드풀)를 사용해서 실행할 수도 있다. (기본은 ForkJoinPool.commonPool())
+     *
+     * 콜백 제공하기
+     * - thenApply(Function): 리턴값을 받아서 다른 값으로 바꾸는 콜백
+     * - thenAccept(Consumer): 리턴값을 또 다른 작업을 처리하는 콜백 (리턴없이)
+     * - thenRun(Runnable): 리턴값 받지 다른 작업을 처리하는 콜백
+     * - 콜백 자체를 또 다른 쓰레드에서 실행할 수 있다.
      */
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
