@@ -18,8 +18,11 @@ java practice
 - Optional
 
 ## subject 5
-- date / tiem
+- date / time
 
 ## subject 6
 - CompletableFuture
 - Executor
+
+## subject 7
+- Etc..
