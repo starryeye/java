@@ -29,7 +29,6 @@ public class App {
 
         IntStream.range(0, size).forEach(i -> numbers[i] = random.nextInt()); //무작위 배열 생성
 
-
         // 병렬 정렬
         start = System.nanoTime();
         Arrays.parallelSort(numbers); // 퀵소트, 스레드 여러개(ForkJoinPool), O(NlogN)
