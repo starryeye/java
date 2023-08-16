@@ -1,4 +1,4 @@
-package dev.practice.java8.subject1.a;
+package dev.practice.java8.subject1_함수형인터페이스.a_함수형인터페이스;
 
 @FunctionalInterface // @FunctionalInterface 어노테이션을 적용하면 컴파일 단계에서 함수형인터페이스인지 검증해준다.
 public interface RunSomething {

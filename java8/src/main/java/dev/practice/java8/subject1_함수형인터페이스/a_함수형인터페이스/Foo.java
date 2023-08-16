@@ -1,4 +1,4 @@
-package dev.practice.java8.subject1.a;
+package dev.practice.java8.subject1_함수형인터페이스.a_함수형인터페이스;
 
 public class Foo {
 

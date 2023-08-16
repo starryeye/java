@@ -1,4 +1,4 @@
-package dev.practice.java8.subject1.d;
+package dev.practice.java8.subject1_함수형인터페이스.d_람다표현식;
 
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;

@@ -1,4 +1,4 @@
-package dev.practice.java8.subject1.e;
+package dev.practice.java8.subject1_함수형인터페이스.e_메서드레퍼런스;
 
 public class Greeting {
 

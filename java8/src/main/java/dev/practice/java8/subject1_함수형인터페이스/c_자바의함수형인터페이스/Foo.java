@@ -1,4 +1,4 @@
-package dev.practice.java8.subject1.c;
+package dev.practice.java8.subject1_함수형인터페이스.c_자바의함수형인터페이스;
 
 import java.util.function.*;
 
