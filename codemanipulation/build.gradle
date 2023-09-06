@@ -39,6 +39,9 @@ jacocoTestCoverageVerification {
                 value = 'COVEREDRATIO'
                 minimum = 0.90 // 커버리지 최소 비율, 현재 커버리지가 90% 미만이므로 아래 명령어를 수행시 실패
                 // ./gradlew --console verbose test jacocoTestReport jacocoTestCoverageVerification
+
+                //아래 경로에 결과 파일 존재
+                //build/customJacocoReportDir/test/html/index.html
             }
         }
     }
