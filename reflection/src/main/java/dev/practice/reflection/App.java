@@ -1,7 +1,6 @@
-package dev.practice;
+package dev.practice.reflection;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
@@ -32,7 +31,7 @@ public class App {
         Class<? extends Book> aClass = book.getClass();
 
         // 타입 파라미터가 Book인 "Class" 타입의 인스턴스 ("Class" 타입의 인스턴스를 가져오는 방법3, FQCN 문자열을 이용)
-        Class<?> aClass1 = Class.forName("dev.practice.Book");
+        Class<?> aClass1 = Class.forName("dev.practice.reflection.Book");
 
         /**
          * Class 타입의 인스턴스로 다양한 정보를 빼올수 있다. (메타데이터)
