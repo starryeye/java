@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class App {
 
@@ -16,17 +17,24 @@ public class App {
         // Book.class 처럼 직접 참조할 수 없는 경우에 아래 방법을 쓰면되는 것이다.
         Class<?> aClass = Class.forName("dev.practice.sub3_reflection.Book");
 
+        Arrays.stream(aClass.getDeclaredConstructors())
+                .forEach(System.out::println); //Book 클래스의 생성자 정보 조회 (접근제어자, 파라미터 타입 등)
+
         /**
          * 리플랙션을 이용하여 Book 인스턴스를 생성
+         *
+         * 리플랙션에서 다른 것들(필드, 메서드) 과는 다르게..
+         * 생성자는 이름이 없으므로 이름으로 조회하는 것이 아닌 파라미터 조합으로 조회를 할 수 있다.
          */
         // Class.newInstance() 는 deprecated 되었으므로 아래 방법을 사용한다.
         Constructor<?> constructor = aClass.getConstructor(); // default constructor 이므로 파라미터로 넘겨주는게 없다.
         Book book = (Book) constructor.newInstance();
 
         // 파라미터를 받는 생성자를 이용하는 방법
-        // TODO (리플랙션은.. 파라미터에 대한 정보는 알수 없음을 알 수 있다. String b..)
         Constructor<?> constructor1 = aClass.getDeclaredConstructor(String.class);// String 타입 하나를 파라미터로 하는 생성자, private 이므로 getDeclaredConstructructor 를 사용
         constructor1.setAccessible(true); //private 이므로..
+        Arrays.stream(constructor1.getParameterTypes()) //파라미터 타입 정보를 조회 할 수 있다.
+                .forEach(System.out::println);
         Book book1 = (Book) constructor1.newInstance("myBook"); //생성자 파라미터 값을 넘겨줘야한다.
 
         /**
