@@ -1,11 +1,14 @@
-package dev.practice.reflection;
+package dev.practice.sub2_reflectionandannotation;
 
+@MyAnnotation
+@MyAnnotation2
 public class Book {
 
 
     private static String B = "BOOK";
     private static final String C = "BOOK";
 
+    @MyAnnotation2
     private String a = "a";
 
     public String d = "d";

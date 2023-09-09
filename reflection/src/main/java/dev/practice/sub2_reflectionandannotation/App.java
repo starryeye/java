@@ -1,4 +1,4 @@
-package dev.practice.reflectionandannotation;
+package dev.practice.sub2_reflectionandannotation;
 
 import java.util.Arrays;
 
