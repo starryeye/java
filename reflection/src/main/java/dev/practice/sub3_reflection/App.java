@@ -20,6 +20,16 @@ public class App {
         Arrays.stream(aClass.getDeclaredConstructors())
                 .forEach(System.out::println); //Book 클래스의 생성자 정보 조회 (접근제어자, 파라미터 타입 등)
 
+        // 리플랙션을 이용하면 생성자에서 파라미터 타입과 이름을 조회할 수 있다.
+        Arrays.stream(aClass.getDeclaredConstructors())
+                .forEach(constructor -> {
+                    Arrays.stream(constructor.getParameters())
+                            .forEach(parameter -> {
+                                System.out.println("parameter name : " + parameter.getName());
+                                System.out.println("parameter type : " + parameter.getType());
+                            });
+                });
+
         /**
          * 리플랙션을 이용하여 Book 인스턴스를 생성
          *
