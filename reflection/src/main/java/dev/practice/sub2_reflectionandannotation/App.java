@@ -9,7 +9,7 @@ public class App {
          * 리플랙션을 이용해 아래와 같이
          * Book 의 Class 타입 인스턴스에서 getAnnotations 메서드를 통해
          * MyAnnotation 을 가져오려고 시도하면, 조회가 안된다.
-         * 반면, MyAnnotation 은 가져와진다.
+         * 반면, MyAnnotation2 는 가져와진다.
          */
         Arrays.stream(Book.class.getAnnotations())
                 .forEach(System.out::println);
