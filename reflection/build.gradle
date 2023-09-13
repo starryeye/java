@@ -20,6 +20,9 @@ dependencies {
 
     implementation 'net.bytebuddy:byte-buddy' //spring boot 에서 버전관리 해줌
 
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
