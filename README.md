@@ -22,6 +22,13 @@ java practice
     - Executor
   - subject 7
     - Etc..
+- reflection
+  - 리플랙션
+  - 동적 프록시
+    - Java dynamic proxy
+    - CGlib
+    - byte-buddy
+  - annotation processor 
 
 ## dependency
 - Java 17
