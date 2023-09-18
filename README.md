@@ -28,7 +28,9 @@ java practice
     - Java dynamic proxy
     - CGlib
     - byte-buddy
-  - annotation processor 
+  - annotation processor
+- MagicMoja, annotationprocessor
+  - annotation processor
 
 ## dependency
 - Java 17
