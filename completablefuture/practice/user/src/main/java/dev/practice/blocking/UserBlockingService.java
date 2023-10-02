@@ -21,8 +21,8 @@ public class UserBlockingService {
 
     public Optional<User> getUserById(String id) {
 
-        // 총 3초, 주어진 id 로 repository 에 접근하여 정보를 빼오고 user 를 리턴한다.
-        return userRepository.findById(id)
+        // 총 4초, 주어진 id 로 repository 에 접근하여 정보를 빼오고 user 를 리턴한다.
+        return userRepository.findById(id) // 1초
                 .map(user -> {
 
                     // 1초

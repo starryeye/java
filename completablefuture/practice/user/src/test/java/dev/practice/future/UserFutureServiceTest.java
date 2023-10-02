@@ -1,58 +1,58 @@
-package dev.practice.blocking;
+package dev.practice.future;
 
-import dev.practice.blocking.repository.ArticleRepository;
-import dev.practice.blocking.repository.FollowRepository;
-import dev.practice.blocking.repository.ImageRepository;
-import dev.practice.blocking.repository.UserRepository;
 import dev.practice.common.domain.User;
+import dev.practice.future.repository.ArticleFutureRepository;
+import dev.practice.future.repository.FollowFutureRepository;
+import dev.practice.future.repository.ImageFutureRepository;
+import dev.practice.future.repository.UserFutureRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UserBlockingServiceTest {
-    UserBlockingService userBlockingService;
-    UserRepository userRepository;
-    ArticleRepository articleRepository;
-    ImageRepository imageRepository;
-    FollowRepository followRepository;
+public class UserFutureServiceTest {
+    UserFutureService userFutureService;
+    UserFutureRepository userRepository;
+    ArticleFutureRepository articleRepository;
+    ImageFutureRepository imageRepository;
+    FollowFutureRepository followRepository;
 
     @BeforeEach
     void setUp() {
+        userRepository = new UserFutureRepository();
+        articleRepository = new ArticleFutureRepository();
+        imageRepository = new ImageFutureRepository();
+        followRepository = new FollowFutureRepository();
 
-        articleRepository = new ArticleRepository();
-        followRepository = new FollowRepository();
-        imageRepository = new ImageRepository();
-        userRepository = new UserRepository();
-
-        userBlockingService = new UserBlockingService(
-                articleRepository, followRepository, imageRepository, userRepository
+        userFutureService = new UserFutureService(
+                userRepository, articleRepository, imageRepository, followRepository
         );
     }
 
     @Test
-    void getUserEmptyIfInvalidUserIdIsGiven() {
+    void getUserEmptyIfInvalidUserIdIsGiven() throws ExecutionException, InterruptedException {
         // given
         String userId = "invalid_user_id";
 
         // when
-        Optional<User> user = userBlockingService.getUserById(userId);
+        Optional<User> user = userFutureService.getUserById(userId).get();
 
         // then
         assertTrue(user.isEmpty());
     }
 
     @Test
-    void testGetUser() {
+    void testGetUser() throws ExecutionException, InterruptedException {
         // given
         String userId = "1234";
 
         // when
         long beforeTime = System.currentTimeMillis();
 
-        Optional<User> optionalUser = userBlockingService.getUserById(userId);
+        Optional<User> optionalUser = userFutureService.getUserById(userId).get();
 
         long afterTime = System.currentTimeMillis();
         long diffTime = afterTime - beforeTime;
