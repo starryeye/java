@@ -29,7 +29,7 @@ public class UserFutureService {
 
         // CompletableFuture 를 리턴
         // public <U> CompletableFuture<U> thenComposeAsync(Function<? super T, ? extends CompletionStage<U>> fn)
-        // Java 의 flatMap 과 비슷하다.
+        // Java stream 의 flatMap 과 비슷하다.
         // T: findById 의 리턴 값(Optional<UserEntity>)을 이용 하면서,
         // CompletionStage<U>: 또다른 CompletableFuture(CompletableFuture<Optional<User>>) 를 적용할 것이다. (내부에서 또다른 작업을 함)
         return userRepository.findById(id)
