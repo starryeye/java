@@ -1,12 +1,14 @@
 package cold;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Flow;
 
+@Slf4j
 @RequiredArgsConstructor
 public class SimpleColdSubscription implements Flow.Subscription {
 
@@ -23,6 +25,12 @@ public class SimpleColdSubscription implements Flow.Subscription {
 
     private final ExecutorService executorService = Executors.newSingleThreadExecutor(); // 별도의 스레드
 
+    /**
+     * TODO, 의문점..
+     * - 스레드가 한개인데 재귀적으로 호출되는데.. 어떻게 되는거지?
+     * - subscriber.onNext(number) 와 iterator.remove() 가 순서가 바껴야 동작한다...
+     */
+
     @Override
     public void request(long n) {
 
@@ -34,8 +42,8 @@ public class SimpleColdSubscription implements Flow.Subscription {
             for (int i = 0; i < n; i++) {
                 if (iterator.hasNext()) {
                     Integer number = iterator.next();
-                    iterator.remove();
                     subscriber.onNext(number); // subscriber 의 onNext 메서드를 호출하여 데이터를 push 해준다.
+                    iterator.remove();
                 } else {
                     subscriber.onComplete(); // 데이터 읽기가 종료되면 subscriber 의 onComplete 메서드를 호출한다.
                     executorService.shutdown();
