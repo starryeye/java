@@ -50,8 +50,8 @@ public class SimpleHotPublisher implements Flow.Publisher<Integer> {
      * subscription
      */
     private class SimpleHotSubscription implements Flow.Subscription {
-        private int offset;
-        private int requiredOffset;
+        private int offset; // susbscriber 의 현재 offset
+        private int requiredOffset; // susbscriber 의 목표 offset
         private final Flow.Subscriber<? super Integer> subscriber;
         private final ExecutorService subscriptionExecutorService = Executors.newSingleThreadExecutor(); // 별도의 스레드, 데이터 push 용
 
