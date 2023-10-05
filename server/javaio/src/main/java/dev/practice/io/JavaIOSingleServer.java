@@ -1,4 +1,4 @@
-package dev.practice;
+package dev.practice.io;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
