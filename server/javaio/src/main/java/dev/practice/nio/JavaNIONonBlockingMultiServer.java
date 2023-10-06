@@ -74,7 +74,7 @@ public class JavaNIONonBlockingMultiServer {
     @SneakyThrows
     private static void handleRequest(SocketChannel clientSocket) {
         ByteBuffer requestByteBuffer = ByteBuffer.allocateDirect(1024);
-        while(clientSocket.read(requestByteBuffer) == 0) {
+        while(clientSocket.read(requestByteBuffer) == 0) { // read 가 될 때 까지.. 대기
             log.info("server reading..");
         }
         requestByteBuffer.flip();
@@ -93,4 +93,22 @@ public class JavaNIONonBlockingMultiServer {
         int c = count.incrementAndGet();
         log.info("request count = {}", c);
     }
+
+    /**
+     * Java NIO non-blocking 의 문제점..
+     *
+     * 1. callback 을 지원하지 않아서..
+     * accept 가 완료되었는지.. read 가 가능한지.. 주기적으로 확인해야한다.
+     * 코드로.. 수동으로 직접 관리해야하는 것이라 볼 수 있음
+     * 또한, 이것은 동기적 코드인 것이다. 그래서 non-blocking 을 지원하지만.. 동기적 성격이 있는 것이다.
+     *
+     * 2. 동시에 발생하는 요청이 증가하는 경우.. 연결 처리가 순차적으로 발생하여 성능이 감소 된다.
+     * accept 과 완벽하게 동시에 진행되지 못한다는 말이다. accept 가 하나씩 순차적으로 처리된다. accept 를 처리하는 스레드는 메인스레드 하나이다.
+     *
+     * <참고>
+     * 위 1번과 같은 상황을 busy-wait 이라 한다.
+     * 동기 non-blocking 상황에서 주로 발생한다.
+     * cpu 자원을 낭비하거나 응답 시간 지연의 결과를 초래한다.
+     *
+     */
 }
