@@ -18,7 +18,7 @@ public class JavaAIONonBlockingMultiServer {
      * - non blocking 으로 동작
      *
      * Java AIO 는 callback 과 future 를 지원하므로..
-     * 비동기 프로그래밍에 있어서 사용 편의성이 증대 되었다. 여기서는 callback 을 이용하여 동기적 코드를 비동기로 돌렸다.
+     * 비동기 프로그래밍에 있어서 사용 편의성이 증대 되었다. 여기서는 callback 을 이용하여 동기적 코드(accept 이후, read 이후)를 비동기로 돌렸다.
      *
      * Java NIO 와 비교하여.. 사용되는 클래스들이 앞에 prefix 로 Asynchronous 가 붙는다.
      *
