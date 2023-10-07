@@ -36,6 +36,9 @@ java practice
     - user
       - CompletableFuture 를 사용하여 동기 blocking 로직을 비동기 non blocking 로직으로 개선
       - 4 개의 repository 를 동기적으로 순차 접근하던 것을 병렬적으로 접근하도록 개선(1 + 3 초를 1 + 1 초로 개선)
+- JavaIO
+  - Java IO, NIO, AIO 로 Server 만들어보기
+  - synchronous, asynchronous, blocking, non-blocking
 
 ## dependency
 - Java 17
