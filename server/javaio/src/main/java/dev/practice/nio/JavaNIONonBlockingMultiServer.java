@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// [5]
 @Slf4j
 public class JavaNIONonBlockingMultiServer {
 
@@ -41,7 +42,7 @@ public class JavaNIONonBlockingMultiServer {
             while (true) {
 
                 SocketChannel clientSocket = serverSocket.accept();
-                if (clientSocket == null) { // clientSocket 이 accept 될 때 까지 sleep
+                if (clientSocket == null) { // clientSocket 이 accept 될 때 까지 sleep, busy-wait
                     Thread.sleep(100);
 //                    log.info("server wait accept..");
                     continue; // null 이면 아래 로직 스킵

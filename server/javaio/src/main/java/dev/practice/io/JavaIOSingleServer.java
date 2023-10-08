@@ -9,6 +9,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+// [1]
 @Slf4j
 public class JavaIOSingleServer {
 

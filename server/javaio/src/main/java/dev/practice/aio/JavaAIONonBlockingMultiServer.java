@@ -10,6 +10,7 @@ import java.nio.channels.*;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// [6] 혼자서 만들어봄..
 @Slf4j
 public class JavaAIONonBlockingMultiServer {
 

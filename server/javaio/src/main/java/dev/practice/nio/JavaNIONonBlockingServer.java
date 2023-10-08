@@ -10,6 +10,7 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
+// [4]
 @Slf4j
 public class JavaNIONonBlockingServer {
 
