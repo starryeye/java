@@ -1,4 +1,4 @@
-package dev.practice.reactor.tcp;
+package dev.practice.nio.reactor.tcp;
 
 import lombok.extern.slf4j.Slf4j;
 

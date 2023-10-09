@@ -1,4 +1,4 @@
-package dev.practice.reactor.netty;
+package dev.practice.nio.reactor.http;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

@@ -1,4 +1,4 @@
-package dev.practice.reactor.http;
+package dev.practice.nio.reactor.http;
 
 public interface EventHandler {
     /**

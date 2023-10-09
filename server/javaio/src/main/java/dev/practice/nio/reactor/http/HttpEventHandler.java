@@ -1,4 +1,4 @@
-package dev.practice.reactor.netty;
+package dev.practice.nio.reactor.http;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

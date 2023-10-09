@@ -1,4 +1,4 @@
-package dev.practice.reactor.netty;
+package dev.practice.nio.reactor.tcp;
 
 public interface EventHandler {
     /**

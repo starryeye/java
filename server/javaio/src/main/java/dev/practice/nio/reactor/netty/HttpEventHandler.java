@@ -1,4 +1,4 @@
-package dev.practice.reactor.http;
+package dev.practice.nio.reactor.netty;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +7,6 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

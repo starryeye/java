@@ -1,4 +1,4 @@
-package dev.practice.reactor.http;
+package dev.practice.nio.reactor.http;
 
 import java.net.URI;
 import java.nio.ByteBuffer;

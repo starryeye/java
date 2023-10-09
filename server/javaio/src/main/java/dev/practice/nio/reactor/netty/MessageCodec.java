@@ -1,4 +1,4 @@
-package dev.practice.reactor.netty;
+package dev.practice.nio.reactor.netty;
 
 import java.net.URI;
 import java.nio.ByteBuffer;
