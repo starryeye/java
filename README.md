@@ -38,6 +38,7 @@ java practice
       - 4 개의 repository 를 동기적으로 순차 접근하던 것을 병렬적으로 접근하도록 개선(1 + 3 초를 1 + 1 초로 개선)
 - JavaIO
   - Java IO, NIO, AIO 로 Server 만들어보기
+  - reactor pattern 알아보기
   - synchronous, asynchronous, blocking, non-blocking
 
 ## dependency
