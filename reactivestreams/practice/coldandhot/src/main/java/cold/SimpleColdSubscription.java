@@ -28,6 +28,9 @@ public class SimpleColdSubscription implements Flow.Subscription {
     /**
      * TODO, 의문점..
      * - 스레드가 한개인데 재귀적으로 호출되는데.. 어떻게 되는거지?
+     * -> 해결) executorService.submit 메서드 호출 의미는.. executorService 에 작업을 제출하는 의미이다.
+     * -> 그 자체로 작업을 수행하지 않는다. 내부적으로 작업 큐에 제출하고 끝이다. 이후 해당 스레드가 작업을 진행할 수 있으면 큐에 있던 작업을 진행한다.
+     * -> 제출된 파라미터, 즉 Runnable 구현체 람다의 함수형 프로그래밍의 의미와도 일맥상통한다. (진행될 함수를 작업큐에 담는다.)
      * - subscriber.onNext(number) 와 iterator.remove() 가 순서가 바껴야 동작한다...
      */
 
