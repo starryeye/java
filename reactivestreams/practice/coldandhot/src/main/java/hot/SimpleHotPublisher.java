@@ -9,6 +9,15 @@ import java.util.concurrent.Future;
 
 public class SimpleHotPublisher implements Flow.Publisher<Integer> {
 
+    /**
+     * Hot Publisher
+     * - subscriber 가 없더라도 Publisher 가 데이터를 생성하고 stream 에 push 한다.
+     * - Kafka 에서.. 가장 최신 offset 부터 받는 옵션을 떠올리면 쉽다.
+     * - 여러 subscriber 에게 동일한 데이터를 실시간으로 전달하게 된다.
+     * - subscribe 할 때마다 데이터가 다르게 받아질 수 있다.
+     *
+     */
+
     private final ExecutorService publisherExecutor = Executors.newSingleThreadExecutor(); // 주기적 값 생성을 위한 스레드
     private final Future<Void> task;
     private List<Integer> numbers = new ArrayList<>();

@@ -14,7 +14,7 @@ public class SimpleColdPublisher implements Flow.Publisher<Integer> {
      * Cold Publisher
      * - subscribe 를 한 순간 부터 데이터를 생성하고 전송한다.
      * - subscribe 할 때 마다 동일한 데이터가 전송됨을 보장한다. (파일 읽기, 웹 API 요청 등에 쓰인다.)
-     * - subscriber 에 따라 독립적인 데이터 스트림 제공한다.
+     * - subscriber 에 따라 독립적인 데이터 스트림을 제공한다.
      */
     @Override
     public void subscribe(Flow.Subscriber<? super Integer> subscriber) {
