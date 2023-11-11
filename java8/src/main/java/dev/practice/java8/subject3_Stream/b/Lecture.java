@@ -1,4 +1,4 @@
-package dev.practice.java8.subject3.b;
+package dev.practice.java8.subject3_Stream.b;
 
 public class Lecture {
 

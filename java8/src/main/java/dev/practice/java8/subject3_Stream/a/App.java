@@ -1,4 +1,4 @@
-package dev.practice.java8.subject3.a;
+package dev.practice.java8.subject3_Stream.a;
 
 import java.util.ArrayList;
 import java.util.List;
