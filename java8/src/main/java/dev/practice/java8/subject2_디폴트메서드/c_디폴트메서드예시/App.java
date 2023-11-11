@@ -1,4 +1,4 @@
-package dev.practice.java8.subject2.b;
+package dev.practice.java8.subject2_디폴트메서드.c_디폴트메서드예시;
 
 import java.util.ArrayList;
 import java.util.Comparator;

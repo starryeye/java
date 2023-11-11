@@ -1,4 +1,4 @@
-package dev.practice.java8.subject2.a;
+package dev.practice.java8.subject2_디폴트메서드.a_디폴트메서드;
 
 public interface Foo {
 
