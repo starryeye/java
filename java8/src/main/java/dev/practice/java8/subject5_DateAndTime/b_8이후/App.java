@@ -1,4 +1,4 @@
-package dev.practice.java8.subject5.b;
+package dev.practice.java8.subject5_DateAndTime.b_8이후;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -17,25 +17,25 @@ public class App {
 
         // epoch time 을 다루기
         Instant instant = Instant.now(); // 혹은 Instant.of 로 다룰 수 있다.
-        System.out.println(instant); //출력은 우리가 아는 형식의 시간으로 출력이 된다... (UTC, GMT, 기준시로 출력)
-        System.out.println(instant.atZone(ZoneId.of("UTC"))); // 기준시로 출력, 위와 동일한 값
+        System.out.println("print instant: " + instant); //출력은 우리가 아는 형식의 시간으로 출력이 된다... (UTC, GMT, 기준시로 출력)
+        System.out.println("print instant with zoneId: " + instant.atZone(ZoneId.of("UTC"))); // 기준시로 출력, 위와 동일한 값
 
         ZoneId zoneId = ZoneId.systemDefault(); // 지금 시스템 기준..
-        System.out.println(zoneId);
+        System.out.println("print zoneId: " + zoneId);
         ZonedDateTime zonedDateTime = instant.atZone(zoneId);
-        System.out.println(zonedDateTime);
+        System.out.println("print instant(convert to zonedDateTime): " + zonedDateTime);
 
-        System.out.println(instant.atZone(ZoneId.of("America/New_York"))); // 특정 zone 기준..
+        System.out.println("print instant(convert to zonedDateTime with zoneId): " + instant.atZone(ZoneId.of("America/New_York"))); // 특정 zone 기준..
 
 
         // 사람용 date/time 다루기
         LocalDateTime today = LocalDateTime.now(); // Local : 현재 시스템 zone 을 참고하여 로컬 시간을 가져온다. (서버로 띄우면 서버의 local 시간이 뜬다.)
-        System.out.println(today);
+        System.out.println("print LocalDateTime: " + today);
 
         LocalDateTime birthDay = LocalDateTime.of(1993, 1, 1, 0, 0, 0); // of 사용 가능
 
         ZonedDateTime nowInNewYork = ZonedDateTime.now(ZoneId.of("America/New_York")); // 특정 Zone 의 현재 시간을 보고 싶다.
-        System.out.println(nowInNewYork);
+        System.out.println("print zonedDateTime with zoneId: " + nowInNewYork);
 
 
         // 변환 가능
@@ -46,23 +46,23 @@ public class App {
 
         // 날짜 비교 가능 (사람 용) , Period
         LocalDate today1 = LocalDate.now(); // 2023, 8, 4
-        System.out.println(today1);
+        System.out.println("print LocalDate: " + today1);
         LocalDate birthDayOf2024 = LocalDate.of(2024, Month.JANUARY, 11);
-        System.out.println(birthDayOf2024);
+        System.out.println("print LocalDate: " + birthDayOf2024);
 
         Period period = Period.between(today1, birthDayOf2024);
-        System.out.println(period.getDays()); // 5개월 하고도 7일이 남았지만 출력은 7로 출력된다.
+        System.out.println("print Period::getDays(): " + period.getDays()); // 5개월 하고도 7일이 남았지만 출력은 7로 출력된다.
 
         Period until = today1.until(birthDayOf2024);
-        System.out.println(until.get(ChronoUnit.DAYS)); // 5개월 하고도 7일이 남았지만 출력은 7로 출력된다.
+        System.out.println("print Period::get(): " + until.get(ChronoUnit.DAYS)); // 5개월 하고도 7일이 남았지만 출력은 7로 출력된다.
 
 
         // 날짜 비교 가능 (epoch time 용) , Duration
         Instant instant1 = Instant.now();
-        Instant plus = instant1.plus(10, ChronoUnit.SECONDS); // 참고로 Immutable 하기 때문에 좌측 연산만으로는 아무일도 일어나지 않는다. 반환 값으로 뭔가 하자..
+        Instant plus = instant1.plus(10, ChronoUnit.SECONDS); // 참고로 Immutable 하기 때문에 우측 연산만으로는 아무일도 일어나지 않는다. 반환 값은 새로운 객체이다.
 
         Duration duration = Duration.between(instant1, plus);
-        System.out.println(duration.getSeconds());
+        System.out.println("print Duration: " + duration.getSeconds());
 
 
         // 문자열로 날짜를 입력 받거나 출력하거나.. DateTimeFormatter
@@ -70,11 +70,11 @@ public class App {
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter isoLocalDateTime = DateTimeFormatter.ISO_LOCAL_DATE_TIME; //DateTime 포맷.. 이것 말고도 많다. https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#predefined
         DateTimeFormatter MMddyyyy = DateTimeFormatter.ofPattern("MM/dd/yyyy");// 개발자가 포맷을 직접 만들어 줄 수 도 있다.  https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
-        System.out.println(localDateTime.format(MMddyyyy));
+        System.out.println("print LocalDateTime::format(): " + localDateTime.format(MMddyyyy));
 
         // 문자열을 LocalDate 으로.. 변환
         LocalDate parse = LocalDate.parse("01/11/1993", MMddyyyy);
-        System.out.println(parse);
+        System.out.println("print LocalDate::parse(): " + parse);
 
         // 참고로 현재 문자열에 시간이 없는데 LocalDateTime 으로 변환 하려고 시도하면 에러가 발생한다.
         // 따라서 아래와 같이 시간을 추가 해줘서 LocalDateTime 을 얻을 수 있다.
@@ -84,7 +84,7 @@ public class App {
         // 문자열을 LocalDateTime 으로.. 변환
         DateTimeFormatter MMddyyyyHHmm = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm");
         LocalDateTime parse1 = LocalDateTime.parse("01/11/1993 13:25", MMddyyyyHHmm);
-        System.out.println(parse1);
+        System.out.println("print LocalDateTime::parse(): " + parse1);
 
 
         // 레거시 API 와 호환이 된다.

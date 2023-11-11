@@ -1,4 +1,4 @@
-package dev.practice.java8.subject5.a;
+package dev.practice.java8.subject5_DateAndTime.a_8이전;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,7 +13,7 @@ public class App {
 
     /**
      * 자바 8에 새로운 날짜와 시간 API가 생긴 이유
-     * - 그전까지 사용하던 java.util.Date 클래스는 mutable 하기 때문에 thead safe 하지 않다.
+     * - 그전까지 사용하던 java.util.Date 클래스는 mutable 하기 때문에 thread safe 하지 않다.
      * - 클래스 이름이 명확하지 않다. Date인데 시간까지 다룬다.
      * - 버그 발생할 여지가 많다. (타입 안정성이 없고, 월이 0부터 시작한다거나..)
      * - 날짜 시간 처리가 복잡한 애플리케이션에서는 보통 Joda Time을 쓰곤했다.
