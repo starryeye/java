@@ -1,4 +1,4 @@
-package dev.practice.java8.subject6.a.c;
+package dev.practice.java8.subject6.a.c_ThreadClass3AndEssentialConcept;
 
 public class App {
 
