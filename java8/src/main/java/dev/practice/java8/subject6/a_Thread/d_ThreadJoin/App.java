@@ -1,4 +1,4 @@
-package dev.practice.java8.subject6.a.d;
+package dev.practice.java8.subject6.a_Thread.d_ThreadJoin;
 
 public class App {
 
