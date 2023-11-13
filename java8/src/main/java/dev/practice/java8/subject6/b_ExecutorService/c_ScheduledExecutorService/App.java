@@ -1,4 +1,4 @@
-package dev.practice.java8.subject6.b.d;
+package dev.practice.java8.subject6.b_ExecutorService.c_ScheduledExecutorService;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -14,11 +14,10 @@ public class App {
         // ScheduledExecutorService 는 ExecutorService 를 상속 받는다.
         ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 
-        // 1초 후 작업 시작, 2초 간격으로 작업 반복
-        scheduledExecutorService.scheduleAtFixedRate(getRunnable("Hello"), 1, 2, TimeUnit.SECONDS);
+        // 3초 후, 작업 시작
+        scheduledExecutorService.schedule(getRunnable("Hello"), 3, TimeUnit.SECONDS);
 
-        //shutdown 이 있으면 작업 시작이 안되는 듯....?
-//        scheduledExecutorService.shutdown();
+        scheduledExecutorService.shutdown();
     }
 
     private static Runnable getRunnable(String message) {

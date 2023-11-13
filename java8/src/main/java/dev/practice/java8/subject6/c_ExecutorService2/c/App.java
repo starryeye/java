@@ -1,4 +1,4 @@
-package dev.practice.java8.subject6.c.c;
+package dev.practice.java8.subject6.c_ExecutorService2.c;
 
 import java.util.List;
 import java.util.concurrent.Callable;

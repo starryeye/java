@@ -1,4 +1,4 @@
-package dev.practice.java8.subject6.c.a;
+package dev.practice.java8.subject6.c_ExecutorService2.a;
 
 import java.util.concurrent.*;
 

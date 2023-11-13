@@ -1,4 +1,4 @@
-package dev.practice.java8.subject6.b.a_Executor;
+package dev.practice.java8.subject6.b_ExecutorService.a_Executor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

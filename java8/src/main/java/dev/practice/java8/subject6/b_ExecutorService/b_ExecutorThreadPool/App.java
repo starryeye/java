@@ -1,4 +1,4 @@
-package dev.practice.java8.subject6.b.b_ExecutorThreadPool;
+package dev.practice.java8.subject6.b_ExecutorService.b_ExecutorThreadPool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
