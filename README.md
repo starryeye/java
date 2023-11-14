@@ -18,9 +18,12 @@ java practice
   - subject 5
     - date / time API
   - subject 6
-    - Thread (concurrency, parallel, thread, process)
+    - concurrent programming
+      - Concurrency, parallel
+      - thread, process
+    - Thread
+    - ExecutorService
     - CompletableFuture
-    - Executor
   - subject 7
     - Etc..
 - reflection
