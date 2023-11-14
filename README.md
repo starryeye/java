@@ -19,7 +19,7 @@ java practice
     - date / time API
   - subject 6
     - concurrent programming
-      - Concurrency, parallel
+      - Concurrency, Parallel
       - thread, process
     - Thread
     - ExecutorService
