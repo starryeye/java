@@ -35,6 +35,10 @@ public class JavaIOServer {
                 String response = "I am Server";
                 out.write(response.getBytes());
                 out.flush();
+
+                // Client 가 연결 종료하여도 Server 측에서는 자동으로 해당 소켓을 종료하지는 않는다.
+                // 따라서 연결 종료됨의 시그널 (InputStream::read 메서드 호출 리턴 값 -1) 을 받으면 close 를 호출하는 편이 좋다.
+//                clientSocket.close();
             }
         }
     }
