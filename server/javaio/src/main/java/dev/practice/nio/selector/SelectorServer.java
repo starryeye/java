@@ -41,6 +41,11 @@ public class SelectorServer {
             while (true) {
 
                 selector.select(); // selector 에 등록된 이벤트들 중.. 준비된 이벤트가 없으면 blocking
+                // 참고로 selector 가 직접 커널 내부에 존재하는 epoll 에 준비된 이벤트가 있는지 질의한다.
+                // select() 는 블로킹 모드 (이벤트 있을때까지)
+                // select(timeout) 은 블로킹 모드 (지정된 시간동안 블로킹되면서 이벤트있으면 반환)
+                // selectNow() 는 논 블로킹 모드로 바로 반환되며 busy-wait 처럼 주기적으로 질의 해줘야한다.
+
                 Iterator<SelectionKey> selectionKeys = selector.selectedKeys().iterator(); // 준비된 이벤트 목록을 뽑는다.
 
                 while (selectionKeys.hasNext()) {
