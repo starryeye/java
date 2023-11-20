@@ -25,18 +25,19 @@ public class Proactor implements Runnable{
      *
      */
 
-    private final AsynchronousServerSocketChannel asynchronousServerSocketChannel;
+    private final AsynchronousServerSocketChannel serverSocketChannel;
 
     @SneakyThrows
     public Proactor(int port) {
 
-        this.asynchronousServerSocketChannel = AsynchronousServerSocketChannel.open();
-        asynchronousServerSocketChannel.bind(new InetSocketAddress("localhost", port));
+        this.serverSocketChannel = AsynchronousServerSocketChannel.open();
+        serverSocketChannel.bind(new InetSocketAddress("localhost", port));
     }
 
     @Override
     public void run() {
 
-        //callback 등록, 템플릿 콜백 패턴
+        AcceptCompletionHandler acceptCompletionHandler = new AcceptCompletionHandler(serverSocketChannel);
+        serverSocketChannel.accept(null, acceptCompletionHandler); //accept 를 호출하고 callback 등록, 템플릿 콜백 패턴
     }
 }
