@@ -12,8 +12,8 @@ import java.nio.channels.CompletionHandler;
 public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSocketChannel, Void> {
 
     /**
-     * 커널이 Accept 이벤트가 준비 완료 상태를 AIO 로 알리면, AIO(스레드 풀) 에 의해 호출 될 callback 로직이다.
-     * CompletionHandler<AsynchronousSocketChannel, Void> 를 구현한다.
+     * 커널이 Write 이벤트의 준비 완료 상태를 AIO 로 알리면, AIO(스레드 풀) 에 의해 호출 될 callback 로직이다.
+     * CompletionHandler<Integer, Void> 를 구현한다.
      *
      * AsynchronousSocketChannel
      * accept 가 완료 되면(client 와 connect 됨) 반환 받는 객체, result 에 해당
@@ -28,6 +28,8 @@ public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSo
 
     @Override
     public void completed(AsynchronousSocketChannel socketChannel, Void attachment) {
+
+        log.info("accept event completed..");
 
         serverSocketChannel.accept(null, this); // 다른 요청을 즉시 받아 주기 위함임. (accept 호출하고 callback 등록)
 

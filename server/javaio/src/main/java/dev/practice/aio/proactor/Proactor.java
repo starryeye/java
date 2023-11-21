@@ -23,6 +23,10 @@ public class Proactor implements Runnable{
      *
      * CompletionHandler 는 callback 로직이다.
      *
+     * client 는 JavaIOClient, JavaIOMultiClient 를 사용..
+     *
+     * 0.13 ~ 0.16 초..  걸림..
+     *
      */
 
     private final AsynchronousServerSocketChannel serverSocketChannel;

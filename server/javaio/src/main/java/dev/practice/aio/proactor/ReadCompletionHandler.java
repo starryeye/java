@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 public class ReadCompletionHandler implements CompletionHandler<Integer, Void> {
 
     /**
-     * 커널이 Read 이벤트가 준비 완료 상태를 AIO 로 알리면, AIO(스레드 풀) 에 의해 호출 될 callback 로직이다.
+     * 커널이 Read 이벤트의 준비 완료 상태를 AIO 로 알리면, AIO(스레드 풀) 에 의해 호출 될 callback 로직이다.
      * CompletionHandler<Integer, Void> 를 구현한다.
      *
      * Integer
@@ -22,7 +22,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, Void> {
      * -> 실제 데이터는 파라미터로 넘긴  ByteBuffer 타입으로 받음
      *
      * Void
-     * 원래는 attachment 에 해당 되며 AcceptCompletionHandler 를 등록할 때 넣어 놓고 callback 이 실행될 때 꺼내서 쓰기 위한 context 에 해당함
+     * 원래는 attachment 에 해당 되며 ReadCompletionHandler 를 등록할 때 넣어 놓고 callback 이 실행될 때 꺼내서 쓰기 위한 context 에 해당함
      * 여기서는 사용하지 않으므로 void
      */
 
@@ -41,11 +41,13 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, Void> {
     @Override
     public void completed(Integer result, Void attachment) {
 
+        log.info("read event completed..");
+
         this.requestByteBuffer.flip();
         CharBuffer requestBody = StandardCharsets.UTF_8.decode(requestByteBuffer);
         log.info("request={}", requestBody);
 
-        this.socketChannel.close();
+        new WriteCompletionHandler(this.socketChannel); // 생성자에서 write 를 호출하며 callback 을 등록한다.
     }
 
     @Override
