@@ -4,8 +4,10 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
+import java.nio.charset.StandardCharsets;
 
 @Slf4j
 public class ReadCompletionHandler implements CompletionHandler<Integer, Void> {
@@ -38,7 +40,10 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, Void> {
     @SneakyThrows
     @Override
     public void completed(Integer result, Void attachment) {
-        log.info("request={}", this.requestByteBuffer);
+
+        this.requestByteBuffer.flip();
+        CharBuffer requestBody = StandardCharsets.UTF_8.decode(requestByteBuffer);
+        log.info("request={}", requestBody);
 
         this.socketChannel.close();
     }
