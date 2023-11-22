@@ -60,3 +60,5 @@ java practice
 - [Java NIO Selector](https://starryeye.tistory.com/203)
 - [Java NIO Selector epoll](https://starryeye.tistory.com/204)
 - [Java AIO](https://starryeye.tistory.com/205)
+- [Reactor pattern](https://starryeye.tistory.com/206)
+- [Proactor pattern](https://starryeye.tistory.com/207)
