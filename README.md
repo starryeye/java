@@ -47,6 +47,7 @@ java practice
   - Java IO, NIO, AIO 로 Server 만들어보기
   - reactor, proactor pattern 알아보기
   - synchronous, asynchronous, blocking, non-blocking
+  - 모의 netty 만들어보기
 
 ## dependency
 - Java 17
