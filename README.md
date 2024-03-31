@@ -48,6 +48,8 @@ java practice
   - reactor, proactor pattern 알아보기
   - synchronous, asynchronous, blocking, non-blocking
   - 모의 netty 만들어보기
+- Java17
+  - sealed, permits 알아보기
 
 ## dependency
 - Java 17
