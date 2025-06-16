@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ArrayImplementsInterfaces {
+public class ArrayInstanceof {
 
     @DisplayName("배열은 Cloneable, Serializable 을 구현한다.")
     @Test

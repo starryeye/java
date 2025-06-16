@@ -8,7 +8,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ArrayClone {
 
 
-    @DisplayName("배열의 clone() 메서드는 얕은 복사이다.")
+    static class Item {
+        final String name;
+
+        Item(String name) {
+            this.name = name;
+        }
+    }
+
+    @DisplayName("primitive type 배열, clone() 메서드는 얕은 복사이다.")
     @Test
     void test1() {
 
@@ -19,15 +27,7 @@ public class ArrayClone {
         assertThat(original).containsExactly(cloned); // 동등성 비교, 순서를 포함하여 값을 비교한다. (isEqualTo() 는 값 비교만 한다.)
     }
 
-    static class Item {
-        final String name;
-
-        Item(String name) {
-            this.name = name;
-        }
-    }
-
-    @DisplayName("참조형 배열에서 clone() 메서드는 얕은 복사이므로 내부 원소의 참조는 동일하다.")
+    @DisplayName("reference type 배열, clone() 메서드는 얕은 복사이다.")
     @Test
     void test2() {
 
