@@ -13,9 +13,8 @@ public class ArrayListDefaultValue {
     @Test
     @DisplayName("ArrayList는 add() 하기 전까지 null 이나 0 등의 기본 값이 존재하지 않는다")
     void test1() {
-        ArrayList<Integer> list = new ArrayList<>(10); // 내부 용량은 10개 확보됨
+        ArrayList<Integer> list = new ArrayList<>(10); // 내부 capacity 10
 
-        assertThat(list.size()).isEqualTo(0); // 실제 크기는 0
         assertThat(list).isEmpty();
         assertThatThrownBy(() -> list.get(0))
                 .isInstanceOf(IndexOutOfBoundsException.class);
