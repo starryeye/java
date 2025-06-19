@@ -3,6 +3,8 @@ package array.time_complexity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class Accessing {
 
     /**
@@ -15,6 +17,6 @@ public class Accessing {
     void test1() {
         int[] intArr = {1, 2, 3, 4, 5};
 
-        int result = intArr[0]; // Accessing an array element by index
+        int result = intArr[2]; // Accessing an array element by index
     }
 }
