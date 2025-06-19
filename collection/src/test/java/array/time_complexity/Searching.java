@@ -3,7 +3,7 @@ package array.time_complexity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class Finding {
+public class Searching {
 
     /**
      * 정렬되지 않은 배열에서 값이 있는지 검색하는 것은 O(n) 이다.
