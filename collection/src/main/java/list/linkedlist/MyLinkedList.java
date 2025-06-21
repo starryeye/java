@@ -1,16 +1,20 @@
 package list.linkedlist;
 
-public class MyLinkedList<E> {
+import list.MyList;
+
+public class MyLinkedList<E> implements MyList<E> {
 
     private Node<E> head;
     private Node<E> tail;
 
     private int size;
 
+    @Override
     public void add(E element) {
         addLast(element);
     }
 
+    @Override
     public void add(int index, E element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
@@ -65,6 +69,7 @@ public class MyLinkedList<E> {
         size++;
     }
 
+    @Override
     public E set(int index, E element) {
         Node<E> target = getNode(index);
         E oldValue = target.item;
@@ -72,6 +77,7 @@ public class MyLinkedList<E> {
         return oldValue;
     }
 
+    @Override
     public E remove(int index) {
         Node<E> node = getNode(index);
 
@@ -134,6 +140,7 @@ public class MyLinkedList<E> {
         size = 0;
     }
 
+    @Override
     public E get(int index) {
         return getNode(index).item;
     }
@@ -152,10 +159,12 @@ public class MyLinkedList<E> {
         return tail.item;
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public int indexOf(E element) {
         int index = 0;
         if (element == null) {

@@ -1,9 +1,11 @@
 package list.arraylist;
 
+import list.MyList;
+
 import java.util.Arrays;
 import java.util.Collection;
 
-public class MyArrayList<E> {
+public class MyArrayList<E> implements MyList<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
 
@@ -26,10 +28,7 @@ public class MyArrayList<E> {
         }
     }
 
-    public int size() {
-        return size;
-    }
-
+    @Override
     public void add(E e) {
         if (size == elements.length) {
             grow();
@@ -37,6 +36,7 @@ public class MyArrayList<E> {
         elements[size++] = e;
     }
 
+    @Override
     public void add(int index, E e) {
         if (size == elements.length) {
             grow();
@@ -46,17 +46,14 @@ public class MyArrayList<E> {
         size++;
     }
 
-    @SuppressWarnings("unchecked")
-    public E get(int index) {
-        return (E) elements[index];
-    }
-
+    @Override
     public E set(int index, E e) {
         E old = get(index);
         elements[index] = e;
         return old;
     }
 
+    @Override
     public E remove(int index) {
         E e = get(index);
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
@@ -64,6 +61,18 @@ public class MyArrayList<E> {
         return e;
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public E get(int index) {
+        return (E) elements[index];
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
     public int indexOf(E e) {
         for (int i = 0; i < size; i++) {
             if (elements[i].equals(e)) {
