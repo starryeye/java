@@ -15,7 +15,7 @@ public class MyListPerformanceTest {
          * 2. 특정 index 에 element 를 추가(끼워넣기)를 하면 그 이후 index 들은 +1 shift 작업을 O(n) 걸려서 해야한다.
          * 3. 특정 값이 몇 index 에 존재하는지 검색하는 것은 순회 탐색으로 O(n) 에 가능하다. (정렬되어 있지 않다고 가정)
          */
-        System.out.println("\n== MyArrayList :: add ==");
+        System.out.println("\n== MyArrayList :: add / remove ==");
         addFirst(new MyArrayList<>(), n); // 위치 찾기 O(1), element 추가 O(n)
         addMid(new MyArrayList<>(), n); // 위치 찾기 O(1), element 추가 O(n)
         addLast(new MyArrayList<>(), n); // 위치 찾기 O(1), element 추가 O(1)     (last index 에 추가하면 그 이후 index 들이 없어서 +1 shift 할게 없으므로 O(1) 이다.)
