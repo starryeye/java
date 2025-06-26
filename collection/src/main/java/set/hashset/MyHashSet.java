@@ -24,7 +24,7 @@ public class MyHashSet<E> implements MySet<E> {
     }
 
     @Override
-    public boolean add(E e) {
+    public boolean add(E e) { // O(1)
 
         int hashedIndex = hashIndex(e);
         LinkedList<E> bucket = buckets[hashedIndex];
@@ -38,7 +38,7 @@ public class MyHashSet<E> implements MySet<E> {
     }
 
     @Override
-    public boolean remove(E e) {
+    public boolean remove(E e) { // O(1)
         int hashedIndex = hashIndex(e);
         LinkedList<E> bucket = buckets[hashedIndex];
         boolean remove = bucket.remove(e);
@@ -52,7 +52,7 @@ public class MyHashSet<E> implements MySet<E> {
     }
 
     @Override
-    public boolean contains(E e) {
+    public boolean contains(E e) { // O(1)
         int hashedIndex = hashIndex(e);
         LinkedList<E> bucket = buckets[hashedIndex];
         return bucket.contains(e);
