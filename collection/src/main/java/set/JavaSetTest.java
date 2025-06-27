@@ -42,7 +42,7 @@ public class JavaSetTest {
         set.add("2");
 
         for (String s : set) {
-            System.out.println(s + " ");
+            System.out.print(s + " ");
         }
         System.out.println();
     }
