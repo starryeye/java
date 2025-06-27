@@ -32,7 +32,7 @@ public class MyHashSet<E> implements MySet<E> {
             return false; // Set 에서는 중복 원소가 불가하다.
         }
 
-        bucket.add(e);
+        bucket.add(e); // 서로 다른 값이라도 해시 코드가 동일해서 해시 충돌이 일어날 수 있지만, 충돌을 인정하고 LinkedList 에 넣어준다.
         size++;
         return true;
     }
@@ -55,7 +55,7 @@ public class MyHashSet<E> implements MySet<E> {
     public boolean contains(E e) { // O(1)
         int hashedIndex = hashIndex(e);
         LinkedList<E> bucket = buckets[hashedIndex];
-        return bucket.contains(e);
+        return bucket.contains(e); // 해시 충돌이 일어난 상황 이면, LinkedList 에 여러 값이 있을 수 있고 이 과정에서 순차적으로 equals() 비교를 통해 찾는다.
     }
 
     public int size() {
@@ -82,23 +82,4 @@ public class MyHashSet<E> implements MySet<E> {
         // 해시 함수를 통해 해시 코드를 구하고 나머지 연산을 통해 해시 코드로 해시 인덱스를 구한다.
         return Math.abs(value.hashCode()) % capacity; //hashCode 의 결과로 음수가 나올 수 있어서 절댓값 처리
     }
-
-    /**
-     * 해시 함수
-     *      임의의 길이의 데이터를 입력으로 받아, 고정된 크기의 해시값(해시 코드)을 반환하는 함수
-     *          int 형 반환의 경우 고정된 크기는 4 byte 이다.
-     *
-     * 해시 코드
-     *      해시 함수를 통해 만들어지는 값으로, 데이터를 대표하는 값이다.
-     *
-     * 해시 인덱스
-     *      데이터를 저장할 위치를 결정하는 인덱스 값이다.
-     *      보통 해시 코드를 배열 크기로 나눈 나머지 값을 사용한다.
-     *
-     * 원본 데이터 -> (해시 함수) -> 해시 코드
-     * 해시 코드 -> (해시 인덱스 함수) -> 해시 인덱스
-     * 배열[해시 인덱스] = 원본 데이터
-     *      -> contains() 를 O(1) 로 만들 수 있다. (search)
-     */
-
 }
