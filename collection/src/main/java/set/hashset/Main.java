@@ -46,6 +46,11 @@ public class Main {
     }
 
     private static class Member {
+
+        /**
+         * 객체의 동등성 비교와 해싱이 올바르게 동작하도록 equals(), hashCode() 는 반드시 오버라이딩하여 구현해야한다.
+         */
+
         String name;
         int age;
 
