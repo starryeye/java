@@ -1,6 +1,6 @@
 package collection.set.hashset;
 
-import set.MySet;
+import collection.set.MySet;
 
 import java.util.Arrays;
 import java.util.LinkedList;

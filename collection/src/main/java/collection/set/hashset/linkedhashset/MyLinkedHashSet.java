@@ -1,6 +1,6 @@
 package collection.set.hashset.linkedhashset;
 
-import set.hashset.MyHashSet;
+import collection.set.hashset.MyHashSet;
 
 public class MyLinkedHashSet<E> extends MyHashSet<E> {
 

@@ -1,6 +1,6 @@
 package collection.set.treeset;
 
-import set.MySet;
+import collection.set.MySet;
 
 public class MyTreeSet<E> implements MySet<E> {
 

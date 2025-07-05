@@ -1,7 +1,7 @@
 package collection.list;
 
-import list.arraylist.MyArrayList;
-import list.linkedlist.MyLinkedList;
+import collection.list.arraylist.MyArrayList;
+import collection.list.linkedlist.MyLinkedList;
 
 public class MyListPerformanceTest {
 

@@ -1,6 +1,6 @@
 package collection.list.arraylist;
 
-import list.MyList;
+import collection.list.MyList;
 
 import java.util.Arrays;
 import java.util.Collection;

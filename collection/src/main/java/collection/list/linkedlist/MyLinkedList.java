@@ -1,6 +1,6 @@
 package collection.list.linkedlist;
 
-import list.MyList;
+import collection.list.MyList;
 
 public class MyLinkedList<E> implements MyList<E> {
 
