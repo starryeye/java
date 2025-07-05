@@ -7,10 +7,14 @@ public class JavaArrayComparatorTest {
 
     public static void main(String[] args) {
 
+        /**
+         * 배열을 정렬하기 위해서는 Arrays.sort() 메서드를 사용한다.
+         */
+
         Integer[] array = new Integer[]{3, 2, 1};
         System.out.println("original = " + Arrays.toString(array)); // 3, 2, 1
 
-        // natural ordering (comparator 를 통하지 않고 정렬)
+        // natural ordering (comparator 를 통하지 않고 정렬, 오름차순)
         Arrays.sort(array);
         System.out.println("Natural ordering sorted = " + Arrays.toString(array)); // 1, 2, 3
 
