@@ -3,14 +3,16 @@ package comparable;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class JavaArrayComparatorTest {
+public class JavaArrayComparatorTest1 {
 
     public static void main(String[] args) {
 
         /**
          * 배열을 정렬하기 위해서는 Arrays.sort() 메서드를 사용한다.
          *
-         * Comparator 없이 사용하면, 오름차순
+         * Comparator<T> 없이 사용하려면
+         *      배열 element 타입(T)이 Comparable<T> 을 구현해야하고 compareTo 메서드를 사용하여 정렬하게 된다.(Integer::compareTo() 은 오름차순)
+         *      natural ordering 이라 부른다.
          * 어떤 Comparator 에 reversed() 를 하면 정반대의 결과가 나온다.
          */
 
@@ -19,7 +21,7 @@ public class JavaArrayComparatorTest {
 
         // natural ordering (comparator 를 통하지 않고 정렬, 오름차순)
         Arrays.sort(array);
-        System.out.println("Natural ordering sorted = " + Arrays.toString(array)); // 1, 2, 3
+        System.out.println("natural ordering sorted = " + Arrays.toString(array)); // 1, 2, 3
 
 
         // 내림차순 정렬 Comparator<Integer> 을 통해 정렬
