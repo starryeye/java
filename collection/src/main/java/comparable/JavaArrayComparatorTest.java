@@ -9,6 +9,9 @@ public class JavaArrayComparatorTest {
 
         /**
          * 배열을 정렬하기 위해서는 Arrays.sort() 메서드를 사용한다.
+         *
+         * Comparator 없이 사용하면, 오름차순
+         * 어떤 Comparator 에 reversed() 를 하면 정반대의 결과가 나온다.
          */
 
         Integer[] array = new Integer[]{3, 2, 1};
@@ -20,12 +23,12 @@ public class JavaArrayComparatorTest {
 
 
         // 내림차순 정렬 Comparator<Integer> 을 통해 정렬
-        Arrays.sort(array, new DescComparator());
+        Arrays.sort(array, new DescComparator()); // new DescComparator() 는 new AscComparator().reversed() 와 같은 의미이다.
         System.out.println("descending ordering sorted = " + Arrays.toString(array)); // 3, 2, 1
 
 
         // 오름차순 정렬 Comparator<Integer> 을 통해 정렬
-        Arrays.sort(array, new AscComparator());
+        Arrays.sort(array, new AscComparator()); // new AscComparator() 는 new DescComparator().reversed() 와 같은 의미이다.
         System.out.println("ascending ordering sorted = " + Arrays.toString(array)); // 1, 2, 3
     }
 
