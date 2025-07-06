@@ -10,6 +10,7 @@ public class JavaCollectionSortTest1 {
          * Java 의 배열은 Arrays.sort() 를 이용하여 정렬이 가능하였다.
          * Collection 은 자체적으로 sort() 메서드를 제공한다. 이를 이용해 정렬 가능
          *      예시. List::sort()
+         *      정렬 시간 복잡도 : O(n log n)
          *
          * 참고.
          * Collections.sort() 라는 메서드를 이용할 수 도 있는데

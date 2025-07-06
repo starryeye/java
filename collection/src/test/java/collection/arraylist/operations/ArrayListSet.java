@@ -1,4 +1,4 @@
-package arraylist.operations;
+package collection.arraylist.operations;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

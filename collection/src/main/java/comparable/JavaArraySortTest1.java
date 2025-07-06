@@ -11,7 +11,7 @@ public class JavaArraySortTest1 {
          * 배열을 정렬하기 위해서는 Arrays.sort() 메서드를 사용한다.
          *      void sort(Object[] a)
          *      void sort(T[] a, Comparator<? super T> c)
-         *
+         * 정렬 시간 복잡도 : O(n log n)
          *
          * Comparator<T> 없이 사용하려면
          *      배열 element 타입(T)이 Comparable<T> 을 구현해야하고 compareTo 메서드를 사용하여 정렬하게 된다.(Integer::compareTo() 은 오름차순)

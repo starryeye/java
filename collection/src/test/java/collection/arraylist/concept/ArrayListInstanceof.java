@@ -1,4 +1,4 @@
-package arraylist.concept;
+package collection.arraylist.concept;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package arraylist.two_dimension;
+package collection.arraylist.two_dimension;
 
 import org.junit.jupiter.api.Test;
 
