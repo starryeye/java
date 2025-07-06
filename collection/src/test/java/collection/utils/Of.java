@@ -25,4 +25,14 @@ public class Of {
         assertThatThrownBy(() -> list.add(4))
                 .isInstanceOf(UnsupportedOperationException.class); // CUD 시도하면 예외 발생
     }
+
+    @DisplayName("XXX.of() 를 이용하면, 배열을 List 로 만들 수 있다.")
+    @Test
+    void test2() {
+
+        Integer[] array = {1, 2, 3};
+        List<Integer> list = List.of(array);
+
+        System.out.println("Class = " + list.getClass() + ", " + list);
+    }
 }
