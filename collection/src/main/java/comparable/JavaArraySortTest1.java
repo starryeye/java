@@ -3,17 +3,28 @@ package comparable;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class JavaArrayComparatorTest1 {
+public class JavaArraySortTest1 {
 
     public static void main(String[] args) {
 
         /**
          * 배열을 정렬하기 위해서는 Arrays.sort() 메서드를 사용한다.
+         *      void sort(Object[] a)
+         *      void sort(T[] a, Comparator<? super T> c)
+         *
          *
          * Comparator<T> 없이 사용하려면
          *      배열 element 타입(T)이 Comparable<T> 을 구현해야하고 compareTo 메서드를 사용하여 정렬하게 된다.(Integer::compareTo() 은 오름차순)
          *      natural ordering 이라 부른다.
          * 어떤 Comparator 에 reversed() 를 하면 정반대의 결과가 나온다.
+         *
+         * 참고.
+         * primitive type 의 element 는 Comparable 을 구현하지 못한다.
+         * 하지만, Arrays.sort() 를 이용하여 정렬이 가능한데 기본 오름차순으로 하드코딩된 정렬 알고리즘을 따른다.
+         *      void sort(int[] a) 이와 같이 각 primitive type 에 맞는 메서드를 따로 제공함.
+         * 또한, Comparator<T> 를 이용한 정렬도 타입 파라미터에 primitive type 을 사용하지 못해 이용이 불가능하다.
+         * 따라서, 커스텀 정렬이 필요할 경우 boxed 하여 정렬해야한다.
+         *
          */
 
         Integer[] array = new Integer[]{3, 2, 1};

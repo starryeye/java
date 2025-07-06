@@ -3,7 +3,7 @@ package comparable;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class JavaArrayComparatorTest2 {
+public class JavaArraySortTest2 {
 
     public static void main(String[] args) {
 
@@ -34,7 +34,7 @@ public class JavaArrayComparatorTest2 {
         Arrays.sort(items, (o1, o2) -> {
             return o1.getName().compareTo(o2.getName()) * -1; // String 의 기본 compareTo() 는 오름차순인데 -1 을 곱하여 역순으로 만듬
         });
-        System.out.println("name field ascending ordering sorted = " + Arrays.toString(items));
+        System.out.println("name field descending ordering sorted = " + Arrays.toString(items));
     }
 
     private static class Item implements Comparable<Item> {
@@ -51,6 +51,7 @@ public class JavaArrayComparatorTest2 {
             return name;
         }
 
+        // 커스텀 reference type 은 natural ordering sort 를 이용하기 위해 Comparable 을 구현해야한다.
         @Override
         public int compareTo(Item o) {
             return this.quantity < o.quantity ? -1 : this.quantity > o.quantity ? 1 : 0;
