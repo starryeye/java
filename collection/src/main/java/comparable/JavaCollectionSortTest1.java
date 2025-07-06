@@ -1,10 +1,9 @@
 package comparable;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
-public class JavaCollectionSortTest {
+public class JavaCollectionSortTest1 {
 
     public static void main(String[] args) {
         /**
