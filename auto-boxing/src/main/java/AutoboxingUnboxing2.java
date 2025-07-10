@@ -52,8 +52,20 @@ public class AutoboxingUnboxing2 {
         Integer f = 127;
         System.out.println("e == f -> " + (e == f)); // 참조 주소 비교, Integer caching, true
 
-        String g = "abc";
-        String h = "abc";
-        System.out.println("g == h -> " + (g == h)); // 참조 주소 비교, String pool, true
+        Integer g = Integer.valueOf(128);
+        Integer h = Integer.valueOf(128);
+        System.out.println("g == h -> " + (g == h)); // 참조 주소 비교, Integer caching 범위 밖, false
+
+
+        /**
+         * 참고 비교
+         */
+        String str1 = "abc";
+        String str2 = "abc";
+        System.out.println("str1 == str2 -> " + (str1 == str2)); // 참조 주소 비교, String pool, true
+
+        String str3 = new String("abc");
+        String str4 = new String("abc");
+        System.out.println("str3 == str4 -> " + (str3 == str4)); // 참조 주소 비교, false
     }
 }
