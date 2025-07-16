@@ -16,6 +16,6 @@ public abstract class MyThreadLog {
 
         String time = LocalDateTime.now().format(FORMATTER);
 
-        System.out.println(LOG_FORMAT.formatted(time, Thread.currentThread().getName(), object));
+        System.out.println(LOG_FORMAT.formatted(time, Thread.currentThread().getName(), String.valueOf(object)));
     }
 }
