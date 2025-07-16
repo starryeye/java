@@ -8,7 +8,7 @@ public abstract class MyThreadLog {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
 
-    private static final String LOG_FORMAT = "%s [%12s] %s";
+    private static final String LOG_FORMAT = "%s [Worker thread : %12s] %s";
 
     private MyThreadLog() {}
 
