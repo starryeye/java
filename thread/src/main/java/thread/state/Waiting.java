@@ -36,8 +36,8 @@ public class Waiting {
         monitoringTask.start();
 
         threadLog("Thread::join() called");
-        thread1.join(); // thread1 의 작업이 완료될 때까지 무기한 대기, WAITING
-        thread2.join(); // thread2 의 작업이 완료될 때까지 무기한 대기, WAITING
+        thread1.join(); // Thread::join 을 호출한 main 스레드는 thread1 의 작업이 완료될 때까지 무기한 대기, WAITING (다음 코드 줄로 넘어가지 않음)
+        thread2.join(); // Thread::join 을 호출한 main 스레드는 thread2 의 작업이 완료될 때까지 무기한 대기, WAITING (다음 코드 줄로 넘어가지 않음)
         threadLog("Thread::join() end");
 
 
