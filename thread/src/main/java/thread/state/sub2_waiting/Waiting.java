@@ -1,7 +1,7 @@
-package thread.state;
+package thread.state.sub2_waiting;
 
 import static util.MyThreadLog.threadLog;
-import static util.MyThreadUtils.sleep;
+import static util.MyThreadUtils.mySleep;
 
 public class Waiting {
 
@@ -64,7 +64,7 @@ public class Waiting {
         public void run() {
             threadLog("task start");
 
-            sleep(2000); // 작업이 오래걸린다고 가정 (TIMED_WAITING 이지만 RUNNABLE 로 생각하자)
+            mySleep(2000); // 작업이 오래걸린다고 가정 (TIMED_WAITING 이지만 RUNNABLE 로 생각하자)
 
             int sum = 0;
             for (int i = startValue; i <= endValue; i++) {

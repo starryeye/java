@@ -4,7 +4,10 @@ import static util.MyThreadLog.threadLog;
 
 public class MyThreadUtils {
 
-    public static void sleep(long millis) {
+    /**
+     * mySleep() 을 사용하는 코드에서 try-catch 를 가려서 가독성을 좋게하는 용도
+     */
+    public static void mySleep(long millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
