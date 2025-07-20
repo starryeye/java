@@ -9,13 +9,18 @@ public class State {
      *      NEW             // [    생성] start() 호출 전
      *      RUNNABLE        // [실행 가능] CPU 에 의해 실행되고 있거나, OS 스케줄러 실행 대기열에 있거나
      *      BLOCKED         // [    차단] 동기화 락을 기다리는 상태                                     ex. synchronized 블록 진입 대기
-     *      WAITING         // [    대기] 무기한으로 다른 스레드의 특정 작업이 완료되기를 기다리는 상태          ex. ..
-     *      TIMED_WAITING   // [시간 대기] 일정 시간동안 기다리는 상태                                    ex. sleep(long millis), wait(long timeout), join(long millis)
+     *      WAITING         // [    대기] 무기한으로 다른 스레드의 특정 작업이 완료되기를 기다리는 상태          ex. Thread::join() 호출한 스레드의 상태
+     *      TIMED_WAITING   // [시간 대기] 일정 시간동안 기다리는 상태                                    ex. sleep(long millis), wait(long timeout), Thread::join(long millis) 호출한 스레드의 상태
      *      TERMINATED      // [    종료] 실행을 마친 상태
      *
      *     생성  --> 실행 가능
      * 실행 가능 <--> 일시 중지(차단, 대기, 시간 대기)
      * 실행 가능  --> 종료
+     *
+     * 참고.
+     * 스레드의 상태에 따른 CPU 점유 관점
+     * RUNNABLE 상태의 스레드를 제외하고 다른 모든 상태는 OS 스케줄링 대상에서 제외되고 CPU 코어 점유도 하지 않는다.
+     *
      */
 
     public static void main(String[] args) throws InterruptedException {
