@@ -10,7 +10,7 @@ public class State {
      *      RUNNABLE        // [실행 가능] CPU 에 의해 실행되고 있거나, OS 스케줄러 실행 대기열에 있거나
      *      BLOCKED         // [    차단] 동기화 락을 기다리는 상태                                     ex. synchronized 블록 진입 대기
      *      WAITING         // [    대기] 무기한으로 다른 스레드의 특정 작업이 완료되기를 기다리는 상태          ex. ..
-     *      TIMED_WAITING   // [시간 대기] 일정 시간동안 기다리는 상태                                    ex. sleep()
+     *      TIMED_WAITING   // [시간 대기] 일정 시간동안 기다리는 상태                                    ex. sleep(long millis), wait(long timeout), join(long millis)
      *      TERMINATED      // [    종료] 실행을 마친 상태
      *
      *     생성  --> 실행 가능
