@@ -11,7 +11,8 @@ public class Interrupt {
      * InterruptedException ..
      * Thread 가 대기 상태(WAITING, TIMED_WAITING) 일 때, 해당 스레드에 thread.interrupt() 를 호출해주면
      * 대기 중 상태에서 InterruptedException 예외가 발생하며 RUNNABLE 상태로 변경된다.
-     * 그래서, Thread::sleep(), Thread::join() 등 스레드를 대기 상태로 만드는 메서드에서 던져지는 캐치 예외로 볼 수 있다.
+     * 그래서, 개발자는 주로 Thread::sleep(), Thread::join() 등 스레드를 대기 상태로 만드는 메서드에서 던져지는 캐치 예외로 보게되며,
+     *      해당 예외를 잡아서 처리하는 로직에는 인터럽트가 발생하여 RUNNABLE 상태가 되면 해야할 로직을 작성하면 된다.
      *
      * 참고.
      * interrupt 라는 상태가 따로 존재하는 것은 아니고 스레드 내부의 flag 에 가깝다.
@@ -47,7 +48,7 @@ public class Interrupt {
         // 바로 위 로그의 isInterrupted() 결과는 true 가 나오도록 의도한 것임. (OS 스케줄러에 의해 MyTask while 문 Thread.interrupted() 이 먼저 수행되면 false 로 나올 수도 있음.)
     }
 
-    static class MyTask implements Runnable {
+    private static class MyTask implements Runnable {
 
         @Override
         public void run() {

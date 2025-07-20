@@ -14,7 +14,7 @@ public class Waiting {
      * Thread::join 을 사용하지 않고,
      * while (thread1.getState() != TERMINATED) {} 로 기다린다면..
      *      이렇게 하면 main 스레드는 WAITING 상태로 대기하지 않고 RUNNABLE 상태로 대기한다.(논리적으로 대기, 실제로는 state 확인을 하는 연산중)
-     *      CPU 코어를 점유하게되고 자원의 낭비이다.
+     *      CPU 코어를 점유하게되고 자원의 낭비이다. (busy-waiting)
      *
      * 참고.
      * Thread::join(long millis) 를 호출하면 WAITING 이 아니라 TIMED_WAITING 상태이다.
@@ -36,8 +36,8 @@ public class Waiting {
         monitoringTask.start();
 
         threadLog("Thread::join() called");
-        thread1.join(); // Thread::join 을 호출한 main 스레드는 thread1 의 작업이 완료될 때까지 무기한 대기, WAITING (다음 코드 줄로 넘어가지 않음)
-        thread2.join(); // Thread::join 을 호출한 main 스레드는 thread2 의 작업이 완료될 때까지 무기한 대기, WAITING (다음 코드 줄로 넘어가지 않음)
+        thread1.join(); // Thread::join 을 호출한 main 스레드는 thread1 의 작업이 완료될 때까지 무기한 대기, WAITING (다음 코드 줄로 넘어가지 않음), main 스레드 blocking
+        thread2.join(); // Thread::join 을 호출한 main 스레드는 thread2 의 작업이 완료될 때까지 무기한 대기, WAITING (다음 코드 줄로 넘어가지 않음), main 스레드 blocking
         threadLog("Thread::join() end");
 
 
