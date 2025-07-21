@@ -6,6 +6,8 @@ public class Blocked {
 
     /**
      * BLOCKED 상태의 스레드는 락이 풀릴 때까지 무한 대기한다.
+     * 여러 스레드가 BLOCKED 상태로 대기한다면.. 어떤 스레드가 락을 획득할지 알 수 없다.
+     * 최악의 경우 특정 스레드는 계속 대기할 수 있음..
      */
 
     public static void main(String[] args) throws InterruptedException {
