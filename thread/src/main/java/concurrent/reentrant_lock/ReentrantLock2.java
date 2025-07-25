@@ -15,6 +15,10 @@ public class ReentrantLock2 {
      *      다른 스레드에서의 interrupt 가 먹힌다. (TIMED_WAITING 스레드는 InterruptedException 발생, RUNNABLE 상태)
      *
      * 위 메서드를 이용해본다.
+     *
+     * 참고.
+     * 가끔 BLOCKED 상태가 로그로 보인다.
+     *      ReentrantLock 에서는 WAITING이 일반적이고, BLOCKED가 나왔다면 이는 lock queue 처리 중 일시적인 상태로 가끔 잡히는 것..
      */
 
     public static void main(String[] args) throws InterruptedException {

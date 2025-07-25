@@ -19,6 +19,10 @@ public class ReentrantLock1 {
      * fair mode
      *      new ReentrantLock(true); 로 생성하면 된다.
      *      락 획득 속도가 느릴 수 있음, 락 대기 큐에서 선착순으로 락을 획득 할 수 있다.
+     *
+     * 참고.
+     * 가끔 BLOCKED 상태가 로그로 보인다.
+     *      ReentrantLock 에서는 WAITING이 일반적이고, BLOCKED가 나왔다면 이는 lock queue 처리 중 일시적인 상태로 가끔 잡히는 것..
      */
 
     public static void main(String[] args) throws InterruptedException {
