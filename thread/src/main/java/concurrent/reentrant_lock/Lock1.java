@@ -19,7 +19,7 @@ public interface Lock1 {
      * boolean tryLock();
      *      락 획득 시도, 다른 스레드가 이미 락을 획득한 상태라면 false 반환된다. (락을 획득하면 true 반환)
      * boolean tryLock(long time, TimeUnit unit) throws InterruptedException;
-     *      락 획득 시도, 다른 스레드가 이미 락을 획득한 상태라면 현재 스레드는 TIMED_WAITING 상태가 된다.
+     *      락 획득 시도, 다른 스레드가 이미 락을 획득한 상태라면 현재 스레드는 락을 획득할 때 까지 TIMED_WAITING 상태가 된다.
      *          파라미터의 시간이 지났고 다른 스레드가 이미 락을 획득한 상태라면 false 반환된다. (그 전에 락을 획득하면 true 반환)
      *      다른 스레드에서의 interrupt 가 먹힌다. (WAITING 스레드는 InterruptedException 발생, RUNNABLE 상태)
      * void unlock();
