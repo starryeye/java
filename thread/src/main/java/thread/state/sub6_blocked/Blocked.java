@@ -12,6 +12,9 @@ public class Blocked {
      * 1. 여러 스레드가 BLOCKED 상태로 대기한다면.. 어떤 스레드가 락을 획득할지 알 수 없다.
      *      최악의 경우 특정 스레드는 계속 대기할 수 있음..
      * 2. 무한 대기, 타임아웃 기능이나 인터럽트 기능도 없다.
+     *
+     * 해결..
+     * -> LockSupport, Lock, ReentrantLock
      */
 
     public static void main(String[] args) throws InterruptedException {

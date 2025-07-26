@@ -5,7 +5,8 @@ public interface Lock1 {
     /**
      * Lock interface
      * 임계영역을 위한 락을 구현하는데 사용되는 인터페이스이다.
-     *      참고. 해당 락은 synchronized 에서 사용되는 모니터 락이 아니다.
+     * synchronized 키워드의 단점을 해결한다.
+     *      참고. Lock 에서 사용되는 락은 synchronized 에서 사용되는 모니터 락이 아니다.
      *
      * LockSupport 는 synchronized 의 단점을 해결하였지만 너무 저수준의 기능이라
      * Lock 인터페이스와 구현체 ReentrantLock 을 사용하면 고수준의 기능을 사용할 수 있다.
