@@ -1,8 +1,4 @@
-package thread.state.sub7_producer_consumer;
-
-import util.bounded_buffer.BoundedBufferQueue;
-import util.bounded_buffer.ConsumerTask;
-import util.bounded_buffer.ProducerTask;
+package util.bounded_buffer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +8,8 @@ import static util.MyThreadUtils.mySleep;
 
 public class BoundedBufferProblem {
 
-    public static void main(String[] args) {
-        BoundedBufferQueue queue = new BoundedBufferQueueV1(2);
-
-//        producerFirst(queue); // producer 3개가 0.1초 간격으로 실행된 후, consumer 3개가 0.1초 간격으로 실행된다.
-        consumerFirst(queue); // consumer 3개가 0.1초 간격으로 실행된 후, producer 3개가 0.1초 간격으로 실행된다.
-    }
-
-    private static void producerFirst(BoundedBufferQueue queue) {
+    // producer 3개가 0.1초 간격으로 실행된 후, consumer 3개가 0.1초 간격으로 실행된다.
+    protected static void producerFirst(BoundedBufferQueue queue) {
         threadLog("== [producer tasks first] start, " + queue.getClass().getSimpleName() + " ==");
         List<Thread> threads = new ArrayList<>();
         startProducer(queue, threads);
@@ -29,7 +19,8 @@ public class BoundedBufferProblem {
         threadLog("== [producer tasks first] end, " + queue.getClass().getSimpleName() + " ==");
     }
 
-    private static void consumerFirst(BoundedBufferQueue queue) {
+    // consumer 3개가 0.1초 간격으로 실행된 후, producer 3개가 0.1초 간격으로 실행된다.
+    protected static void consumerFirst(BoundedBufferQueue queue) {
         threadLog("== [consumer tasks first] start, " + queue.getClass().getSimpleName() + " ==");
         List<Thread> threads = new ArrayList<>();
         startConsumer(queue, threads);
