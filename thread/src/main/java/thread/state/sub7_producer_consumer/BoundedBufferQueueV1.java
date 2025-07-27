@@ -43,10 +43,21 @@ public class BoundedBufferQueueV1 implements BoundedBufferQueue {
      *      호출한 스레드는 RUNNABLE 상태에서 WAITING 상태가 됨
      *      호출한 스레드는 임계영역내의 대기 스레드 큐로 진입하고 락을 반납함
      * Object::notify()
-     *      임계영역내에서 대기하는 스레드들 중 하나를 깨운다.
+     *      임계영역내에서 대기하는 스레드(대기 스레드 큐의 스레드)들 중 하나를 깨운다.
      *      깨워진 스레드는 WAITING 상태에서 BLOCKED 상태가 됨
      *      깨워진 스레드는 깨운 스레드가 임계영역을 벗어나서 락을 반납하면..
      *          락을 획득하고 BLOCKED 상태에서 RUNNABLE 상태가 된다.
+     *
+     * 참고.
+     * Object::notifyAll()
+     *      임계영역내에서 대기하는 스레드(대기 스레드 큐의 스레드)들 모두를 깨운다.
+     *      깨워진 모든 스레드는 WAITING 상태에서 BLOCKED 상태가 됨
+     *      깨워진 스레드는 깨운 스레드가 임계영역을 벗어나서 락을 반납하면..
+     *          락을 획득하고 BLOCKED 상태에서 RUNNABLE 상태가 된다.
+     *          이후 해당 스레드가 락을 반납하면 다음 스레드가 동일하게 락을 획득할 수 있다.
+     *
+     * 다음
+     * BoundedBufferProblemV2, BoundedBufferQueueV2
      */
 
     private final Queue<String> queue = new ArrayDeque<>();
