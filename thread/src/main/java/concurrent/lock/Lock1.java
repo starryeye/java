@@ -1,4 +1,4 @@
-package concurrent.reentrant_lock;
+package concurrent.lock;
 
 public interface Lock1 {
 
@@ -9,7 +9,7 @@ public interface Lock1 {
      *      참고. Lock 에서 사용되는 락은 synchronized 에서 사용되는 모니터 락이 아니다.
      *
      * LockSupport 는 synchronized 의 단점을 해결하였지만 너무 저수준의 기능이라
-     * Lock 인터페이스와 구현체 ReentrantLock 을 사용하면 고수준의 기능을 사용할 수 있다.
+     * Lock 인터페이스와 구현체 ReentrantLock, Condition 을 사용하면 고수준의 기능을 사용할 수 있다.
      *
      * void lock();
      *      락 획득 시도, 다른 스레드가 이미 락을 획득한 상태라면 현재 스레드는 WAITING 상태가 된다.
@@ -27,7 +27,7 @@ public interface Lock1 {
      *      현재 스레드가 가진 락을 해제한다. 락 획득을 대기(WAITING) 중인 스레드들 중 하나가 락을 획득한다.
      *          만약 락을 가지지 않은 스레드가 호출하면, IllegalMonitorStateException 발생한다.
      * Condition newCondition();
-     *      Condition 객체를 생성하여 반환한다.
+     *      임계영역내의 대기 스레드 큐 역할을 하는 Condition 객체를 생성하여 반환한다.
      *
      * 참고.
      * lock() 에서 WAITING 상태임에도 다른 스레드에서 interrupt 시도해도 안먹히는 이유는

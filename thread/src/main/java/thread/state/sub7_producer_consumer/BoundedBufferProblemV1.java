@@ -31,7 +31,7 @@ public class BoundedBufferProblemV1 extends BoundedBufferProblem {
     public static void main(String[] args) {
         BoundedBufferQueue queue = new BoundedBufferQueueV1(2); // 데이터 버퍼 2칸
 
-//        producerFirst(queue); // producer 3개가 0.1초 간격으로 실행된 후, consumer 3개가 0.1초 간격으로 실행된다.
-        consumerFirst(queue); // consumer 3개가 0.1초 간격으로 실행된 후, producer 3개가 0.1초 간격으로 실행된다.
+        producerFirst(queue); // producer 3개가 0.1초 간격으로 실행된 후, consumer 3개가 0.1초 간격으로 실행된다.
+//        consumerFirst(queue); // consumer 3개가 0.1초 간격으로 실행된 후, producer 3개가 0.1초 간격으로 실행된다.
     }
 }

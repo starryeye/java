@@ -1,24 +1,20 @@
-package concurrent.reentrant_lock;
+package concurrent.lock.sub1_reentrant_lock;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static util.MyThreadLog.threadLog;
 
-public class ReentrantLock1 {
+public class ReentrantLock2 {
 
     /**
-     * ReentrantLock 설명과 예시1
+     * boolean tryLock(long time, TimeUnit unit) throws InterruptedException;
+     *      락 획득 시도, 다른 스레드가 이미 락을 획득한 상태라면 현재 스레드는 락을 획득할 때 까지 TIMED_WAITING 상태가 된다.
+     *          파라미터의 시간이 지났고 다른 스레드가 이미 락을 획득한 상태라면 false 반환된다. (그 전에 락을 획득하면 true 반환)
+     *      다른 스레드에서의 interrupt 가 먹힌다. (TIMED_WAITING 스레드는 InterruptedException 발생, RUNNABLE 상태)
      *
-     * Lock interface 의 대표적 구현체이다.
-     * Lock interface 가 제공하는 기능을 충실히 구현함과 동시에 락 대기의 공정성 문제 (fair / non-fair mode 를 제공함)
-     *
-     * Non-fair mode
-     *      new ReentrantLock(); 로 생성하면 된다.
-     *      락 획득 속도가 빠르지만, 운이 좋지 않은 스레드는 오랜시간 락을 획득 못할 수 있음 (대부분은 선착순이긴함)
-     * fair mode
-     *      new ReentrantLock(true); 로 생성하면 된다.
-     *      락 획득 속도가 느릴 수 있음, 락 대기 큐에서 선착순으로 락을 획득 할 수 있다.
+     * 위 메서드를 이용해본다.
      *
      * 참고.
      * 가끔 BLOCKED 상태가 로그로 보인다.
@@ -37,7 +33,7 @@ public class ReentrantLock1 {
         Thread thread2 = new Thread(task);
         Thread thread3 = new Thread(task);
 
-        // WAITING 상태 출력을 위한 monitor
+        // TIMED_WAITING 상태 출력을 위한 monitor
         Thread monitor = new MonitoringTask(thread3, "monitor");
         monitor.start();
 
@@ -60,17 +56,19 @@ public class ReentrantLock1 {
 
         public void increment() {
 
-            lock.lock(); // 락을 획득하면 아래 코드 계속 진행(RUNNABLE), 락 획득 하지 못하면 WAITING 으로 대기
             try {
+                if (!lock.tryLock(500, TimeUnit.MILLISECONDS)) { // 락을 획득하면 임계영역으로 진입 (RUNNABLE), 락 획득 하지 못하면 획득할 때 까지 TIMED_WAITING 으로 0.5 초간 대기
+                    // 0.5 초 동안 락 획득을 하지 못하면..
+                    threadLog("tryLock failed.. thread = " + Thread.currentThread().getName());
+                    return;
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
+            try {
+                // 임계 영역
                 count++;
-                /**
-                 * 코드가 한 줄 이지만, 동시성 문제가 발생한다.
-                 * count = count + 1; 로 풀어 쓸 수 있고
-                 * count 를 조회해서 업데이트하는 로직이고..
-                 * 여러 스레드가 동시에 조회하고 동시에 업데이트하면 씹힌다. (동시성 문제)
-                 * 따라서, 해당 코드 한줄은 ReentrantLock 을 사용하여 보호해준다.
-                 */
 
             } finally {
                 lock.unlock();
@@ -103,7 +101,7 @@ public class ReentrantLock1 {
         public void run() {
             while (true) {
                 Thread.State state = target.getState();
-                if (state == State.BLOCKED || state == State.WAITING) {
+                if (state == State.BLOCKED || state == State.WAITING || state == State.TIMED_WAITING) {
                     threadLog("target thread = " + target.getName() + ", state = " + state);
                     break;
                 }
