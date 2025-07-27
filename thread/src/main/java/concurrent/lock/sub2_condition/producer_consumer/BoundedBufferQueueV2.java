@@ -67,14 +67,14 @@ public class BoundedBufferQueueV2 implements BoundedBufferQueue {
             while (queue.size() == max) {
                 threadLog("[put] queue is full, producer condition await() is call");
                 try {
-                    producerCond.await(); // 현재 스레드, RUNNABLE -> WAITING, 락 반납, 대기 스레드 큐 진입
+                    producerCond.await(); // 현재 스레드, RUNNABLE -> WAITING, 락 반납, 대기 스레드 큐(생산자 전용) 진입
                     threadLog("[put] producer awake"); // 현재 스레드, BLOCKED -> RUNNABLE, 락 획득
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
             queue.offer(data);
-            consumerCond.signal(); // 대기 스레드 중 하나, WAIT -> BLOCKED
+            consumerCond.signal(); // 소비자 전용 스레드 큐의 대기 스레드 중 하나, WAIT -> BLOCKED
             threadLog("[put] put data(" + data + ") in queue, consumer condition signal() is call");
 
 
@@ -92,14 +92,14 @@ public class BoundedBufferQueueV2 implements BoundedBufferQueue {
             while (queue.isEmpty()) {
                 threadLog("[take] queue is empty, consumer condition await() is call");
                 try {
-                    consumerCond.await(); // 현재 스레드, RUNNABLE -> WAITING, 락 반납, 대기 스레드 큐 진입
+                    consumerCond.await(); // 현재 스레드, RUNNABLE -> WAITING, 락 반납, 대기 스레드 큐(소비자 전용) 진입
                     threadLog("[take] consumer awake"); // 현재 스레드, BLOCKED -> RUNNABLE, 락 획득
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
             String data = queue.poll();
-            producerCond.signal(); // 대기 스레드 중 하나, WAIT -> BLOCKED
+            producerCond.signal(); // 생산자 전용 스레드 큐의 대기 스레드 중 하나, WAIT -> BLOCKED
             threadLog("[take] get data(" + data + ") from queue, producer condition signal() is call");
             return data;
 
