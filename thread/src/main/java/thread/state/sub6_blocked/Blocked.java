@@ -5,7 +5,7 @@ import static util.MyThreadLog.threadLog;
 public class Blocked {
 
     /**
-     * BLOCKED 상태의 스레드는 락이 풀릴 때까지 무한 대기한다.
+     * BLOCKED 상태의 스레드는 모니터 락이 풀릴 때까지 무한 대기한다. ("락 획득 대기 큐"에서 대기)
      * synchronized 키워드를 사용하여, 스레드가 락 대기할 때만 보이는 특별한 상태이다.
      *
      * 단점.
