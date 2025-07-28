@@ -1,6 +1,6 @@
-package concurrent.atomic.sub1_test.impl;
+package concurrent.atomic.sub1_increment.impl;
 
-import concurrent.atomic.sub1_test.IncrementInteger;
+import concurrent.atomic.sub1_increment.IncrementInteger;
 
 public class SynchronizedInteger implements IncrementInteger {
 

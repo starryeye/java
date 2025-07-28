@@ -1,4 +1,4 @@
-package concurrent.atomic.sub1_test;
+package concurrent.atomic.sub1_increment;
 
 public interface IncrementInteger {
 

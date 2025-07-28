@@ -1,8 +1,8 @@
-package concurrent.atomic.sub1_test;
+package concurrent.atomic.sub1_increment;
 
-import concurrent.atomic.sub1_test.impl.BasicInteger;
-import concurrent.atomic.sub1_test.impl.SynchronizedInteger;
-import concurrent.atomic.sub1_test.impl.VolatileInteger;
+import concurrent.atomic.sub1_increment.impl.BasicInteger;
+import concurrent.atomic.sub1_increment.impl.SynchronizedInteger;
+import concurrent.atomic.sub1_increment.impl.VolatileInteger;
 
 public class IncrementPerformanceTest {
 
