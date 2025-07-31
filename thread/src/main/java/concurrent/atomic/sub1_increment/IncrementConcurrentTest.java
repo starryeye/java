@@ -1,5 +1,6 @@
 package concurrent.atomic.sub1_increment;
 
+import concurrent.atomic.sub1_increment.impl.AtomisticInteger;
 import concurrent.atomic.sub1_increment.impl.BasicInteger;
 import concurrent.atomic.sub1_increment.impl.SynchronizedInteger;
 import concurrent.atomic.sub1_increment.impl.VolatileInteger;
@@ -29,6 +30,9 @@ public class IncrementConcurrentTest {
      * SynchronizedInteger
      *      synchronized 키워드로 안전한 임계영역을 만들고 하나의 스레드만 공유자원에 접근하도록 하여 동시성 문제 해결
      *          Java 에서 동시성 문제를 해결하면 메모리 가시성 문제는 해결됨을 보장
+     * AtomisticInteger (내부 AtomicInteger 사용)
+     *      SynchronizedInteger 는 비관적 락 개념을 사용하지만, AtomicInteger 에서는 낙관적 락 개념을 사용하여 동시성 문제 해결
+     *          자세한 내용은 AtomisticInteger 에 기술
      */
 
     private static final int THREAD_COUNT = 1000;
@@ -37,12 +41,13 @@ public class IncrementConcurrentTest {
         test(new BasicInteger());
         test(new VolatileInteger());
         test(new SynchronizedInteger());
+        test(new AtomisticInteger());
     }
 
     private static void test(IncrementInteger incrementInteger) throws InterruptedException {
 
         Runnable runnable = () -> {
-            mySleep(10); // 동시성 문제를 더욱 잘보이게 하기 위함..
+            mySleep(50); // 동시성 문제를 더욱 잘보이게 하기 위함..
             incrementInteger.increment();
         };
 
@@ -58,6 +63,6 @@ public class IncrementConcurrentTest {
         }
 
         int result = incrementInteger.get();
-        System.out.println(incrementInteger.getClass().getSimpleName() + " result: " + result);
+        System.out.println(incrementInteger.getClass().getSimpleName() + ", result: " + result);
     }
 }
