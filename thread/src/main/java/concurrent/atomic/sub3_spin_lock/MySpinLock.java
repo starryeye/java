@@ -17,7 +17,7 @@ public class MySpinLock {
      * spin lock 을 위해 Java 에서 제공하는 객체가 없다.
      * 아래와 같이 AtomicBoolean 을 이용해서 직접 구현해야한다.
      * 스핀 락은 락프리(CAS) 방식으로 구현되기 때문에 CAS 의 장단점을 가진다.
-     *      가장 큰 특징은, 락 획득을 위해 대기하는 스레드가 busy waiting 으로 대기한다. (CPU 소모)
+     *      가장 큰 특징은, 동기화 락 방식과 다르게 락 획득을 위해 대기하는 스레드가 busy waiting 으로 대기한다. (CPU 소모, 대기 중 RUNNABLE 상태 유지)
      */
 
     private final AtomicBoolean locked = new AtomicBoolean(false);
