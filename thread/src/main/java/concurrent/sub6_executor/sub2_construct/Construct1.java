@@ -20,6 +20,8 @@ public class Construct1 {
         executorService.execute(new MyTask("task 1", 1000));
         executorService.execute(new MyTask("task 2", 1000));
         executorService.execute(new MyTask("task 3", 1000));
+        executorService.execute(new MyTask("task 4", 1000));
+        executorLog(executorService, "tasks executed");
 
         mySleep(500);
         executorLog(executorService, "tasks running..");
