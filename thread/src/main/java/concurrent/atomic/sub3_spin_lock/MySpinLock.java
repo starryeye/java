@@ -12,6 +12,12 @@ public class MySpinLock {
      * AtomicBoolean 을 사용하여.. 아래 두 연산을 원자적 연산으로 만들었다.
      *      1. 락 사용 여부 확인(locked 값 false 인지..)
      *      2. 락 획득(locked 값 true 로 변경)
+     *
+     * 참고.
+     * spin lock 을 위해 Java 에서 제공하는 객체가 없다.
+     * 아래와 같이 AtomicBoolean 을 이용해서 직접 구현해야한다.
+     * 스핀 락은 락프리(CAS) 방식으로 구현되기 때문에 CAS 의 장단점을 가진다.
+     *      가장 큰 특징은, 락 획득을 위해 대기하는 스레드가 busy waiting 으로 대기한다. (CPU 소모)
      */
 
     private final AtomicBoolean locked = new AtomicBoolean(false);
