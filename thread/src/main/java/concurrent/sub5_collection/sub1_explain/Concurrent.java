@@ -45,6 +45,11 @@ public class Concurrent {
      * LinkedHashSet, LinkedHashMap 에 대응되는 객체는 제공되지 않으며, 필요하다면 Collections.synchronizedXXX 로 사용하자.
      *
      *
-     *
+     * 참고.
+     * segment lock..
+     *      기본적으로 락을 용도별로 여러 개를 사용한다는 것이고..
+     *      ConcurrentHashMap 에서 대표적으로 사용되는데..
+     *          해시된 키 값이 동일할 경우(해시 충돌)에만 락 개념(CAS or 동기화락)을 도입한다는 것이다.
+     *          bucket 별로 락 개념 적용
      */
 }
