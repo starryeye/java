@@ -21,8 +21,9 @@ public class CallableAndFuture {
          * Future..
          *      ExecutorService 를 사용하는 스레드(Caller, 여기서는 main thread)가 submit 메서드를 이용하여 작업을 제출(생산)하면..
          *      ExecutorService 는 Caller 에게 해당 작업의 결과를 받을 수 있는 Future 객체를 즉시 리턴한다.
-         *      Caller 가 Future::get() 을 호출하면, ExecutorService 내부 소비자 스레드(Callee)가 제출된 작업을 수행하고 결과를 반환할 때 까지 WAITING 상태로 대기하게 된다.
-         *          Callee 가 작업을 완료하고 결과를 반환하면, Caller 는 WAITING -> RUNNABLE 로 변경되며 결과 값을 사용할 수 있다.
+         *      Caller 가 Future::get() 을 호출하면, 
+         *          ExecutorService 내부 소비자 스레드(Callee)가 제출된 작업을 수행하고 작업 결과를 Future 에 넣고 완료처리할 때 까지 WAITING 상태로 대기하게 된다.
+         *          Callee 가 Future 에 결과를 넣고 완료처리하면, Caller 는 WAITING -> RUNNABLE 로 변경되며 결과 값을 사용할 수 있다.
          */
 
         ExecutorService es = Executors.newFixedThreadPool(1);
@@ -34,7 +35,8 @@ public class CallableAndFuture {
 
 
         Integer result = future.get();
-        // 메인 스레드는 ExecutorService 의 스레드가 작업(MyCallable)을 완료하고 결과를 반환할때 까지 WAITING 상태로 대기한다.
+        // 메인 스레드는 ExecutorService 의 스레드가 작업(MyCallable)을 완료하고 결과를 Future 에 넣고 최종 완료처리 까지 WAITING 상태로 대기한다.
+        // synchronous, blocking
 
 
         threadLog("result: " + result);
