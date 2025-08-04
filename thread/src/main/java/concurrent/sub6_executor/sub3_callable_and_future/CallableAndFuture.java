@@ -17,6 +17,12 @@ public class CallableAndFuture {
          * Callable..
          *      Runnable 은 반환값이 void 로 없고, throws 키워드가 선언되어있지 않으므로 외부에서 체크예외를 반환받아 처리할 수 없다.
          *      이를 위해 Callable 이 만들어졌다.
+         *
+         * Future..
+         *      ExecutorService 를 사용하는 스레드(Caller, 여기서는 main thread)가 submit 메서드를 이용하여 작업을 제출(생산)하면..
+         *      ExecutorService 는 Caller 에게 해당 작업의 결과를 받을 수 있는 Future 객체를 즉시 리턴한다.
+         *      Caller 가 Future::get() 을 호출하면, ExecutorService 내부 소비자 스레드(Callee)가 제출된 작업을 수행하고 결과를 반환할 때 까지 WAITING 상태로 대기하게 된다.
+         *          Callee 가 작업을 완료하고 결과를 반환하면, Caller 는 WAITING -> RUNNABLE 로 변경되며 결과 값을 사용할 수 있다.
          */
 
         ExecutorService es = Executors.newFixedThreadPool(1);
