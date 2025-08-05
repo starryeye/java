@@ -33,6 +33,7 @@ public class Future1 {
      *      예외
      *          InterruptedException : get() 메서드 호출 스레드가 대기 중에 인터럽트 발생한 경우
      *          ExecutionException : 작업 실행 스레드에서 작업 중 예외가 발생한 경우, get() 메서드 호출 스레드에서 발생하는 예외이다.
+     *                                  내부에 작업 실행 스레드에서 발생한 예외가 포함되어있다.
      *
      * V get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException
      *      작업이 완료될 때 까지 파라미터로 전달한 일정 시간만큼 대기하고, 완료되면 결과 반환된다.
@@ -40,6 +41,7 @@ public class Future1 {
      *      예외
      *          InterruptedException : get() 메서드 호출 스레드가 대기 중에 인터럽트 발생한 경우
      *          ExecutionException : 작업 실행 스레드에서 작업 중 예외가 발생한 경우, get() 메서드 호출 스레드에서 발생하는 예외이다.
+     *                                  내부에 작업 실행 스레드에서 발생한 예외가 포함되어있다.
      *          TimeoutException : 파라미터로 전달한 일정 시간내에 작업이 완료되지 못하면, get() 메서드 호출 스레드에서 발생하는 예외이다.
      */
 }
