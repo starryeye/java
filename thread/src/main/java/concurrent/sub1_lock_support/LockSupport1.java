@@ -54,7 +54,7 @@ public class LockSupport1 {
         threadLog("parkThread2 state = " + parkThread2.getState()); // WAITING
 
         threadLog("call parkThread2.interrupt()");
-        parkThread2.interrupt();
+        parkThread2.interrupt(); // 참고로.. parkThread 는 예외 발생하지 않는다..
         parkThread2.join();
 
 

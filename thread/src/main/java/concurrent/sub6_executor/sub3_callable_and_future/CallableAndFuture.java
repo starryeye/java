@@ -23,7 +23,15 @@ public class CallableAndFuture {
          *      ExecutorService 는 Caller 에게 해당 작업의 결과를 받을 수 있는 Future 객체를 즉시 리턴한다.
          *      Caller 가 Future::get() 을 호출하면, 
          *          ExecutorService 내부 소비자 스레드(Callee)가 제출된 작업을 수행하고 작업 결과를 Future 에 넣고 완료처리할 때 까지 WAITING 상태로 대기하게 된다.
-         *          Callee 가 Future 에 결과를 넣고 완료처리하면, Caller 는 WAITING -> RUNNABLE 로 변경되며 결과 값을 사용할 수 있다.
+         *          Callee 가 Future 에 결과를 넣고 Future 객체 상태를 완료처리한다.
+         *          이후, Callee 는 Caller 스레드를 깨우게 된다. Caller 는 WAITING -> RUNNABLE 로 변경되며 결과 값을 사용할 수 있다.
+         *
+         * 참고
+         * ExecutorService::submit 을 호출하면
+         * 내부 BlockingQueue 에 적재되는 작업은 FutureTask 타입의 객체이며
+         * FutureTask 는 Runnable 을 구현한 객체로, 스레드 최초 Thread::run() 메서드가 호출되면 내부에서 Callable::call() 이 호출하는 방식으로 동작한다.
+         *
+         *
          */
 
         ExecutorService es = Executors.newFixedThreadPool(1);
@@ -35,7 +43,10 @@ public class CallableAndFuture {
 
 
         Integer result = future.get();
-        // 메인 스레드는 ExecutorService 의 스레드가 작업(MyCallable)을 완료하고 결과를 Future 에 넣고 최종 완료처리 까지 WAITING 상태로 대기한다.
+        // 메인 스레드는 ExecutorService 의 스레드가 깨울때 까지 WAITING 상태로 대기한다. (CPU 소모 X)
+        //      메인 스레드, FutureTask::awaitDone 에서 LockSupport.park() 를 호출함
+        // ExecutorService 의 스레드는 작업(MyCallable)을 완료하고, 결과를 Future 에 넣고, Future 상태를 완료로 변경 후 메인 스레드를 깨운다.
+        //      ExecutorService 의 스레드, FutureTask::finishCompletion 에서 LockSupport.unpark(메인스레드) 를 호출함
         // synchronous, blocking
 
 
