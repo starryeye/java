@@ -1,11 +1,11 @@
-package concurrent.sub6_executor.sub4_future_cancel;
+package concurrent.sub6_executor.sub5_future_exception;
 
 import java.util.concurrent.*;
 
 import static util.MyThreadLog.threadLog;
 import static util.MyThreadUtils.mySleep;
 
-public class FutureCancel {
+public class FutureException {
 
     public static void main(String[] args) {
 
@@ -14,19 +14,20 @@ public class FutureCancel {
         Future<String> future = es.submit(new MyTask());
         threadLog("submit() called, future state : " + future.state());
 
-        // 작업 완료 되기 전에 작업을 취소 시켜본다.
         mySleep(3000);
-        future.cancel(true); // 작업 cancel 호출,  작업 실행 스레드에 인터럽트 예외가 발생되며 작업이 중단된다. (상태도 CANCELLED 로 변경됨)
-//        future.cancel(false); // 작업 cancel 호출, 작업 실행 스레드는 작업을 계속한다. (상태만 CANCELLED 로 변경됨)
-        threadLog("cancel() called, future state : " + future.state());
 
         try {
-            threadLog("future result : " + future.get()); // CANCELLED 상태인 future::get 호출 시, CancellationException 발생함
+            threadLog("future result : " + future.get());
 
-        } catch (CancellationException e) { // CancellationException 는 런타임 예외(언캐치)
-            threadLog("CancellationException caught.. future state : " + future.state());
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
+        } catch (ExecutionException e) { // 작업 내부에서 발생한 예외는 future::get() 을 호출한 스레드에게 ExecutionException 으로 감싸져서 전달된다.
+
+            threadLog("ExecutionException : " + e);
+            threadLog("cause(raised inside MyTask) : " + e.getCause()); // IllegalStateException("MyTask Exception ..") 이다.
+            threadLog("future state : " + future.state());
+
+//            e.printStackTrace();
         }
 
         es.shutdown();
@@ -40,6 +41,10 @@ public class FutureCancel {
                 for (int i = 0; i < 10; i++) { // 10초 후 작업 완료
                     threadLog("task running.. " + i);
                     Thread.sleep(1000);
+
+                    if (i == 5) {
+                        throw new IllegalStateException("MyTask Exception .."); // 5번째 작업 시, 예외 발생 (현재 catch 되지 않고 있음)
+                    }
                 }
             } catch (InterruptedException e) {
                 threadLog("InterruptedException caught..");
