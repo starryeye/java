@@ -36,16 +36,16 @@ public class GracefulShutdown {
         es.execute(new MyTask("task 1", 1_000));
         es.execute(new MyTask("task 2", 1_000));
         es.execute(new MyTask("task 3", 1_000));
-        es.execute(new MyTask("long task", 100_000)); // shutdownAndAwaitTerminate 대기시간 보다 긴 것을 의도함
+        es.execute(new MyTask("long task", 100_000)); // shutdownAndAwaitTermination 대기시간 보다 긴 것을 의도함
         executorLog(es);
 
         threadLog("shutdown start");
-        shutdownAndAwaitTerminate(es);
+        shutdownAndAwaitTermination(es);
         threadLog("shutdown end");
         executorLog(es);
     }
 
-    private static void shutdownAndAwaitTerminate(ExecutorService es) {
+    private static void shutdownAndAwaitTermination(ExecutorService es) {
 
         es.shutdown(); // shutdown 시도, 새로운 작업 받지 않음, 실행 중이거나 차단큐에 존재하는 작업은 완료시킨다. non-blocking
 
@@ -58,11 +58,11 @@ public class GracefulShutdown {
                 es.shutdownNow(); // 강제 종료 시도, blocking
 
                 if (!es.awaitTermination(10, TimeUnit.SECONDS)) { // 10초간 강제 종료 대기
-                    threadLog("developer alert!!"); // 개발자 알림 !!
+                    threadLog("developer alert!!"); // 강제종료가 되지않아서, 개발자 알림 !!
                 }
             }
         } catch (InterruptedException e) {
-            es.shutdownNow(); // awaitTermination 도중 shutdownAndAwaitTerminate 를 호출한 스레드가 인터럽트 발생한 경우
+            es.shutdownNow(); // awaitTermination 도중 shutdownAndAwaitTermination 를 호출한 스레드가 인터럽트 발생한 경우
         }
     }
 
