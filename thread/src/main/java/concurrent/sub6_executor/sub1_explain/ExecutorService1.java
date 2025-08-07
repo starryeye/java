@@ -16,4 +16,8 @@ public interface ExecutorService1 {
     // default 메서드로 AutoCloseable 을 구현함
 //    @Override
 //    default void close() {...}
+
+    /**
+     * invokeXXX 관련 메서드에 대해서는 sub6_executor_service_invoke 에 정리함.
+     */
 }
