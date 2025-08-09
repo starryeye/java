@@ -16,9 +16,13 @@ public class UsingAndFlow {
      *
      * ThreadPoolExecutor 생성자
      *      corePoolSize : 스레드 default 갯수
-     *      maximumPoolSize : 스레드 최대 갯수
+     *      maximumPoolSize : 스레드 최대 생성 가능 갯수
      *      keepAliveTime : default 갯수를 초과해서 만들어진 스레드가 작업 없이 WAITING 상태로 대기하는 최대 시간 (대기시간 이후 제거 됨)
      *      workQueue : 스레드(소비자)가 아직 처리하지 못한 작업들이 대기할 차단 큐
+     *
+     *
+     * 참고
+     * Flow2 에서도 ExecutorService 에서 thread pool 을 어떻게 다루는지 설명해둠
      */
 
     public static void main(String[] args) {
