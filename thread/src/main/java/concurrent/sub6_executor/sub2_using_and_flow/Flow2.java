@@ -10,6 +10,20 @@ public class Flow2 {
 
     /**
      * Executor framework 에서 thread pool 을 어떻게 관리하는지 상세하게 다루어본다.
+     *
+     * Executor 의 thread pool 은 아래 과정으로 관리된다.
+     * 1. 최초 executor 가 생성되면 thread 는 없다.
+     * 2. 작업 요청이 오면, corePoolSize 만큼 1개씩 thread 가 생성되어 작업을 처리한다.
+     * 3. corePoolSize 만큼 thread 가 생성되었지만, 대기 중인 thread 가 없다면, blocking queue 에 담는다.
+     * 4. 작업을 완료한 thread 는 blocking queue 에 작업이 있다면 꺼내서 작업을 처리한다.
+     * 5. corePoolSize 만큼 thread 가 생성되었지만, 대기 중인 thread 가 없고, blocking queue 에도 꽉차면,
+     *      maximumPoolSize 만큼 1개씩 thread 가 생성되어 작업을 처리한다. (이때 넣고 빼고 최적화를 하기 위해 blocking queue 에 있는 작업을 처리하지 않고 방금 요청온 작업을 바로 처리함)
+     * 6. maximumPoolSize 만큼 thread 가 생성되었지만, 대기 중인 thread 가 없고, blocking queue 에도 꽉차면,
+     *      요청온 작업을 거절한다. (요청한 thread 예외 발생, RejectedExecutionException)
+     * 6. maximumPoolSize 만큼 늘어난 thread 들로 작업을 잘 처리하다가 어떤 thread 가 대기 중 상태로 keepAliveTime 이 되면,
+     *      corePoolSize 까지 thread 를 thread pool 에서 제거한다.
+     *
+     * 자세한 처리과정은 아래 주석 참고.
      */
 
     public static void main(String[] args) {
@@ -92,6 +106,8 @@ public class Flow2 {
 
 
         // ---------------------단계 구분----------------------------
+        // maximumPoolSize 만큼 늘어난 스레드 중, corePoolSize 갯수만 빼고 나머지 "초과 스레드"들은
+        // 작업 실행 없이 keepAliveTime 만큼 대기하게되면 thread pool 에서 제거된다.
         mySleep(3000); // maximumPoolSize 만큼 늘어난 초과 스레드가 thread pool 에서 제거되는 시간 대기
         executorLog(es, "timeout (maximumPoolSize - corePoolSize) thread keepAliveTime"); // size=2, activeCount=0, queuedTaskCount=0, completedTaskCount=6
 
