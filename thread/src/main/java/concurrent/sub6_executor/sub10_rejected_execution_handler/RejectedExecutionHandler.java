@@ -25,7 +25,8 @@ public class RejectedExecutionHandler {
      * ThreadPoolExecutor.DiscardPolicy()
      *      요청을 무시한다. (아무런 일도 일어나지 않음)
      * ThreadPoolExecutor.CallerRunsPolicy()
-     *      작업을 요청한 스레드가 직접 작업을 수행한다. (thread pool 은 아무것도 안함)
+     *      작업을 요청한 스레드(생산자)가 직접 작업을 수행한다. (thread pool 은 아무것도 안함)
+     *      생산자 스레드가 소비자일을 대신해주기 때문에, 생산 자체가 느려질 수 가 있다. (요청 처리량 하락)
      * 또한, RejectedExecutionHandler 를 개발자가 직접 구현하여 전달해줄 수 도 있다.
      */
 
