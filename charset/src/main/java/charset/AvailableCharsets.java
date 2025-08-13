@@ -25,8 +25,8 @@ public class AvailableCharsets {
         }
 
 
-        // 특정 Charset 조회 1
-        Charset charset1 = Charset.forName("MS949"); // MS949, ms949, x-windows-949 가능
+        // 특정 Charset 조회 1 (정규 이름과 별칭 둘다 조회 가능)
+        Charset charset1 = Charset.forName("MS949"); // 정규 이름 x-windows-949 의 별칭 MS949, ms949 도 가능
         System.out.println("charset1: " + charset1);
 
         // 특정 Charset 의 별칭 조회
