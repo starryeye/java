@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Encoding {
 
     /**
-     * 인코딩/디코딩에 사용되는 Charset 에 따라
+     * 인코딩에 사용되는 Charset 에 따라
      * 알파벳 "A" 와 한글 문자 "가" 가 메모리상에서 어떤 값으로 저장되는지 알아본다.
      *
      * 참고
@@ -18,6 +18,8 @@ public class Encoding {
     public static void main(String[] args) {
 
         // 알파벳은 UTF-16 를 제외하고는 모두 1byte 로 지원한다.
+        // 1byte 로 지원되는 것끼리는 호환이 되는 것이다.
+        // 만약, 메모리에 UTF-16 로 저장된 "A" 문자를 UTF-8 로 디코딩하면 글자가 깨져보이게됨
         System.out.println("== English alphabet  =="); // 알파벳
         encode("A", StandardCharsets.US_ASCII);
         encode("A", StandardCharsets.ISO_8859_1);
