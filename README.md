@@ -43,7 +43,7 @@ java practice
 - reactivestreams
   - practice/coldandhot
     - Reactive Streams 를 공부하며, Cold/Hot publisher 를 직접 구현해본다.
-- JavaIO
+- server/javaio
   - Java IO, NIO, AIO 로 Server 만들어보기
   - reactor, proactor pattern 알아보기
   - synchronous, asynchronous, blocking, non-blocking
@@ -54,6 +54,7 @@ java practice
 - collection
 - auto-boxing
 - thread
+- charset
 
 ## dependency
 - Java 17
