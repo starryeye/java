@@ -1,6 +1,7 @@
 package charset;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import static java.nio.charset.StandardCharsets.*;
@@ -32,7 +33,7 @@ public class EncodingAndDecoding {
         test("가", ISO_8859_1, ISO_8859_1);      // ISO_8859_1 에는 한글문자가 포함되어 있지 않아 인코딩 실패 (인코딩 실패시 "?" 로 표현됨)
         test("가", EUC_KR, MS_949);              // MS_949 는 EUC_KR 를 확장한 Charset 이라 호환됨
         test("가", EUC_KR, UTF_8);               // 호환되지 않음, EUC_KR 는 2byte 사용하고 UTF_8 는 3byte 로 사용됨. 따라서 디코딩 실패
-        test("가", EUC_KR, UTF_16);              // 호환되지 않음, EUC_KR 는 2byte 사용하고 UTF_16 도 2byte 로 사용되지만, 서로다른 매핑테이블이라 디코딩 실패
+        test("가", EUC_KR, UTF_16BE);            // 호환되지 않음, EUC_KR 는 2byte 사용하고 UTF_16 도 2byte 로 사용되지만, 서로다른 매핑테이블이라 디코딩 실패
         test("가", MS_949, UTF_8);               // 호환되지 않음, MS_949 는 2byte 사용하고 UTF_8 는 3byte 로 사용됨. 따라서 디코딩 실패
 
         System.out.println("== 한글 - 복잡한 문자 ==");
@@ -41,7 +42,7 @@ public class EncodingAndDecoding {
         test("뷁", UTF_8, UTF_8);                // UTF_8 에서는 한글로 만들수 있는 모든 한글문자를 지원
         test("뷁", UTF_16BE, UTF_16BE);          // UTF_16BE 에서는 한글로 만들수 있는 모든 한글문자를 지원
         test("뷁", MS_949, EUC_KR);              // 인코딩 성공, 디코딩 실패 (EUC-KR 은 많이 사용되는 한글문자만 지원하므로 "뷁" 문자그림은 지원안됨)
-        
+
     }
 
     private static void test(String text, Charset encodingCharset, Charset decodingCharset) {
