@@ -1,4 +1,4 @@
-package io.input_stream_and_output_stream.memory;
+package io.input_stream_and_output_stream.basic_stream.memory;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

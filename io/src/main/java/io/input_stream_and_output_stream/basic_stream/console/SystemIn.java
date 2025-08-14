@@ -1,4 +1,4 @@
-package io.input_stream_and_output_stream.console;
+package io.input_stream_and_output_stream.basic_stream.console;
 
 import java.io.IOException;
 import java.io.InputStream;

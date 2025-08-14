@@ -20,7 +20,7 @@ public class InputStreamAndOutputStream {
      *      void write(byte b[]) throws IOException
      *      void write(byte b[], int off, int len) throws IOException
      *
-     * 대표 상속 객체
+     * 대표 상속 객체 (기반 스트림, basic stream)
      * FileInputStream / FileOutputStream
      *      Java 프로세스와 파일간 데이터를 주고 받을 때 사용
      *
@@ -30,6 +30,7 @@ public class InputStreamAndOutputStream {
      * SocketInputStream / SocketOutputStream
      *      Java 프로세스와 외부 네트워크(소켓)간 데이터를 주고 받을 때 사용
      *
-     * PrintStream
+     * InputStream / PrintStream
+     *      Java 프로세스와 console 간 데이터를 주고 받을 때 사용
      */
 }
