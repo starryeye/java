@@ -18,7 +18,8 @@ public class BufferedStream {
      *      read/write 1회에 BUFFER_SIZE(8KB) 씩 다루어 (10,000,000/8,192) 회의 I/O(디스크와 통신) 가 각각 발생한다.
      *
      * bufferedWriteFileByBufferedStream() / bufferedReadFileByBufferedStream
-     *      FileInputStream / FileOutputStream 을 wrapping 한 BufferedOutputStream / BufferedInputStream 을 사용한다.
+     *      FileInputStream / FileOutputStream 을 wrapping 한 BufferedOutputStream / BufferedInputStream 을 사용한다. (Java 제공 객체)
+     *          BufferedWriteFileByFileStream() / BufferedReadFileByFileStream() 처럼 직접 buffer 를 생성하고 관리해줄 필요가 없다.
      *      read/write 1회에 BUFFER_SIZE(8KB) 씩 다루어 (10,000,000/8,192) 회의 I/O(디스크와 통신) 가 각각 발생한다.
      *      동기화 락이 적용되어서 thread safe 하다. (참고, 동기화 락이 없는 버전은 Java 에서 제공되지 않음..)
      *
