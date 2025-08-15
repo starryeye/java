@@ -27,6 +27,19 @@ public class BufferedStream {
      * 참고
      * 디스크나 파일 시스템에서 데이터를 읽고 쓰는 기본 단위가 4KB(4096byte), 8KB(8192byte) 이므로
      * BUFFER_SIZE 를 4KB, 8KB 로 맞추는게 가장 효율이 좋다.
+     *
+     *
+     * BufferedOutputStream / BufferedInputStream
+     *      write()
+     *          내부 버퍼가 가득차면 실제 출력됨
+     *      read()
+     *          내부 버퍼만큼 미리 읽고 실제 요청된 데이터를 반환
+     *      flush()
+     *          내부 버퍼가 가득차지 않아도 출력할 수 있는 기능
+     *      close()
+     *          wrapping 된 실제 IO 를 담당하는 기반 스트림도 같이 close 한다.
+     *          write() 에서 아직 출력되지 못한 데이터가 버퍼에 있다면 flush 도 호출해줌
+     *
      */
 
     private static final String FILE_NAME = "temp/buffered.dat";
