@@ -14,6 +14,9 @@ public class SystemIn {
      *      라이프사이클 관리 주체가 JVM 이며..
      *      일반적인 파일 스트림(FileOutputStream)과 달리, System.out 은 JVM 이 종료 시점에 OS 리소스를 해제한다.
      *      따라서 중간에 명시적으로 닫을 필요가 없음
+     *
+     * 참고
+     * 원래 콘솔에서 입력을 받을 땐, new Scanner(System.in); 를 이용함
      */
 
     public static void main(String[] args) throws IOException {
