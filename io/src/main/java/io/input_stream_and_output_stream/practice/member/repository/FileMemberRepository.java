@@ -35,7 +35,7 @@ public class FileMemberRepository implements MemberRepository {
             }
             return members;
         } catch (FileNotFoundException e) {
-            return new ArrayList<>();
+            return List.of();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
