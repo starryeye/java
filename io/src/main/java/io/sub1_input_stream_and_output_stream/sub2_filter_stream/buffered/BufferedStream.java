@@ -1,4 +1,4 @@
-package io.input_stream_and_output_stream.filter_stream.buffered;
+package io.sub1_input_stream_and_output_stream.sub2_filter_stream.buffered;
 
 import java.io.*;
 

@@ -1,7 +1,7 @@
-package io.input_stream_and_output_stream.practice.member.repository;
+package io.practice.member.repository;
 
-import io.input_stream_and_output_stream.practice.member.Member;
-import io.input_stream_and_output_stream.practice.member.MemberRepository;
+import io.practice.member.Member;
+import io.practice.member.MemberRepository;
 
 import java.io.*;
 import java.util.ArrayList;

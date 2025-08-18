@@ -1,7 +1,6 @@
-package io.input_stream_and_output_stream.practice.member;
+package io.practice.member;
 
-import io.input_stream_and_output_stream.practice.member.repository.FileMemberRepository;
-import io.input_stream_and_output_stream.practice.member.repository.MemoryMemberRepository;
+import io.practice.member.repository.MemoryMemberRepository;
 
 import java.util.List;
 import java.util.Scanner;

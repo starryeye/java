@@ -1,4 +1,4 @@
-package io.input_stream_and_output_stream.basic_stream.file;
+package io.sub1_input_stream_and_output_stream.sub1_basic_stream.sub1_file;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
