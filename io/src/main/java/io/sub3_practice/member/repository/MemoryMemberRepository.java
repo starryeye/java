@@ -8,6 +8,10 @@ import java.util.List;
 
 public class MemoryMemberRepository implements MemberRepository {
 
+    /**
+     * collection 을 이용하여 메모리에 Memeber 데이터 쓰고 읽기
+     */
+
     private final List<Member> members = new ArrayList<>();
 
     @Override
