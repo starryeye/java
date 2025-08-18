@@ -15,6 +15,7 @@ public class FileMemberRepository implements MemberRepository {
      * FileWriter / FileReader (내부에 FileOutputStream / FileInputStream 존재) 와
      * BufferedWriter / BufferedReader 를 이용하여 파일에 Member 데이터를 저장한다.
      *      한줄(라인) 단위로 Member 데이터 단위를 구분하고 DELIMITER 로 구분하여 Member 속성을 구분한다.
+     *          속성 중에 숫자 타입(Integer) 도 String 으로 변환해서 UTF-8 charset 인코딩/디코딩 과정을 동일하게 적용
      *
      */
 
