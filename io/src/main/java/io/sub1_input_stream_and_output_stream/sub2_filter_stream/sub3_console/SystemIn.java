@@ -1,4 +1,4 @@
-package io.sub1_input_stream_and_output_stream.sub1_basic_stream.sub3_console;
+package io.sub1_input_stream_and_output_stream.sub2_filter_stream.sub3_console;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +8,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class SystemIn {
 
     /**
-     * System.in 도 System.out 처럼 InputStream 추상 객체를 사용한다.
+     * System.in 도 System.out 처럼 InputStream 추상 객체를 사용한다. (basic stream 인가..?)
      *
      * try-with-resources나 close()를 안 한 이유
      *      라이프사이클 관리 주체가 JVM 이며..

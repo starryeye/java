@@ -30,9 +30,6 @@ public interface InputStreamAndOutputStream {
      * SocketInputStream / SocketOutputStream
      *      Java 프로세스와 외부 네트워크(소켓)간 데이터를 주고 받을 때 사용
      *
-     * InputStream / PrintStream
-     *      Java 프로세스와 console 간 데이터를 주고 받을 때 사용
-     *
      * 보조 스트림(filter stream) 은 sub2_filter_stream 참고
      */
 }

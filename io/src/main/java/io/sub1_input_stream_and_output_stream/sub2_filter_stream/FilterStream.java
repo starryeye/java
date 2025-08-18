@@ -12,9 +12,13 @@ public interface FilterStream {
      *
      * filter stream 의 대표적 객체
      * BufferedInputStream / BufferedOutputStream
-     *      InputStream / OutputStream 를 상속
+     *      InputStream / OutputStream 를 상속하는 FilterInputStream / FilterOutputStream 을 상속한다.
+     *          FilterInputStream / FilterOutputStream 은 basic stream 에 데코레이트 패턴을 적용하기 위한 클래스임
      *      1 byte 단위로 IO 가 일어나지 않고 특정 버퍼 사이즈 단위로 IO 가 이루어지도록 하여 성능을 개선함.
-     * InputStreamWriter / OutputStreamReader
+     * DataInputStream / DataOutputStream
+     *      FilterInputStream / FilterOutputStream 을 상속한다.
+     *      Java 의 숫자 타입(int, double, boolean 등)을 있는 크기 그대로 쓰고 읽도록 함..
+     * InputStreamReader / OutputStreamWriter
      *      Reader / Writer 상속
      *      sub2_reader_and_writer 참고
      *          byte 단위로 다루지 않고 인코딩 전의 문자로 다루도록 편의성을 높힘
@@ -23,5 +27,8 @@ public interface FilterStream {
      *      sub2_reader_and_writer 참고
      *          byte 단위로 다루지 않고 인코딩 전의 문자로 다루도록 편의성을 높힘
      *          1 byte 단위로 IO 가 일어나지 않고 특정 버퍼 사이즈 단위로 IO 가 이루어지도록 하여 성능을 개선함.
+     *
+     * InputStream / PrintStream
+     *      Java 프로세스와 console 간 데이터를 주고 받을 때 사용
      */
 }
