@@ -1,7 +1,7 @@
-package io.practice.member.repository;
+package io.sub3_practice.member.repository;
 
-import io.practice.member.Member;
-import io.practice.member.MemberRepository;
+import io.sub3_practice.member.Member;
+import io.sub3_practice.member.MemberRepository;
 
 import java.io.*;
 import java.util.ArrayList;
