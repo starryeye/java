@@ -29,6 +29,14 @@ public class ObjectMemberRepository implements MemberRepository {
      *      대안..
      *          JSON, Protobuf, Avro
      *          xml 은 느리고 무겁고 복잡해서 사용 X
+     *
+     * 참고
+     * 파일로 저장하면..
+     *      검색이 느리고 어렵고..
+     *      여러 프로세스나 스레드의 동시 접근시 파일 손상 가능성이 높고..
+     *      백업 복구가 어려운 문제들로 인해...
+     *      데이터베이스가 나온것임.
+     * 
      */
 
     private static final String FILE_PATH = "temp/members-obj.dat";
