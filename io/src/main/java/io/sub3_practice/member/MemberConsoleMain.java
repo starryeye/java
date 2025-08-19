@@ -1,6 +1,6 @@
 package io.sub3_practice.member;
 
-import io.sub3_practice.member.repository.MemoryMemberRepository;
+import io.sub3_practice.member.repository.*;
 
 import java.util.List;
 import java.util.Scanner;
