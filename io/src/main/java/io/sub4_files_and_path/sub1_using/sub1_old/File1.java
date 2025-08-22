@@ -1,4 +1,4 @@
-package io.sub4_files_and_path.sub1_using;
+package io.sub4_files_and_path.sub1_using.sub1_old;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +10,8 @@ public class File1 {
      * Java 1.0 부터 제공하는 File 객체 대표적 사용법
      *
      * 인스턴스? 메서드로 기능 제공
+     *
+     * File 대신 Files 를 사용하자
      */
 
     public static void main(String[] args) throws IOException {
