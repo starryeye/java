@@ -1,10 +1,8 @@
-package io.sub4_files_and_path;
+package io.sub4_files_and_path.sub1_using;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Date;
 
 public class FilesAndPath1 {
 
