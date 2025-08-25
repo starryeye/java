@@ -27,10 +27,10 @@ public class ReadAndWrite {
         // 한번에 쓰고 파일의 모든 문자 한번에 읽기
         writeAllReadAll1(filePath, writeString);
 
-        // 한번에 쓰고 파일에서 한번에 읽기(라인 단위로 반환)
+        // 한번에 쓰고 파일에서 한번에 읽기(라인 리스트로 반환)
         writeAllReadAll2(filePath, writeString);
 
-        // 한번에 쓰고 파일에서 라인 단위로 읽기
+        // 한번에 쓰고 파일에서 한줄씩 읽기
         writeAllReadLine(filePath, writeString); // io.sub2_reader_and_writer.sub1_filter_stream.Buffered 와 비교해보자.
     }
 
@@ -63,7 +63,7 @@ public class ReadAndWrite {
         Files.writeString(path, writeString, StandardCharsets.UTF_8);
 
 
-        // 한번에 읽기(라인 단위로 반환)
+        // 한번에 읽기(라인 리스트로 반환)
         System.out.println("==== [writeAllReadAll2] Read String ====");
         List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
         for (String line : lines) {
@@ -81,7 +81,7 @@ public class ReadAndWrite {
         Files.writeString(path, writeString, StandardCharsets.UTF_8);
 
 
-        // 한번에 읽기(라인 단위로 반환)
+        // 한줄씩 읽기
         System.out.println("==== [writeAllReadLine] Read String ====");
         try (Stream<String> lineStream = Files.lines(path, StandardCharsets.UTF_8)) { // try with resources
             lineStream.forEach(System.out::println);
