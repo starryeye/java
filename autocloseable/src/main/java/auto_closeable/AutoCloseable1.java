@@ -10,6 +10,7 @@ public interface AutoCloseable1 {
      *      v1 ~ v4 패키지는 발전되는 양상을 보여줌
      *      Service 객체가 Resource 라는 외부 자원을 사용한다고 가정
      *
+     * 핵심 이점은 v4 참고
      *
      * 참고
      * Java 객체는 GC 가 되지만, Java 외부의 자원은 자동으로 GC 가 되지 않는다.
