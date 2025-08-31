@@ -55,6 +55,8 @@ java practice
 - auto-boxing
 - thread
 - charset
+- autocloseable
+- io
 
 ## dependency
 - Java 17
