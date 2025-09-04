@@ -19,14 +19,19 @@ public class ClientV1 {
         Socket socket = new Socket("localhost", ServerV1.SERVER_PORT);
         threadLog("socket created: " + socket);
         /**
-         * 1. localhost:8080 으로 TCP 접속을 시도한다.
+         * 1. localhost:8080 으로 TCP 연결을 시도한다.
          *      localhost 는 IP 주소가 아닌 호스트 이름이므로, InetAddress 를 사용하여 매핑되는 IP 주소를 찾는다.
-         *      127.0.0.1:8080 으로 TCP 접속을 시도한다.
+         *      127.0.0.1:8080 으로 TCP 연결을 시도한다.
          * 2. 3-way handshake 동작을 통해 TCP 연결을 완료한다.
          *      이 때, client 의 port 는 사용가능한 랜덤 port 가 사용된다. (IP 주소는 client 의 IP 주소)
          * 3. 연결이 성공되면 Socket 객체를 반환한다.
          *      연결에 실패하면, ConnectException 예외가 발생한다.
          * 4. Socket 객체를 이용하여, 이 client 역할의 Java 프로세스는 서버와 통신할 수 있게 되었다.
+         *
+         * 참고.
+         * new Socket(host, port) 처럼 host, port 를 인자로 주면, Socket 을 생성할때 TCP 연결을 시도하지만..
+         * new Socket() 과 같이 기본 생성자로 Socket 을 생성하면.. TCP 연결은 하지 않는다.
+         *      이후, socket.connect(new InetSocketAddress(host, port)) 를 호출해줄 때, TCP 연결을 시도한다.
          *
          */
 

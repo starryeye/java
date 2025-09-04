@@ -1,4 +1,4 @@
-package dev.practice.basic.exception.connect;
+package dev.practice.basic.sub5_exception.connect;
 
 import java.io.IOException;
 import java.net.ConnectException;

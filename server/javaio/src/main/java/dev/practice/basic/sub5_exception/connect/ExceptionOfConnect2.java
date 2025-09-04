@@ -1,4 +1,4 @@
-package dev.practice.basic.exception.connect;
+package dev.practice.basic.sub5_exception.connect;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -17,6 +17,10 @@ public class ExceptionOfConnect2 {
      *      window : 약 21 초
      *      linux : 약 75 ~ 180 초
      *      mac : 약 75 초
+     *
+     * syn 에 대한 응답이 오지 않는 경우
+     *      1. 위 과정과 같이 IP 주소로 직접 TCP 연결을 시도 했지만, IP 주소에 해당하는 서버가 없음
+     *      2. 해당 IP 에 대한 서버가 존재하지만, 서버가 바쁘거나 문제가 있어서 응답이 없는 경우
      *
      * 참고
      * 기본 값 만큼 대기하는 것은 좋은 방법이 아니다.
