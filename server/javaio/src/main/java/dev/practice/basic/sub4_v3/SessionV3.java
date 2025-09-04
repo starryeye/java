@@ -13,7 +13,7 @@ public class SessionV3 implements Runnable {
     private final DataInputStream input;
     private final DataOutputStream output;
     private final SessionManagerV3 sessionManager;
-    private boolean closed = false;
+    private boolean isClosed = false;
 
     public SessionV3(Socket socket, SessionManagerV3 sessionManager) throws IOException {
         this.socket = socket;
@@ -51,11 +51,11 @@ public class SessionV3 implements Runnable {
 
     // 동기화 락
     public synchronized void close() {
-        if (closed) {
+        if (isClosed) {
             return;
         }
         closeAll(); // SessionV3 모든 자원 정리
-        closed = true;
+        isClosed = true;
         threadLog("connection closed : " + socket + ", Socket::isClosed() : " + socket.isClosed());
     }
 
