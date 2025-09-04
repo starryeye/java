@@ -21,7 +21,7 @@ public class ServerV1 {
         threadLog("serverSocket created: " + serverSocket);
         /**
          * 8080 port 를 사용하여 ServerSocket 을 생성하면..
-         *      client 는 server 의 IP 주소와 해당 port 를 이용하여 server 에 TCP 연결(3-way handshake)이 가능하다.
+         *      server 는 client 가 server 의 IP 주소와 해당 port 를 이용하여 server 에 TCP 연결(3-way handshake)이 가능한 상태가 된다.
          */
 
 
@@ -40,7 +40,7 @@ public class ServerV1 {
          * 참고.
          * ServerSocket 만 생성해도 OS 에서 Java 프로세스(Server)와 상관없이 TCP 연결을 지원하기 때문에
          *      여러 client 가 해당 server 로 TCP 연결은 얼마든지 가능하다.
-         * 하지만, 이 예제에서는 하나의 스레드(main)가 accept 메서드를 통해 단 하나의 Socket 만 생성하므로..
+         * 하지만, 이 예제에서는 server 가 하나의 스레드(main)로 accept 메서드를 통해 단 하나의 Socket 만 생성하므로..
          *      단 하나의 첫번째 client 랑만 데이터 통신이 가능하다.
          */
 
