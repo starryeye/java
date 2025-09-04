@@ -15,5 +15,10 @@ public interface AutoCloseable1 {
      * 참고
      * Java 객체는 GC 가 되지만, Java 외부의 자원은 자동으로 GC 가 되지 않는다.
      * 따라서, 무조건 명시적으로 정리를 해줘야한다.
+     *
+     *
+     * 팁
+     *      1. try with resources 를 사용했는데.. finally 구문을 사용한다면, 자원정리가 모두 된 후, finally 구문이 수행될 것이다.
+     *      2. try with resources 에서 try 구문에 선언된 순서의 반대로 자원정리 순서가 결정된다.
      */
 }
