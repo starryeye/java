@@ -32,7 +32,7 @@ public class ClientV3 {
                 String toSend = scanner.nextLine();
 
                 // server 로 메시지 보내기
-                output.writeUTF(toSend);                            // scanner.nextLine() 에서 대기하다가 server 종료 이후, console 에 문자를 입력후 엔터 치면 client 에는 RST 패킷이 도착해 있을 것이고 RST 패킷이 왔는데 write 하면 SocketException 발생
+                output.writeUTF(toSend);                            // scanner.nextLine() 에서 대기하다가 server 종료 이후, console 에 문자를 입력후 엔터 치면 client 에는 RST 패킷이 도착해 있을 것이고 RST 패킷이 왔는데 write 하면 SocketException 발생, sub5_exception.connect_close 참고
                 threadLog("client -> server: " + toSend);
 
                 if (toSend.equals("exit")) {
