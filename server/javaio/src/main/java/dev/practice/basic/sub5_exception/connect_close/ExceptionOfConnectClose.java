@@ -27,5 +27,23 @@ public interface ExceptionOfConnectClose {
      * client 와 server 중 누가 처음으로 FIN 을 전달해야한다는 규칙은 없다.
      *      여기서는 server 가 client 요청에 대한 응답을 보내고 바로 FIN 을 처음으로 보낸다고 가정하고 설명함
      * 또한, client 는 server 가 보낼 FIN 패킷을 기다렸다가 닫는 게 아니고, 원하는 시점에 닫을 수 있다.
+     *
+     *
+     *
+     * normal, abnormal 예시 내용 정리
+     * 1. read 도중.. 상대가 TCP 연결을 종료하면..
+     *      EOF(-1, null, EOFException) 발생
+     * 2. RST 패킷 받은 이후에 read 호출하면..
+     *      SocketException: Connection reset 발생
+     * 3. RST 패킷 받은 이후에 write 호출하면..
+     *      SocketException: Broken pipe 발생
+     *
+     * 참고.
+     * 자신의 Socket 을 닫은 이후 read, write 호출하면..
+     *      SocketException: Socket is closed 발생
+     *
+     * 팁..
+     * SocketException, EOFException 는 IOException 의 자식이다.
+     * IOException 이 발생하면, 모든 자원을 정리하도록 개발하자..
      */
 }
