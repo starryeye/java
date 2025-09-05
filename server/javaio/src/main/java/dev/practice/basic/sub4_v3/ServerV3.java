@@ -8,6 +8,12 @@ import static dev.practice.basic.util.MyThreadLog.threadLog;
 
 public class ServerV3 {
 
+    /**
+     * 참고.
+     * Gradle 환경에서 run 하면 shutdown hook 이 동작하지 않을 수 있다.
+     * -> Settings -> intellij 로 run 해보자.
+     */
+
     static final int SERVER_PORT = 8080;
 
     public static void main(String[] args) throws IOException {
@@ -56,7 +62,7 @@ public class ServerV3 {
                 Thread.sleep(1000); // 자원 정리 대기
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("e = " + e);
+                threadLog("e = " + e);
             }
 
             threadLog("shutdownHook end");
