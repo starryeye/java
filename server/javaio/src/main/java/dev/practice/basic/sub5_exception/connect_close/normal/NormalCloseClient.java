@@ -1,4 +1,4 @@
-package dev.practice.basic.sub5_exception.shutdown.normal;
+package dev.practice.basic.sub5_exception.connect_close.normal;
 
 import java.io.*;
 import java.net.Socket;

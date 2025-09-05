@@ -1,6 +1,6 @@
-package dev.practice.basic.sub5_exception.shutdown;
+package dev.practice.basic.sub5_exception.connect_close;
 
-public interface ExceptionOfShutdown {
+public interface ExceptionOfConnectClose {
 
     /**
      * TCP 연결 종료에 관한 예외에 대해 알아본다.
