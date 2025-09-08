@@ -38,6 +38,6 @@ public class ReadHandler implements Runnable {
 
         isClosed = true;
 
-        threadLog("readHandelr shutdown");
+        threadLog("readHandler shutdown");
     }
 }

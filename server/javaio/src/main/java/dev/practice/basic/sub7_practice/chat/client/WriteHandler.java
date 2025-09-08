@@ -71,7 +71,9 @@ public class WriteHandler implements Runnable {
         } catch (IOException e) {
             threadLog(e);
         }
+
         isClosed = true;
+
         threadLog("writeHandler shutdown");
     }
 }
