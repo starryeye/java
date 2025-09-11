@@ -1,4 +1,6 @@
-package dev.practice.basic.sub4_v3;
+package dev.practice.basic.sub7_practice.chat.server.session;
+
+import dev.practice.basic.sub7_practice.chat.server.command.CommandHandlerMapping;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -7,49 +9,46 @@ import java.net.Socket;
 
 import static dev.practice.basic.util.MyThreadLog.threadLog;
 
-public class SessionV3 implements Runnable {
+public class Session implements Runnable {
 
     private final Socket socket;
     private final DataInputStream input;
     private final DataOutputStream output;
-    private final SessionManagerV3 sessionManager;
+    private final CommandHandlerMapping commandHandlerMapping;
+    private final SessionManager sessionManager;
+
     private boolean isClosed = false;
 
-    public SessionV3(Socket socket, SessionManagerV3 sessionManager) throws IOException {
+    private String username;
+
+    public Session(Socket socket, CommandHandlerMapping commandHandlerMapping, SessionManager sessionManager) throws IOException {
         this.socket = socket;
         this.input = new DataInputStream(socket.getInputStream());
         this.output = new DataOutputStream(socket.getOutputStream());
+        this.commandHandlerMapping = commandHandlerMapping;
         this.sessionManager = sessionManager;
         this.sessionManager.add(this);
     }
 
     @Override
     public void run() {
-
         try {
             while (true) {
-                // client 가 보낸 메시지 읽기
-                String received = input.readUTF();
-                threadLog("client -> server: " + received);
 
-                if (received.equals("exit")) {
-                    break;
-                }
+                String request = input.readUTF();
+                threadLog("client -> server: " + request);
 
-                // client 로 메시지 보내기
-                String toSend = received + " World!";
-                output.writeUTF(toSend);
-                threadLog("client <- server: " + toSend);
+                commandHandlerMapping.execute(request, this);
             }
         } catch (IOException e) {
             threadLog(e);
         } finally {
             sessionManager.remove(this);
+            sessionManager.sendAll(username + " has left..");
             close();
         }
     }
 
-    // 동기화 락
     public synchronized void close() {
 
         if (isClosed) {
@@ -57,9 +56,14 @@ public class SessionV3 implements Runnable {
         }
 
         isClosed = true;
-        closeAll(); // SessionV3 모든 자원 정리
+        closeAll();
 
         threadLog("connection closed : " + socket + ", Socket::isClosed() : " + socket.isClosed());
+    }
+
+    public void send(String message) throws IOException {
+        threadLog("server -> client: " + message);
+        output.writeUTF(message);
     }
 
     private void closeAll() {
@@ -84,5 +88,9 @@ public class SessionV3 implements Runnable {
                 threadLog(e.getMessage());
             }
         }
+    }
+
+    public String getUsername() {
+        return this.username;
     }
 }

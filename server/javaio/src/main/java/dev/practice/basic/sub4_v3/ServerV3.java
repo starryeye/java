@@ -37,7 +37,7 @@ public class ServerV3 {
                 thread.start();
             }
         } catch (IOException e) {
-            threadLog("serverSocket closed.. : " + e);
+            threadLog("ServerSocket will be closed soon.. : " + e);
         }
 
     }
