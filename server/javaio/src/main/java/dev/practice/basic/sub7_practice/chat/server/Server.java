@@ -28,7 +28,7 @@ public class Server {
 
     public void start() throws IOException {
         threadLog("server start");
-        serverSocket.bind(new InetSocketAddress(port));
+        serverSocket.bind(new InetSocketAddress(port)); // todo, bind 처음, 설명 추가할 것
         threadLog("ServerSocket bind.. : " + serverSocket);
 
         addShutdownHook();
