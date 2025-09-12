@@ -93,4 +93,8 @@ public class Session implements Runnable {
     public String getUsername() {
         return this.username;
     }
+
+    public void setUsername(String newName) {
+        this.username = newName;
+    }
 }
