@@ -37,6 +37,9 @@ public class ServerV3 {
                 thread.start();
             }
         } catch (IOException e) {
+            /**
+             * accept 도중, ServerSocket 자원이 정리 되면 이곳으로 온다.
+             */
             threadLog("ServerSocket will be closed soon.. : " + e);
         }
 
@@ -53,6 +56,9 @@ public class ServerV3 {
 
         @Override
         public void run() {
+            /**
+             * Java 프로세스가 종료되면, Runtime.getRuntime().addShutdownHook() 등록시 사용된 스레드가 실행된다.
+             */
             threadLog("shutdownHook start");
 
             try {

@@ -25,6 +25,10 @@ public class SessionManagerV3 {
     // 동기화 락
     public synchronized void clear() {
 
+        /**
+         * 모든 세션을 종료한다.
+         * 세션이 사용하고 있는 Socket, InputStream, OutputStream 자원들을 정리하는 close 메서드를 호출한다.
+         */
         for (SessionV3 session : sessions) {
             session.close();
         }

@@ -10,6 +10,18 @@ import static dev.practice.basic.util.MyThreadLog.threadLog;
 
 public class ClientV3 {
 
+    /**
+     * 참고.
+     * scanner.nextLine() 에서 대기하는 중 server 가 종료되면 client 와의 연결이 끊긴다.
+     * 이때 client 는 대부분의 경우에 scanner.nextLine() 에서 blocking 중일 것이다.
+     * scanner.nextLine() 은 client 의 소켓관련 자원이 아니므로 소켓의 자원 정리 트리거와 상관없이 사용자가 문자열을 입력할때까지 무기한 대기한다.
+     * -> 이때 server 와의 연결을 종료하는 트리거에 의해 scanner.nextLine blocking 을 벗어나고 싶다면.. sub7_practice.chat.client.WriteHAndler 참고
+     *
+     * 위 상황에서 console 에 문자를 입력후 엔터 치면,
+     * client 에는 RST 패킷이 도착해 있을 것이고 RST 패킷이 왔는데 write 하면 SocketException 발생한다. (이제서야 종료될 것이다.)
+     * sub5_exception.connect_close 참고
+     */
+
     public static void main(String[] args) throws IOException {
         threadLog("client start");
 
@@ -32,7 +44,7 @@ public class ClientV3 {
                 String toSend = scanner.nextLine();
 
                 // server 로 메시지 보내기
-                output.writeUTF(toSend);                            // scanner.nextLine() 에서 대기하다가 server 종료 이후, console 에 문자를 입력후 엔터 치면 client 에는 RST 패킷이 도착해 있을 것이고 RST 패킷이 왔는데 write 하면 SocketException 발생, sub5_exception.connect_close 참고
+                output.writeUTF(toSend);
                 threadLog("client -> server: " + toSend);
 
                 if (toSend.equals("exit")) {
