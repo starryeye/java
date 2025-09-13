@@ -35,6 +35,14 @@ public class HttpServerV1 {
 
     private void process(Socket socket) throws IOException {
 
+        /**
+         * 참고.
+         * PrintWriter 의 autoFlush 옵션을 false 로 했는데..
+         * autoFlush=true 는 기본적으로 PrintWriter::println 를 호출하면 자동으로 flush 되게끔하는 옵션이다.
+         * 이 옵션은 client 와 연결을 유지하며 라인 단위로 여러번 응답을 보내야할 때 의미가 있는 것이며
+         * 현재 코드와 같이 1회성 응답이라면 의미가 없는 옵션이긴하다.
+         */
+
         // try with resources
         try (socket;
              BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), UTF_8));
