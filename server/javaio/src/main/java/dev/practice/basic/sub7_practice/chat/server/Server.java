@@ -43,7 +43,7 @@ public class Server {
     private void run() {
         try {
             while (true) {
-                Socket socket = serverSocket.accept(); // blocing
+                Socket socket = serverSocket.accept(); // blocking
                 threadLog("socket accepted: " + socket);
 
                 Session session = new Session(socket, commandHandlerMapping, sessionManager);
