@@ -20,7 +20,7 @@ public class HttpRequestHandlerV2 implements Callable<Void> {
     }
 
     /**
-     * todo, chrome 으로 한번 요청하면 자꾸 두번 요청이 온것 처럼 로그가 찍힌다.....
+     * todo, 간헐적으로 chrome 으로 한번 요청하면 자꾸 두번 요청이 온것 처럼 로그가 찍힌다..... 원인은..? (favicon 도 아님..)
      */
 
     @Override
