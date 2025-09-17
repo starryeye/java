@@ -149,7 +149,8 @@ public class HttpRequestHandlerV2 implements Callable<Void> {
                 .append("<ul>\n")
                 .append("<li><a href='/site1'>site1</a></li>\n")
                 .append("<li><a href='/site2'>site2</a></li>\n")
-                .append("<li><a href='/search?q=hello'>검색</a></li>\n")
+                .append("<li><a href='/search1?q=hello'>검색1</a></li>\n")
+                .append("<li><a href='/search2?q=가나다'>검색2</a></li>\n")
                 .append("</ul>");
         byte[] bodyBytes = body.toString().getBytes(UTF_8);
 
