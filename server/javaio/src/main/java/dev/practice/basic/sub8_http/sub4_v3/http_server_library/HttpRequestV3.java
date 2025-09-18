@@ -22,7 +22,7 @@ public class HttpRequestV3 {
         parseStartLine(reader);
         parseHeaders(reader);
 
-        threadLog(toString()); // 요청 데이터 출력
+        printParsedRequest(); // 요청 데이터 출력
     }
 
     public String getMethod() {
@@ -95,11 +95,16 @@ public class HttpRequestV3 {
         }
     }
 
+    public void printParsedRequest() {
+        threadLog("Http request parsed..");
+        threadLog("-------------------------------- HTTP request --------------------------------");
+        System.out.print(this.toString());
+        threadLog("------------------------------------------------------------------------------");
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
-        sb.append("-------------------------------- HTTP request --------------------------------\n");
 
         sb.append(method)
                 .append(' ')
@@ -112,7 +117,6 @@ public class HttpRequestV3 {
 
         sb.append('\n'); // 헤더 바디 구분
 
-        sb.append("------------------------------------------------------------------------------\n");
         return sb.toString();
     }
 

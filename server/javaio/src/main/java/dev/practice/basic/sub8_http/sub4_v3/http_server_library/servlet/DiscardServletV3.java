@@ -6,9 +6,12 @@ import dev.practice.basic.sub8_http.sub4_v3.http_server_library.HttpServletV3;
 
 import java.io.IOException;
 
+import static dev.practice.basic.util.MyThreadLog.threadLog;
+
 public class DiscardServletV3 implements HttpServletV3 {
     @Override
     public void service(HttpRequestV3 request, HttpResponseV3 response) throws IOException {
 
+        threadLog("discard request");
     }
 }

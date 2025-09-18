@@ -6,12 +6,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URLDecoder;
-import java.util.concurrent.Callable;
 
 import static dev.practice.basic.util.MyThreadLog.threadLog;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class HttpRequestHandlerV2 implements Callable<Void> {
+public class HttpRequestHandlerV2 implements Runnable {
 
     private final Socket socket;
 
@@ -24,7 +23,7 @@ public class HttpRequestHandlerV2 implements Callable<Void> {
      */
 
     @Override
-    public Void call() throws Exception {
+    public void run() {
         // try with resources
         try (socket;
              BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), UTF_8));
@@ -33,7 +32,7 @@ public class HttpRequestHandlerV2 implements Callable<Void> {
             String requestString = requestToString(reader);
             if (requestString.contains("/favicon.ico")) {
                 threadLog("favicon request skip..");
-                return null;
+                return;
             }
             threadLog("-------------------------------- HTTP request --------------------------------");
             System.out.print(requestString);
@@ -54,9 +53,10 @@ public class HttpRequestHandlerV2 implements Callable<Void> {
             }
             System.out.println();
             threadLog("------------------------------------------------------------------------------");
+        } catch (Exception e) {
+            threadLog(e);
+            e.printStackTrace();
         }
-
-        return null;
     }
 
     private static String requestToString(BufferedReader reader) throws IOException {

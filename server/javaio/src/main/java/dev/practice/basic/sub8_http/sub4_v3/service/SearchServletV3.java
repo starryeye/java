@@ -10,5 +10,14 @@ public class SearchServletV3 implements HttpServletV3 {
     @Override
     public void service(HttpRequestV3 request, HttpResponseV3 response) throws IOException {
 
+        String query = request.getQueryParameter("q");
+
+        StringBuilder responseBody = new StringBuilder();
+        responseBody.append("<h1>Search</h1>\n")
+                .append("<ul>\n")
+                .append("<li>query: ").append(query).append("</li>\n")
+                .append("</ul>");
+
+        response.writeBody(responseBody.toString());
     }
 }

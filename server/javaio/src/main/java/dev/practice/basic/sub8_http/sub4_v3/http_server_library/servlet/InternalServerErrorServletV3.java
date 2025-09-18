@@ -10,5 +10,7 @@ public class InternalServerErrorServletV3 implements HttpServletV3 {
     @Override
     public void service(HttpRequestV3 request, HttpResponseV3 response) throws IOException {
 
+        response.setStatusCode(500);
+        response.writeBody("<h1>Internal Server Error ...</h1>");
     }
 }

@@ -35,10 +35,24 @@ public class HttpResponseV3 {
                 .append("\r\n"); // 헤더 바디 구분
         sb.append(body);
 
-        threadLog(sb); // 응답 데이터 출력
+        printResponse(sb); // 응답 데이터 출력
 
         writer.print(sb);
         writer.flush();
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    private void printResponse(StringBuilder sb) {
+        threadLog("-------------------------------- HTTP response -------------------------------");
+        System.out.print(sb);
+        threadLog("------------------------------------------------------------------------------");
     }
 
     private String getReasonPhrase() {

@@ -10,5 +10,7 @@ public class NotFoundServletV3 implements HttpServletV3 {
     @Override
     public void service(HttpRequestV3 request, HttpResponseV3 response) throws IOException {
 
+        response.setStatusCode(404);
+        response.writeBody("<h1>404 Page Not Found ...</h1>");
     }
 }
