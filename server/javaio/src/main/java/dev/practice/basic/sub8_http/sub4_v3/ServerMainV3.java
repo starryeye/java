@@ -12,6 +12,10 @@ import java.io.IOException;
 
 public class ServerMainV3 {
 
+    /**
+     * http_server_library 를 이용해서 Http 서버를 간편하게 만들 수 있다.
+     */
+
     private static final int SERVER_PORT = 8080;
 
     public static void main(String[] args) throws IOException {
