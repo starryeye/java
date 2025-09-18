@@ -2,7 +2,7 @@ package dev.practice.basic.sub8_http.sub2_v2;
 
 import java.io.IOException;
 
-public class HttpServerMainV2 {
+public class ServerMainV2 {
 
     private static final int SERVER_PORT = 8080;
 
