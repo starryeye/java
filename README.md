@@ -57,6 +57,9 @@ java practice
 - charset
 - autocloseable
 - io
+- server/javaio
+- reflection-basic
+- annotation
 
 ## dependency
 - Java 17
