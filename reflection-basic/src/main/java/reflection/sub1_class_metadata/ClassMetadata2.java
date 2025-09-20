@@ -50,5 +50,6 @@ public class ClassMetadata2 {
         System.out.println("userClassMetadata.getDeclaredMethods() = " + Arrays.toString(userClassMetadata.getDeclaredMethods()));
         System.out.println("userClassMetadata.getFields() = " + Arrays.toString(userClassMetadata.getFields()));
         System.out.println("userClassMetadata.getDeclaredFields() = " + Arrays.toString(userClassMetadata.getDeclaredFields()));
+        System.out.println("userClassMetadata.getAnnotations() = " + Arrays.toString(userClassMetadata.getAnnotations()));
     }
 }
