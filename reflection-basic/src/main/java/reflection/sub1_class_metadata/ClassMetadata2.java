@@ -7,6 +7,9 @@ public class ClassMetadata2 {
 
     /**
      * 클래스의 메타데이터를 접근하여 어떤 정보를 얻을 수 있는지 알아본다.
+     *      클래스 이름, 패키지, 부모 클래스, 구현한 인터페이스 목록, 수정자 정보 등을 얻을 수 있다.
+     *      또한 메서드, 필드, 애너테이션 정보도 얻을 수 있다.
+     *          -> sub2, sub3, sub4 로 각각 더 자세하게 다룬다.
      *
      *
      * 참고.
@@ -41,5 +44,11 @@ public class ClassMetadata2 {
         System.out.println("userClassMetadata.getModifiers() = " + modifiers);
         System.out.println("Modifier.isPublic(modifier) = " + Modifier.isPublic(modifiers));
         System.out.println("Modifier.toString(modifier) = " + Modifier.toString(modifiers));
+
+
+        System.out.println("userClassMetadata.getMethods() = " + Arrays.toString(userClassMetadata.getMethods()));
+        System.out.println("userClassMetadata.getDeclaredMethods() = " + Arrays.toString(userClassMetadata.getDeclaredMethods()));
+        System.out.println("userClassMetadata.getFields() = " + Arrays.toString(userClassMetadata.getFields()));
+        System.out.println("userClassMetadata.getDeclaredFields() = " + Arrays.toString(userClassMetadata.getDeclaredFields()));
     }
 }
