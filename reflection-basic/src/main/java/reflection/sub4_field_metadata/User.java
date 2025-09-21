@@ -28,6 +28,10 @@ public class User {
         return greeting + ", " + name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void privateMethod() {
         System.out.println("User.privateMethod method called..");
     }
