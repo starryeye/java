@@ -13,13 +13,13 @@ public class Dynamic {
      * 런타임에 클래스, 메서드, 필드 등을 동적으로 검사하고 호출할 수 있게 한다.
      *
      * 사용자 입력에 따라 두 개의 숫자를 더하거나 빼거나 할 수 있는 계산기 프로그램을 만든다고 생각해보자..
-     * 이 예제에서는 사용자가 입력한 문자열(예: "add" 또는 "sub")에 따라 Calculator 클래스의 메서드를 런타임에 동적으로 호출하고있다.
+     * 이 예제에서는 사용자가 입력한 문자열("add" 또는 "sub")에 따라 Calculator 클래스의 메서드를 런타임에 동적으로 호출하고있다.
      * 1. 일반적인 "정적" 방식으로 개발한다면..
      *      사용자가 "add" 또는 "sub"를 입력하면 if-else 문으로 분기하여 고정된 메서드(add() 또는 sub())를 호출되도록 개발..
      *      실행되는 코드 라인에 따라 호출되는 메서드는 컴파일 시점에 정해진다.
      *      코드 흐름이 고정되어 있어 유연성이 제한됨.
      * 2. Reflection 을 사용한 "동적" 방식으로 개발한다면..
-     *      사용자가 입력한 문자열을 기반으로 런타임에 메서드를 동적으로 선택(예: Method.getMethod(methodName))
+     *      사용자가 입력한 문자열을 기반으로 런타임에 메서드를 동적으로 선택(calculatorClassMetadata.getMethod(methodName))
      *      사용자의 입력값이 무엇이라도 동일한 코드 라인이 실행되지만, 런타임에 사용자의 입력에 따라 다른 메서드가 호출됨. (런타임에 실행되는 코드라인은 동일하지만 호출되는 메서드는 달라짐)
      *      Java 의 정적 타입 시스템을 넘어, 런타임에 유연하게 동작하는 "동적" 특성을 보여준다.
      *
@@ -55,11 +55,11 @@ public class Dynamic {
 
         // Reflection을 사용해 Calculator 클래스의 메타데이터를 동적으로 가져옴
         // 컴파일 타임에는 어떤 메서드가 호출될지 모름
-        Class<? extends Calculator> aClass = Calculator.class;
+        Class<? extends Calculator> calculatorClassMetadata = Calculator.class;
 
         // 사용자가 입력한 메서드 이름을 기반으로 런타임에 메서드를 동적으로 조회
         // getMethod는 public 메서드를 찾으며, 메서드 시그니처(이름, 파라미터 타입)를 확인
-        Method method = aClass.getMethod(methodName, int.class, int.class);
+        Method method = calculatorClassMetadata.getMethod(methodName, int.class, int.class);
 
 
         // 동적으로 선택된 메서드를 런타임에 호출
