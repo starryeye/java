@@ -24,10 +24,10 @@ public class MethodMetadata1 {
             System.out.println("method = " + method);
         }
 
-        System.out.println("=========== userClassMetadata.get() ===========");
+        System.out.println("=========== userClassMetadata.getDeclaredMethods() ===========");
         Method[] declaredMethods = userClassMetadata.getDeclaredMethods();
         for (Method method : declaredMethods) {
-            System.out.println("declaredMethods = " + method);
+            System.out.println("declaredMethod = " + method);
         }
     }
 }
