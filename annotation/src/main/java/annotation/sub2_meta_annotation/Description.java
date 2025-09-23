@@ -33,5 +33,7 @@ public interface Description {
      *      Z 를 적용한 클래스를 A 라 하고
      *      A 를 상속한 클래스를 B 라 하겠다.
      *      B 도 A 와 같이 Z 가 적용된 클래스가 되는 것이다.
+     *      참고.
+     *          클래스간 상속에만 적용되며, interface 구현에는 적용되지 않는다.
      */
 }

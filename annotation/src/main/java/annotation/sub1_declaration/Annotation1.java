@@ -15,7 +15,7 @@ public @interface Annotation1 {
      * annotation 의 기본 선언 방법에 대해 알아본다.
      *
      * annotation 은 @interface 키워드로 선언한다.
-     * annotation 은 속성(element)를 가질 수 있다.
+     * annotation 은 속성(element, 요소)를 가질 수 있다.
      *      ex. String value();
      *              value 속성은 String 타입을 담을 수 있다는 의미이다.
      *              interface 의 메서드와 비슷하게 생겼지만, 괄호내에 파라미터를 선언할 수 는 없다.
