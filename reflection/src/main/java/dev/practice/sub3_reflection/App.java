@@ -53,9 +53,9 @@ public class App {
         Class<Book> bookClass = Book.class;
         Field a = bookClass.getDeclaredField("A"); //변수 명이 A인 필드 조회
         //static 변수면, 인스턴스마다 다른 변수가 아닌.. 모든 인스턴스가 공유하는 변수이다.
-        //정확하게는 인스턴스가 생성되지 않아도 존재한다. get 메서드 파라미터로 null 을 넘겨준다.
+        //정확하게는 인스턴스가 생성되지 않아도 존재한다. get 메서드 파라미터로 null 을 넘겨준다. (원래는 조회할 Book 인스턴스를 넘겨줌)
         System.out.println(a.get(null));
-        a.set(null, "AAAAA"); //마찬가지로 static 변수이므로 null 이다.
+        a.set(null, "AAAAA"); //마찬가지로 static 변수이므로 null 이다. (원래는 조회할 Book 인스턴스를 넘겨줌)
         System.out.println(a.get(null));
 
         Field b = bookClass.getDeclaredField("B"); // getField 는 public 만 접근 하므로..

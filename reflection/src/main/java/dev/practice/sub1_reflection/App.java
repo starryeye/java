@@ -8,12 +8,11 @@ public class App {
 
     /**
      * Java 는 "Class" 타입의 클래스가 존재한다.
-     * <p>
-     * 자바는 클래스와 인터페이스의 메타데이터를
-     * java.lang 패키지에 소속된 "Class" 클래스로 관리한다.
-     * (여기서의 메타데이터는 클래스 이름, 생성자 정보, 필드 정보, 메서드 정보를 뜻한다.)
-     * <p>
-     * Class 객체가 한 번 생성되면, JVM은 해당 클래스에 대해 단일 Class 객체만 유지한다.
+     *
+     * 자바는 클래스와 인터페이스의 메타데이터를 java.lang 패키지에 소속된 "Class" 클래스로 관리한다.
+     *      여기서의 메타데이터는 클래스 이름, 생성자 정보, 필드 정보, 메서드 정보를 뜻한다.
+     *
+     * Class 객체가 한 번 생성되면, JVM 은 해당 클래스에 대해 단일 Class 객체만 유지한다.
      * 즉, Class 객체는 싱글톤이다.
      * 해당 인스턴스로 아래와 같은.. 리플랙션 기능을 사용할 수 있다.
      */
@@ -36,11 +35,11 @@ public class App {
         /**
          * Class 타입의 인스턴스로 다양한 정보를 빼올수 있다. (메타데이터)
          */
-        Arrays.stream(bookClass.getFields()) //public 필드만..
+        Arrays.stream(bookClass.getFields()) //public 필드 + 상속/구현 대상 필드
                 .forEach(System.out::println);
-        Arrays.stream(bookClass.getDeclaredFields()) //모든 필드
+        Arrays.stream(bookClass.getDeclaredFields()) //모든 필드 + 상속/구현 대상 필드 제외
                 .forEach(System.out::println);
-        Arrays.stream(bookClass.getMethods()) //public 메서드만.. (Object 의 메서드도 출력되는걸 볼 수 있다.)
+        Arrays.stream(bookClass.getMethods()) //public 메서드만.. (Object 의 메서드도 출력되는걸 볼 수 있다.) + 상속/구현 대상 메서드
                 .forEach(System.out::println);
 
         //필드의 값도 빼올 수 있다. (Book 인스턴스가 필요하다.)
@@ -65,7 +64,7 @@ public class App {
          * 해당 필드(메서드도 됨)에 적용된 키워드를 알아볼 수 있다..
          *
          */
-        Arrays.stream(Book.class.getFields()) //MyBook 으로 하면 아무것도 안찍힘.. (TODO 생각해보기)
+        Arrays.stream(MyBook.class.getFields()) // Book.class, "public String d" 만 조회된다.
                 .forEach(field -> {
                     int modifiers = field.getModifiers(); //
                     System.out.println(modifiers);
