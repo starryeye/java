@@ -15,6 +15,10 @@ public class CheckInherited {
      *      해당 클래스가 구현한 인터페이스에 적용된 annotation 은 포함되지 않는다.
      * getDeclaredAnnotations
      *      해당 클래서에 직접 적용된 annotation 만 반환된다.
+     *
+     * todo
+     *      reflection 에서 field, method 는 상속 뿐만아니라 구현 인터페이스의 정보까지 받아올 수 있음에도.. annotation 은 되지 않는이유?
+     *      Spring 에서 @Transactional 은 interface 에 적용해도 구현체에서 @Transactional 이 적용되는 이유?
      */
 
     public static void main(String[] args) {
