@@ -12,7 +12,7 @@ public interface Description {
      *      annotation 의 생존 기간을 지정한다.
      *      종류
      *          RetentionPolicy.SOURCE
-     *              소스코드에만 남아있고 컴파일 시점에 제거된다. (사실상 일반적인 주석인듯)
+     *              소스코드에만 남아있고 컴파일 시점까지 살아있고 컴파일 시점 이후 제거된다.
      *          RetentionPolicy.CLASS
      *              컴파일 이후 .class 파일에 까지 살아있지만 런타임 시점에는 제거된다. (default)
      *          RetentionPolicy.RUNTIME
