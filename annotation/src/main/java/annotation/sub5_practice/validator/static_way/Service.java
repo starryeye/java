@@ -1,5 +1,7 @@
 package annotation.sub5_practice.validator.static_way;
 
+import annotation.sub5_practice.validator.static_way.validator.Validator;
+
 public class Service {
 
     /**

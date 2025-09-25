@@ -1,4 +1,7 @@
-package annotation.sub5_practice.validator.static_way;
+package annotation.sub5_practice.validator.static_way.validator;
+
+import annotation.sub5_practice.validator.static_way.Team;
+import annotation.sub5_practice.validator.static_way.User;
 
 public abstract class Validator {
 
