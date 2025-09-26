@@ -6,6 +6,10 @@ public class Service {
 
     /**
      * annotation + reflection 기술을 사용하여 동적으로 객체를 검증하는 방법으로 개발
+     *
+     * Java 에서 annotation + reflection 기반 검증 기능을 Jakarta(Java) Bean Validation 이름으로 표준화 했다.
+     * https://beanvalidation.org
+     * https://hibernate.org/validator
      */
 
     public static void main(String[] args) {
