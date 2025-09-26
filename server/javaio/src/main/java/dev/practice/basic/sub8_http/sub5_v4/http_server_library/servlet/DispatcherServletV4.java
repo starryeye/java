@@ -24,6 +24,9 @@ public class DispatcherServletV4 implements HttpServletV4 {
     @Override
     public void service(HttpRequestV4 request, HttpResponseV4 response) throws IOException {
 
+        /**
+         * ControllerAdvice 기능 만들려면 여기에 전체 try catch 걸고 하면 될듯..
+         */
         String requestPath = request.getPath();
 
         // requestMappingHandlerMapping
