@@ -22,12 +22,20 @@ public class ServerMainV4 {
      *      HttpRequestV4 body 파싱 추가 (x-www-form-urlencoded)
      *          기존에는 HTTP request body 를 처리하지 않았음
      *
+     * todo, 해보면 좋을 것들..
+     *      annotation + reflection 적용한 ControllerContainer
      */
 
     private static final int SERVER_PORT = 8080;
 
     public static void main(String[] args) throws IOException {
 
+        HttpServerV4 server = configureServer();
+        server.start();
+    }
+
+    // configuration, 구성 영역
+    private static HttpServerV4 configureServer() {
         List<Object> controllers = List.of(
                 new HomeControllerV4(),
                 new SiteControllerV4(),
@@ -41,7 +49,6 @@ public class ServerMainV4 {
         servletContainer.setDefaultServlet(dispatcherServlet);
         servletContainer.add("/favicon.ico", new DiscardServletV4());
 
-        HttpServerV4 server = new HttpServerV4(SERVER_PORT, servletContainer);
-        server.start();
+        return new HttpServerV4(SERVER_PORT, servletContainer);
     }
 }
