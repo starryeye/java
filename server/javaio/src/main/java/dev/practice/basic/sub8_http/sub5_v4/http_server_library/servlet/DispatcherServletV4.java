@@ -21,6 +21,7 @@ public class DispatcherServletV4 implements HttpServletV4 {
         initializePathMap(controllers);
     }
 
+    // Command pattern
     @Override
     public void service(HttpRequestV4 request, HttpResponseV4 response) throws IOException {
 
