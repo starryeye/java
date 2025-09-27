@@ -15,6 +15,7 @@ public class HomeControllerV4 {
                 .append("<li><a href='/site2'>site2</a></li>\n")
                 .append("<li><a href='/search?q=hello'>\"hello\" 검색</a></li>\n")
                 .append("<li><a href='/search?q=가나다'>\"가나다\" 검색</a></li>\n")
+                .append("<li><a href='/form-add-member'>member 등록</a></li>\n")
                 .append("</ul>");
 
         response.writeBody(responseBody.toString());

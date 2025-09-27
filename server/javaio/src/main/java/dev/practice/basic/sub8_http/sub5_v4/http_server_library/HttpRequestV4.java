@@ -17,10 +17,12 @@ public class HttpRequestV4 {
     private String path;
     private final Map<String, String> queryParameters = new HashMap<>();
     private final Map<String, String> headers = new HashMap<>();
+    private String body;
 
     public HttpRequestV4(BufferedReader reader) throws IOException {
         parseStartLine(reader);
         parseHeaders(reader);
+        parseBody(reader);
 
         printParsedRequest(); // 요청 데이터 출력
     }
@@ -95,6 +97,27 @@ public class HttpRequestV4 {
         }
     }
 
+    private void parseBody(BufferedReader reader) throws IOException {
+        if (!headers.containsKey("Content-Length".toLowerCase())) {
+            return;
+        }
+
+        int contentLength = Integer.parseInt(headers.get("Content-Length".toLowerCase()));
+        char[] bodyChars = new char[contentLength];
+        int read = reader.read(bodyChars);
+        if (read != contentLength) {
+            throw new IOException("Fail to read entire body. Expected " + contentLength + " bytes, but read " + read);
+        }
+
+        body = new String(bodyChars);
+
+        // application/x-www-form-urlencoded 면 추가처리, queryParameter 에 파싱하여 넣어준다.
+        String contentType = headers.get("Content-Type".toLowerCase());
+        if ("application/x-www-form-urlencoded".equals(contentType)) {
+            parseQueryParameters(body);
+        }
+    }
+
     public void printParsedRequest() {
         threadLog("Http request parsed..");
         threadLog("-------------------------------- HTTP request --------------------------------");
@@ -116,6 +139,10 @@ public class HttpRequestV4 {
         }
 
         sb.append('\n'); // 헤더 바디 구분
+
+        if (body != null) {
+            sb.append(body).append('\n');
+        }
 
         return sb.toString();
     }
