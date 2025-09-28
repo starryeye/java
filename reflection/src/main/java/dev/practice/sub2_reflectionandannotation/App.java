@@ -28,16 +28,13 @@ public class App {
         /**
          * 어노테이션의 값을 참조할 수 있다.
          */
-        Arrays.stream(Book.class.getFields())
+        Arrays.stream(Book.class.getDeclaredFields())
+                .filter(field -> field.isAnnotationPresent(MyAnnotation2.class))
                 .forEach(field -> {
-                    Arrays.stream(field.getAnnotations())
-                            .forEach(annotation -> {
-                                if(annotation instanceof MyAnnotation2) { // MyAnnotation2 가 붙은 필드를 찾는 의미도 된다.
-                                    System.out.println(((MyAnnotation2) annotation).name());
-                                    System.out.println(((MyAnnotation2) annotation).name());
-                                    System.out.println(((MyAnnotation2) annotation).value());
-                                }
-                            });
+                    MyAnnotation2 annotation = field.getAnnotation(MyAnnotation2.class);
+                    System.out.println(annotation.name());
+                    System.out.println(annotation.number());
+                    System.out.println(annotation.value());
                 });
     }
 }
