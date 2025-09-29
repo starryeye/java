@@ -22,7 +22,7 @@ public class SelectorMultiServer {
     /**
      * Java NIO 기반의 서버
      * - SelectorServer 에서 변형함.
-     * <p>
+     *
      * 0.2 ~ 0.4 초 걸림.
      * - 요청을 처리하는 메인 스레드는 muliplexing 기법을 사용하여 이벤트를 기반으로 처리 중이다. (SelectorServer 도 마찬가지)
      *      - accept, read 에 해당하는 이벤트를 하나의 selector 로 처리

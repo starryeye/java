@@ -54,10 +54,8 @@ public class JavaNIONonBlockingMultiServer {
                  * blocking 되는 로직을 main 스레드에서 비동기 non blocking 처리하였다.(다른 스레드로 처리)
                  * 그러면..
                  * main 스레드는 다음 요청을 받을 수 있는 준비 상태가 바로 될 것이다..
-                 *
-                 * 스레드가 참 신기하네..
-                 * 분기된 스레드는 clientSocket 를 온전히 가지고.. close 까지 잘 처리할 것이고..
-                 * 메인 스레드는 기존 요청은 신경쓰지 않고 다음 요청을 처리할 수 있으니..
+                 *      분기된 스레드는 clientSocket 를 온전히 가지고.. close 까지 잘 처리할 것이고..
+                 *      메인 스레드는 기존 요청은 신경쓰지 않고 다음 요청을 처리할 수 있으니..
                  *
                  * 결과에 관심이 없다. 결과는 callee(다른 스레드) 가 처리한다. -> 비동기
                  * 다른 스레드로 분기되어 처리되어 caller(main) 이 자기 할 일을 할 수 있다. -> non-blocking

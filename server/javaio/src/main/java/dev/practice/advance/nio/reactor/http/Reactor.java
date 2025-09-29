@@ -17,8 +17,8 @@ public class Reactor implements Runnable{ // Reactor 는 별도의 스레드에�
 
     /**
      * Reactor Pattern 을 적용한 Http 서버 구현
-     * - [9] 에서 모두 동일하며 TcpEventHandler 에서 HttpEventHandler 로 수정하여 http 를 다루도록 함
-     * - Http protocol 을 인코딩 디코딩하는 MessageCodec 이 추가됨
+     * - [9] 에서 모두 동일하며 TcpReadEventHandler 에서 ReadEventHandler 로 수정하고 내부에서 http 를 다루도록 함
+     * - Http protocol 을 인코딩 디코딩하는 HttpMessageCodec 이 추가됨
      *
      * - http/reactor.http 를 실행해보자. 요청 보낸 쿼리 파라미터를 활용한 응답을 받을 수 있다.
      * - 혹은 웹브라우저에서 수행해보자..
@@ -36,7 +36,7 @@ public class Reactor implements Runnable{ // Reactor 는 별도의 스레드에�
         this.serverSocket.bind(new InetSocketAddress("localhost", port));
         this.serverSocket.configureBlocking(false);
 
-        this.acceptor = new Acceptor(selector, serverSocket);
+        this.acceptor = new AcceptEventHandler(selector, serverSocket);
         // accept 이벤트를 등록하며.. acceptor 를 같이 넘긴다.
         this.serverSocket.register(selector, SelectionKey.OP_ACCEPT).attach(this.acceptor);
     }

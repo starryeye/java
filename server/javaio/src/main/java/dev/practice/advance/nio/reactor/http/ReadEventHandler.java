@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Slf4j
-public class HttpEventHandler implements EventHandler {
+public class ReadEventHandler implements EventHandler {
 
     /**
      * read 이벤트가 들어오면 처리한다.
@@ -28,13 +28,13 @@ public class HttpEventHandler implements EventHandler {
 
     private final ExecutorService executorService = Executors.newFixedThreadPool(50); // 외부 API 지연 처리를 위한 별도의 스레드
 
-    private final MessageCodec messageCodec; // Http protocol 인코딩 디코딩을 위함
+    private final HttpMessageCodec httpMessageCodec; // Http protocol 인코딩 디코딩을 위함
 
     @SneakyThrows
-    public HttpEventHandler(Selector selector, SocketChannel socketChannel) {
+    public ReadEventHandler(Selector selector, SocketChannel socketChannel) {
         this.selector = selector;
         this.clientSocket = socketChannel;
-        this.messageCodec = new MessageCodec();
+        this.httpMessageCodec = new HttpMessageCodec();
 
         this.clientSocket.configureBlocking(false);
 
@@ -57,7 +57,7 @@ public class HttpEventHandler implements EventHandler {
         clientSocket.read(requestByteBuffer);
 
         // read 한 ByteBuffer 를 디코딩하여 Http 쿼리 파라미터를 만들어 리턴
-        return messageCodec.decode(requestByteBuffer);
+        return httpMessageCodec.decode(requestByteBuffer);
     }
 
     @SneakyThrows
@@ -68,7 +68,7 @@ public class HttpEventHandler implements EventHandler {
             try {
                 Thread.sleep(10); // 외부 API 요청으로 인한 지연 가정
 
-                ByteBuffer responseByteBuffer = messageCodec.encode(requestData); // 요청 데이터를 활용하여 응답값을 생성하고 인코딩
+                ByteBuffer responseByteBuffer = httpMessageCodec.encode(requestData); // 요청 데이터를 활용하여 응답값을 생성하고 인코딩
                 clientSocket.write(responseByteBuffer);
 
                 clientSocket.close();

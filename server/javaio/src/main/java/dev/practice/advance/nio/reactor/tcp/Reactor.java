@@ -33,7 +33,7 @@ public class Reactor implements Runnable{ // Reactor 는 별도의 스레드에�
         this.serverSocket.bind(new InetSocketAddress("localhost", port));
         this.serverSocket.configureBlocking(false);
 
-        this.acceptor = new Acceptor(selector, serverSocket);
+        this.acceptor = new TcpAcceptEventHandler(selector, serverSocket);
         // accept 이벤트를 등록하며.. acceptor 를 같이 넘긴다.
         this.serverSocket.register(selector, SelectionKey.OP_ACCEPT).attach(this.acceptor);
     }

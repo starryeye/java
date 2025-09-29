@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class MessageCodec {
+public class HttpMessageCodec {
 
     public ByteBuffer encode(final String msg) {
 

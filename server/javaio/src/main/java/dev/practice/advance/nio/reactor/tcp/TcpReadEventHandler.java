@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Slf4j
-public class TcpEventHandler implements EventHandler{
+public class TcpReadEventHandler implements EventHandler{
 
     /**
      * accept 이후 실제로 client 가 request 를 보내는 것을 처리한다. (TCP, 단순 문자열)
@@ -28,7 +28,7 @@ public class TcpEventHandler implements EventHandler{
     private final ExecutorService executorService = Executors.newFixedThreadPool(50); // 외부 API 지연 처리를 위한 별도의 스레드
 
     @SneakyThrows
-    public TcpEventHandler(Selector selector, SocketChannel socketChannel) {
+    public TcpReadEventHandler(Selector selector, SocketChannel socketChannel) {
         this.selector = selector;
         this.clientSocket = socketChannel;
 
