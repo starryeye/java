@@ -20,5 +20,8 @@ public interface FunctionAndMethod {
      *
      * 참고
      * Java 에서는 항상 클래스 내부에 함수를 선언해서 모든 함수는 메서드이다.
+     * Java 에서 메서드의 매개변수에 인수로 전달할 수 있는 것은 2가지 이다.
+     *      Java primitive type : int, double, long 등
+     *      Java reference type : String, Integer, 개발자가 만든 인스던스 참조값 등
      */
 }
