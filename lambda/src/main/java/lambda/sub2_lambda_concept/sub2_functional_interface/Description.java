@@ -4,5 +4,7 @@ public interface Description {
 
     /**
      * FunctionalInterface 에 대해 알아본다.
+     *
+     * todo
      */
 }
