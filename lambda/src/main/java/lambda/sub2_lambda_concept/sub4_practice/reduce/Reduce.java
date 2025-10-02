@@ -1,4 +1,4 @@
-package lambda.sub2_lambda_concept.sub3_practice.reduce;
+package lambda.sub2_lambda_concept.sub4_practice.reduce;
 
 import java.util.List;
 

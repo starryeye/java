@@ -1,4 +1,4 @@
-package lambda.sub2_lambda_concept.sub3_practice.compose;
+package lambda.sub2_lambda_concept.sub4_practice.compose;
 
 @FunctionalInterface
 public interface MyStringFunction {

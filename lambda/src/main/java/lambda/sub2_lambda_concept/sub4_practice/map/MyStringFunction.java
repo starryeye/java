@@ -1,4 +1,4 @@
-package lambda.sub2_lambda_concept.sub3_practice.build;
+package lambda.sub2_lambda_concept.sub4_practice.map;
 
 @FunctionalInterface
 public interface MyStringFunction {

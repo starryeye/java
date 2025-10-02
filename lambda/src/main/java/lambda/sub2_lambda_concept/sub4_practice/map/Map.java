@@ -1,4 +1,4 @@
-package lambda.sub2_lambda_concept.sub3_practice.map;
+package lambda.sub2_lambda_concept.sub4_practice.map;
 
 import java.util.ArrayList;
 import java.util.List;

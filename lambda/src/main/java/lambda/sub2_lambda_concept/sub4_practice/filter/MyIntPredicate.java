@@ -1,4 +1,4 @@
-package lambda.sub2_lambda_concept.sub3_practice.filter;
+package lambda.sub2_lambda_concept.sub4_practice.filter;
 
 @FunctionalInterface
 public interface MyIntPredicate {
