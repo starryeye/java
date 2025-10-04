@@ -1,7 +1,7 @@
-package lambda.sub6_stream.sub1_v1;
+package lambda.sub6_stream.sub1_stream_v0;
 
-import lambda.sub6_stream.sub1_v1.filter.GenericListFilter;
-import lambda.sub6_stream.sub1_v1.map.GenericListMapper;
+import lambda.sub6_stream.sub1_stream_v0.filter.GenericListFilter;
+import lambda.sub6_stream.sub1_stream_v0.map.GenericListMapper;
 
 import java.util.ArrayList;
 import java.util.List;

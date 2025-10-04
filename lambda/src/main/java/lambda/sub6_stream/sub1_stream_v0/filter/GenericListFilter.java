@@ -1,4 +1,4 @@
-package lambda.sub6_stream.sub1_v1.filter;
+package lambda.sub6_stream.sub1_stream_v0.filter;
 
 import java.util.ArrayList;
 import java.util.List;

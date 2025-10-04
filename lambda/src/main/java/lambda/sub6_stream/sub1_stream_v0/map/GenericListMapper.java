@@ -1,4 +1,4 @@
-package lambda.sub6_stream.sub1_v1.map;
+package lambda.sub6_stream.sub1_stream_v0.map;
 
 import java.util.ArrayList;
 import java.util.List;
