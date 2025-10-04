@@ -40,5 +40,9 @@ public class Lambda {
         Procedure lambda = () -> System.out.println("Hello Lambda");
         System.out.println("lambda.getClass(): " + lambda.getClass());
         System.out.println("lambda instance : " + lambda);
+
+
+        // 참고 현재 클래스(Lambda)의 메타데이터
+        System.out.println("Lambda.class : " + Lambda.class); // 익명 클래스와 분명히 구분됨(다름)을 알 수 있음
     }
 }
