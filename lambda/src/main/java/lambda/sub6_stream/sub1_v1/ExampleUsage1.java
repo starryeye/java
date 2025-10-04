@@ -5,7 +5,7 @@ import lambda.sub6_stream.sub1_v1.map.GenericListMapper;
 
 import java.util.List;
 
-public class ExampleUsage {
+public class ExampleUsage1 {
 
     public static void main(String[] args) {
 
