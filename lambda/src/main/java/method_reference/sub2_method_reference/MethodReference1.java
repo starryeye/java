@@ -78,7 +78,8 @@ public class MethodReference1 {
         // 4. 특정 타입의 임의 객체의 인스턴스 메서드 참조 (Instance Method of Arbitrary Object)
         // ClassName::instanceMethod
         UnaryOperator<String> toUpper = String::toUpperCase; // s -> s.toUpperCase() 와 동일
-        System.out.println("result 4 = " + toUpper.apply("hello"));
-        // 매개 변수로 넘어온 객체 인스턴스("hello")의 인스턴스 메서드(toUpperCase) 를 호출
+        String hello = "hello";
+        System.out.println("result 4 = " + toUpper.apply(hello));
+        // 매개 변수로 넘어온 객체 인스턴스(hello)의 인스턴스 메서드(toUpperCase) 를 호출
     }
 }
