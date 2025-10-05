@@ -72,5 +72,14 @@ public interface Description {
      *          Supplier 와 비슷한데 예외를 던질 수 있도록 만들어짐 (Checked exception 외부 던지기용)
      *              Callable 이 만들어진 이유 자체는, ExecutorService 이용시 Runnable 의 반환 값이 없는 것을 개선하기 위해 Future 와 함께 Callable 을 사용하기위해 만들어짐
      *          하위 호환성을 위해 java.util.concurrent 패키지에 존재
+     *      BiFunction
+     *          @FunctionalInterface
+     *          public interface BiFunction<T, U, R> {
+     *              R apply(T t, U u);
+     *          }
+     *          매개변수가 두개가 필요할 때 사용됨
+     *          java.util.function 에 존재한다.
+     *          BiFunction 외에도 BiConsumer, BiSupplier, BiPredicate 등 BiXXX 로 제공된다.
+     *          매개변수가 세개이상 필요하다면 Java 에서 제공되는게 없으므로 직접 만들어 사용해야한다.
      */
 }
