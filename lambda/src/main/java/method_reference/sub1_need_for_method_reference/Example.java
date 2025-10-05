@@ -7,7 +7,7 @@ public class Example {
     /**
      * method reference 에 대해 알아본다.
      *
-     * 람다가 단순히 어떤 메서드만 호출할 경, 이를 축약해주는 문법이다.
+     * 람다가 단순히 어떤 메서드만 호출할 경우, 이를 축약해주는 문법이다.
      */
 
     public static void main(String[] args) {
