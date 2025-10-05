@@ -19,6 +19,9 @@ public class Lambda {
      * 람다식
      *      람다는 익명 함수를 지칭하는 개념이다.
      *      람다식은 람다를 구현하는 구체적인 문법 표현이다.
+     *
+     * 참고
+     *      람다와 익명클래스의 구체적인 비교는.. sub7_lambda_and_anonymous_class 를 참고하자
      */
 
     public static void main(String[] args) {
