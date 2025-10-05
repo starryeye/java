@@ -26,7 +26,7 @@ public class MethodReference2 {
 
 
         // 3. 생성자 참조
-        Supplier<Person> newPerson = Person::new;
+        Supplier<Person> newPerson = Person::new; // () -> new Person() 와 동일
         System.out.println("result 3 = " + newPerson.get());
 
 
