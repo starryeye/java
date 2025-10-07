@@ -50,6 +50,7 @@ java practice
   - 모의 netty 만들어보기
 - Java17
   - sealed, permits 알아보기
+- enum
 - generic
 - collection
 - auto-boxing
