@@ -61,6 +61,7 @@ java practice
 - reflection-basic
 - annotation
   - reflection + annotation
+- lambda
 
 ## dependency
 - Java 17
