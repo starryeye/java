@@ -39,10 +39,12 @@ public class IntermediateOperations1 {
      *      default Stream<T> takeWhile(Predicate<? super T> predicate)
      *          최초 요소 부터 조건이 처음으로 거짓이 되는 요소 직전까지를 추출한다.
      *              정렬된 Stream 일 경우 filter 로도 동일한 결과를 만들어 낼 수 있지만..
-     *              filter 는 모든 요소를 다 검사하는데에 비해 takeWhile 은 조건이 처음으로 거짓이 되면 실행을 멈춘다
+     *              filter 는 모든 요소를 다 검사하는데에 비해 takeWhile 은 조건이 처음으로 거짓이 되면 실행을 멈춘다 (성능 이점)
      * 9. dropWhile (Java 9)
      *      default Stream<T> dropWhile(Predicate<? super T> predicate)
      *          최초 요소 부터 조건이 처음으로 거짓이 되는 요소 직전까지는 버리고 그 이후 요소들만 추출한다.
+     *              정렬된 Stream 일 경우 filter 로도 동일한 결과를 만들어 낼 수 있지만..
+     *              filter 는 모든 요소를 다 검사하는데에 비해 takeWhile 은 조건이 처음으로 거짓이 되면 실행을 멈춘다 (성능 이점)
      */
 
     public static void main(String[] args) {
