@@ -63,6 +63,7 @@ java practice
 - annotation
   - reflection + annotation
 - lambda
+  - lambda, method reference, stream API
 
 ## dependency
 - Java 17
