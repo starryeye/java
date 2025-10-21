@@ -1,5 +1,6 @@
 package stream.sub5_primitive_stream;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -22,6 +23,8 @@ public class PrimitiveStream3 {
      * mapToXXX
      *      mapToInt, mapToLong, mapToDouble, mapToObj
      *      일반 스트림과 기본형 특화 스트림간의 쌍방 변환을 할 수 있다.
+     * toArray
+     *      기본형 특화 스트림에서 primitive 배열로 변환할 수 있다.
      */
 
     public static void main(String[] args) {
@@ -62,6 +65,9 @@ public class PrimitiveStream3 {
         stream.forEach(System.out::println);
 
 
-
+        // toArray
+        int[] array = IntStream.rangeClosed(1, 10)
+                .toArray();
+        System.out.println("int array = " + Arrays.toString(array));
     }
 }
