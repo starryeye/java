@@ -15,6 +15,7 @@ public class IntermediateOperations1 {
      * 2. map
      *      <R> Stream<R> map(Function<? super T, ? extends R> mapper);
      *          요소를 다른 형태로 변환한다.
+     *          참고로 mapToXXX 와 같은 연산자가 있는데 sub5 의 PrimitiveStream3 를 보자
      * 3. distinct
      *      Stream<T> distinct();
      *          중복 요소를 제거한다. (Object.equals(Object))
