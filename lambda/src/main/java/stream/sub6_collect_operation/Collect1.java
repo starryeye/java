@@ -17,26 +17,37 @@ public class Collect1 {
      *
      * collect 연산 + Collectors 를 알아본다.
      *
-     * 1. Collectors.toList()
+     * 1. collect(Collectors.toList())
      *      mutable list
-     * 2. Collectors.toUnmodifiableList()
+     * 2. collect(Collectors.toUnmodifiableList())
      *      immutable list
      *      collect 연산을 쓰지 않고 toList() 로 하는 것과 동일하다.
      */
 
     public static void main(String[] args) {
 
-        // collect(Collectors.toList())
+        // 1. collect(Collectors.toList())
         List<String> list1 = Stream.of("AAA", "BBB", "CCC", "DDD")
                 .collect(Collectors.toList());
         list1.add("EEE");
+        System.out.println("list1.getClass() = " + list1.getClass()); // ArrayList
         System.out.println("list1 = " + list1);
 
 
-        // collect(Collectors.toUnmodifiableList())
+
+
+        // 2-1. collect(Collectors.toUnmodifiableList())
         List<String> list2 = Stream.of("AAA", "BBB", "CCC", "DDD")
                 .collect(Collectors.toUnmodifiableList());
 //        list2.add("EEE"); // runtime error
+        System.out.println("list2.getClass() = " + list2.getClass());
         System.out.println("list2 = " + list2);
+
+        // 2-2. toList()
+        List<String> list3 = Stream.of("AAA", "BBB", "CCC", "DDD")
+                .toList();
+//        list3.add("EEE"); // runtime error
+        System.out.println("list3.getClass() = " + list3.getClass());
+        System.out.println("list3 = " + list3);
     }
 }
