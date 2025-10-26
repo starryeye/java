@@ -13,8 +13,8 @@ public class Collect2 {
      * 1. collect(Collectors.toSet())
      *      HashSet 을 반환한다.
      * 2. collect(Collectors.toUnmodifiableSet())
-     *      불변 리스트(unmodifiable list)를 반환한다.
-     *      반환된 Set은 수정 시 UnsupportedOperationException 이 발생한다.
+     *      불변 Set(unmodifiable set)을 반환한다.
+     *      반환된 Set 은 수정 시 UnsupportedOperationException 이 발생한다.
      * 3. collect(Collectors.toCollection({생성자 참조 메서드 레퍼런스}))
      *      예제의 TreeSet::new 처럼 특정 리스트의 생성자 참조 메서드 레퍼런스를 이용하면
      *      해당 Set 으로 반환해준다.
