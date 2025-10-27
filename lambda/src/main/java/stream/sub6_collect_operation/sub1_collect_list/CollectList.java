@@ -1,11 +1,11 @@
-package stream.sub6_collect_operation;
+package stream.sub6_collect_operation.sub1_collect_list;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Collect1 {
+public class CollectList {
 
     /**
      * collect 연산에 대해 알아본다.

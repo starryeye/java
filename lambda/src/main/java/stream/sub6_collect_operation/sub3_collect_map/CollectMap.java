@@ -1,10 +1,10 @@
-package stream.sub6_collect_operation;
+package stream.sub6_collect_operation.sub3_collect_map;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Collect3 {
+public class CollectMap {
 
     /**
      * collect 연산 + Collectors 를 알아본다.

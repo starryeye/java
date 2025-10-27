@@ -1,11 +1,11 @@
-package stream.sub6_collect_operation;
+package stream.sub6_collect_operation.sub2_collect_set;
 
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Collect2 {
+public class CollectSet {
 
     /**
      * collect 연산 + Collectors 를 알아본다.
