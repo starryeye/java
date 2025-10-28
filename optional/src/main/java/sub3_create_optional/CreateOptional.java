@@ -1,5 +1,7 @@
 package sub3_create_optional;
 
+import java.util.Optional;
+
 public class CreateOptional {
 
     /**
@@ -16,5 +18,20 @@ public class CreateOptional {
 
     public static void main(String[] args) {
 
+        // of : 값이 절대 null 이 아닐때 사용
+        Optional<String> opt1 = Optional.of("Hello");
+        System.out.println("opt1 = " + opt1);
+
+
+        // ofNullable : 값이 null 일 수도, 값이 존재할 수도
+        Optional<String> opt2 = Optional.ofNullable(null);
+        Optional<String> opt3 = Optional.ofNullable("World");
+        System.out.println("opt2 = " + opt2);
+        System.out.println("opt3 = " + opt3);
+
+
+        // empty : 값이 null 일때 사용
+        Optional<Object> opt4 = Optional.empty();
+        System.out.println("opt4 = " + opt4);
     }
 }
