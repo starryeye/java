@@ -29,5 +29,10 @@ public interface Optional1 {
      *              - 값이 없으면 예외를 발생시키는게 더 자연스러운 상황 (비즈니스 로직상 필수값이면 예외가 자연스러움)
      *              - 성능이 극도로 중요하고 극한의 최적화가 필요한 로우레벨 코드인 경우
      *              - null check 로직이 명시적으로 필요한 경우
+     *
+     * 참고
+     * primitive type 의 Optional 을 지원하기 위해 ..
+     * OptionalInt, OptionalLong 등이 존재하지만, Optional 이 제공하는 다양한 메서드는 사용할 수 없으며
+     * 사용하지 않는 것을 추천함.
      */
 }
