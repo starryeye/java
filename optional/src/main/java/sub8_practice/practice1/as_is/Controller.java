@@ -7,11 +7,13 @@ public class Controller {
 
     public static void main(String[] args) {
 
-        User user1 = new User("user 1", null);
-        User user2 = new User("user 2", new Address("korea", "seoul"));
+        User user1 = null;
+        User user2 = new User("user 1", null);
+        User user3 = new User("user 2", new Address("korea", "seoul"));
 
         printUserCity(user1);
         printUserCity(user2);
+        printUserCity(user3);
     }
 
     private static void printUserCity(User user) {
