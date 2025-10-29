@@ -1,4 +1,4 @@
-package sub6_operation;
+package sub7_operation;
 
 import java.util.Optional;
 import java.util.stream.Stream;
