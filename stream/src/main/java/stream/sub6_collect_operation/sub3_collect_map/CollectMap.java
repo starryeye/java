@@ -1,6 +1,7 @@
 package stream.sub6_collect_operation.sub3_collect_map;
 
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
