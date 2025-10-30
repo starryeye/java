@@ -29,7 +29,7 @@ public class OptionalOperation {
      * 5. filter
      *      public Optional<T> filter(Predicate<? super T> predicate)
      *      내부 값이 존재하고 파라미터로 전달된 Predicate 를 만족하면, 통과되어 Optional<T> 가 반환
-     *      내부 값이 존재하고 파라미터로 전달된 Predicate 를 불만족하면, Optional.empty 반환
+     *          내부 값이 존재하고 파라미터로 전달된 Predicate 를 불만족하면, Optional.empty 반환
      *      내부 값이 존재하지 않으면, Optional.empty 반환
      * 6. stream
      *      public Stream<T> stream()
