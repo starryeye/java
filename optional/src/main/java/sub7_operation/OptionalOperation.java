@@ -20,6 +20,7 @@ public class OptionalOperation {
      * 3. map
      *      public <U> Optional<U> map(Function<? super T, ? extends U> mapper)
      *      내부 값이 존재하면, 파라미터로 전달된 Function 이 실행되고, 그 결과물이 Optional 내부 값으로 적용된다.
+     *          내부 값이 존재해서 파라미터로 전달된 Function 이 실행 되었지만, 그 결과물이 null 이면 Optional.empty() 반환이다.
      *      내부 값이 존재하지 않으면, Optional.empty() 가 반환된다.
      * 4. flatMap
      *      public <U> Optional<U> flatMap(Function<? super T, ? extends Optional<? extends U>> mapper)
