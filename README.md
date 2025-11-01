@@ -65,7 +65,7 @@ java practice
 - lambda
   - lambda, method reference
 - stream
-  - Stream API, parallel stream
+  - Stream API, fork/join, parallel stream
 - optional
 
 ## dependency
