@@ -106,6 +106,7 @@ public class ByForkJoinPool {
 
         long end = System.currentTimeMillis();
         MyThreadLog.threadLog("elapsed = " + (end - start) + "ms, result = " + result);
+        MyThreadLog.threadLog("forkJoinPool = " + forkJoinPool); // forkJoinPool 의 스레드 갯수와 work stealing 이 몇회 일어났는지 출력함.
 
     }
 
