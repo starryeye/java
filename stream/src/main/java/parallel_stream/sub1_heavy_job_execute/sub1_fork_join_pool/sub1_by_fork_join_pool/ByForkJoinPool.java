@@ -31,9 +31,9 @@ public class ByForkJoinPool {
      *      작은 단위 작업의 결과를 합쳐(join) 최종 결과로 병합
      *      멀티 코어 환경에서 작업을 효율적으로 분산 처리하는데 의의
      * 작업 훔치기(work stealing) 알고리즘
-     *      각 스레드는 자신의 작업 큐를 가짐
+     *      각 스레드는 자신의 작업 큐(DEQUE)를 가짐
      *      현재 작업이 없는 스레드는 다른 스레드 작업 큐의 작업을 훔쳐와서 대신 처리
-     *      부하 균형을 자동으로 맞춤에 의의
+     *      부하 균형을 자동으로 맞추어 유휴 스레드를 최소화하는데 의의
      * 주요 클래스
      *      ForkJoinPool
      *          Fork/Join 작업을 실행하는 특수한 ExecutorService thread pool
@@ -41,7 +41,11 @@ public class ByForkJoinPool {
      *          cpu core 갯수 만큼 스레드 생성(default)
      *          대표 메서드
      *              public <T> T invoke(ForkJoinTask<T> task)
-     *                  ...
+     *                  ForkJoinPool 에 파라미터로 제공한 task 를 수행하도록 함.
+     *                  동기, blocking 방식의 호출
+     *              public void execute(ForkJoinTask<?> task)
+     *                  ForkJoinPool 에 파라미터로 제공한 task 를 수행하도록 함.
+     *                  비동기, non-blocking 방식의 호출
      *      ForkJoinTask
      *          Fork/Join 작업의 기본 추상 클래스
      *          Future 를 구현
@@ -52,9 +56,15 @@ public class ByForkJoinPool {
      *                  결과를 반환하지 않는 작업 (Future<Void> 를 구현)
      *          대표 메서드
      *              public final ForkJoinTask<V> fork()
-     *                  ...
+     *                  해당 task 를 실행 스레드의 작업 큐에 담는다.
+     *                  여유 있는 다른 스레드가 work stealing 에 의해 대신 처리해 줄 것을 기대함
      *              public final V join()
-     *                  ...
+     *                  해당 task 의 실행이 완료될 때까지 대기하고 해당 task 의 결과를 반환 받음
+     *                  미완료 시, 호출 스레드가 work-stealing 에 참여 가능해짐
+     *              protected abstract V compute()
+     *                  this task 를 어떻게 처리할 것인지에 대한 로직
+     *                  fork / join 에 대한 호출이 담겨있다.
+     *                  ForkJoinTask 추상 클래스의 필수 구현 메서드 (분할 정복 로직)
      *
      * 참고
      * 실무에서는 Fork/Join 프레임워크를 직접 다루는 일은 드물다.
@@ -80,7 +90,7 @@ public class ByForkJoinPool {
 
 
 
-        Integer result = forkJoinPool.invoke(new SumTask(taskList));
+        Integer result = forkJoinPool.invoke(new SumTask(taskList)); // 동기, blocking
         forkJoinPool.shutdown();
 
 
