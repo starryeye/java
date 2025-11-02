@@ -32,6 +32,7 @@ public class ByForkJoinPool {
      *      멀티 코어 환경에서 작업을 효율적으로 분산 처리하는데 의의
      * 작업 훔치기(work stealing) 알고리즘
      *      각 스레드는 자신의 작업 큐(DEQUE)를 가짐
+     *          자기 자신의 작업 큐에 작업을 보관하거나 꺼낼때 A 쪽에서 했다면, 다른 스레드가 작업을 훔칠때는 B 에서 하여 경합을 최소화 한다.
      *      현재 작업이 없는 스레드는 다른 스레드 작업 큐의 작업을 훔쳐와서 대신 처리
      *      부하 균형을 자동으로 맞추어 유휴 스레드를 최소화하는데 의의
      * 주요 클래스
@@ -43,6 +44,9 @@ public class ByForkJoinPool {
      *              public <T> T invoke(ForkJoinTask<T> task)
      *                  ForkJoinPool 에 파라미터로 제공한 task 를 수행하도록 함.
      *                  동기, blocking 방식의 호출
+     *                  참고.
+     *                      최초에 task 는 임의의 스레드 작업 큐에 할당되지 않고,
+     *                      외부의 작업들을 받는 특별한 작업 큐에 들어가고 "외부 작업 큐" 에 존재하는 작업들은 유휴 스레드들이 작업을 훔쳐간다.
      *              public void execute(ForkJoinTask<?> task)
      *                  ForkJoinPool 에 파라미터로 제공한 task 를 수행하도록 함.
      *                  비동기, non-blocking 방식의 호출
@@ -68,6 +72,11 @@ public class ByForkJoinPool {
      *
      * 참고
      * 실무에서는 Fork/Join 프레임워크를 직접 다루는 일은 드물다.
+     *
+     *
+     * 아래 예제는 ByExecutorService 와 동일하게
+     * 총 8개의 작업을 4개의 작업 단위(Threshold) 로 2개의 작업 묶음으로 나누었고 2개의 스레드가 작업을 하여 약 4초가 걸린다.
+     * (thread pool 자체는 8 개가 생성되긴함)
      */
 
     public static void main(String[] args) {
@@ -137,13 +146,13 @@ public class ByForkJoinPool {
                 // 왼쪽 작업은 다시 자신의 작업 큐에 담는다. (여유 있는 다른 스레드가 work stealing 에 의해 대신 처리해 줄 것을 기대함)
                 leftTask.fork();
                 // 오른쪽 작업은 현재 스레드에서 바로 처리
-                Integer rightResult = rightTask.compute(); // 동기 blocking
+                Integer rightResult = rightTask.compute(); // 동기 blocking 호출, 재귀 호출
 
 
 
                 // 왼쪽 작업의 결과를 대기
                 Integer leftResult = leftTask.join();
-                // 왼쪽/오른쪽 작업 결과 병합
+                // 왼쪽/오른쪽 작업 결과 병합 (재귀 병합)
                 int joinSum = leftResult + rightResult;
 
 
