@@ -29,6 +29,15 @@ public class CommonPool {
      * Fork/Join common pool 의 설정은 시스템 속성으로 변경가능하다.
      * -Djava.util.concurrent.ForkJoinPool.common.parallelism={스레드 풀의 스레드 갯수}
      * System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "{스레드 풀의 스레드 갯수}");
+     *
+     *
+     * 아래 예제는 ByForkJoinPool 와 동일한 SumTask 를 사용하여
+     * 작업을 Fork, Execute, Join 하는 로직이 동일하며
+     * ForkJoinPool 만 직접 생성하지 않고 common pool 을 사용하여..
+     * 동작성은 동일하다.
+     *      총 8개의 작업을 4개의 작업 단위(Threshold) 로 2개의 작업 묶음으로 나누었고 2개의 스레드가 작업을 하여 약 4초가 걸린다.
+     *      thread pool 의 thread 갯수 자체는 7 개로 구성됨
+     *
      */
 
     public static void main(String[] args) {

@@ -76,7 +76,7 @@ public class ByForkJoinPool {
      *
      * 아래 예제는 ByExecutorService 와 동일하게
      * 총 8개의 작업을 4개의 작업 단위(Threshold) 로 2개의 작업 묶음으로 나누었고 2개의 스레드가 작업을 하여 약 4초가 걸린다.
-     * (thread pool 자체는 8 개가 생성되긴함)
+     * (thread pool 의 thread 갯수 자체는 8 개가 생성되긴함)
      */
 
     public static void main(String[] args) {
